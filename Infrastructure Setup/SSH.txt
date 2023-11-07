@@ -1,1 +1,36 @@
+$ cat /etc/ssh/ssh_known_hosts
+$ cat ~/.ssh/known_hosts
+$ cat /home/whoami/.ssh/known_hosts
+
+
+$ ssh-keygen -t dsa 
+Generating public/private dsa key pair.
+Enter file in which to save the key (/home/whoami/.ssh/id_dsa): 
+Created directory '/home/whoami/.ssh'.
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/whoami/.ssh/id_dsa
+Your public key has been saved in /home/whoami/.ssh/id_dsa.pub
+The key fingerprint is:
+SHA256:dOIJaC6kZU/S8ccVhJ6x1T71MpSNGsQB0/ArBGAK+ro whoami@cyberpunk
+The key's randomart image is:
++---[DSA 1024]----+
+|  . . o..oBOo. + |
+| . o * .oo.o= = .|
+|. = * o.==o..= . |
+| * *   =+=  +.o .|
+|. o o   S . .. o |
+| . .       .     |
+|.                |
+| .               |
+|E                |
++----[SHA256]-----+
+
+
+$ ssh whoami@192.168.42.142
+$ ssh whoami@192.168.42.142 -p 22
+
+$ scp RTFM_worddoc.docx whoami@10.0.2.15:/tmp/ 
+
+$ scp whoami@10.0.2.15:/tmp/RTFM_worddoc.docx /tmp
 
