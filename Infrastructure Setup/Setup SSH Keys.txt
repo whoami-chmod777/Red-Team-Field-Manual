@@ -1,1 +1,24 @@
+$ ssh-keygen
 
+!!! IMPORTANT !!!
+Set the PASSPHRASE DON'T let it empty
+
+$ ls -ali /home/rougueoperator/.ssh
+$ cat id_rsa.pub
+
+
+-  Run on Remote Machine -
+
+$ mkdir ~/.ssh
+$ touch ~/.ssh/authorized_keys
+
+Copy the contant of the id_rsa.pub to target remote machine's file: ~/.ssh/authorized_keys
+
+$ chmod 700 /root/.ssh 
+$ chmod 600 /root/.ssh/authorized_keys
+
+
+- Run on local machine -
+
+ssh -i <FILE_PATH> <USERNAME>@><IP_ADDRESS>
+ssh -i ~/.ssh/id_rsa rougueoperator@172.100.1.10
