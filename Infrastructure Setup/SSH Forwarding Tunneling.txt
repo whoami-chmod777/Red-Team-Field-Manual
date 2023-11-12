@@ -1,1 +1,22 @@
+-- Setup a tunnel from an already established SSH session --
 
+ssh> -R 0.0.0.0:443:127.0.0.1:443
+
+
+-- LOCAL PORT FORWARD ON PORT 8080 ON ATTACK BOX AND FORWARDS THROUGH SSH TUNNEL TO PORT 3300 ON INTERNAL TARGET 3. 3. 3. 3 --
+
+ssh -L 8080:3.3.3.3:443 root@2.2.2.2
+
+
+-- Remote Port Forward on 8080, Forward to Attacker on 443 --
+
+ssh -R 8080:127.0.0.1:443 root@2.2.2.2.
+
+
+-- DYNAMIC TUNNEL USED IN CONJUNCTION WITH PROXYCHAINS . ENSURE /ETC/PROXYCHAINS. CONF IS CONFIGURED ON CORRECT PORT (1080) --
+
+ssh -D l080 root@2.2.2.2 
+In a separate terminal run: proxychains nmap -sT -p80,443 3.3.3.3
+
+
+$ proxychains nmap -sT -Pn -n 172.30.1.56 -p 8080
