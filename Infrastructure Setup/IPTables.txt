@@ -1,1 +1,19 @@
+# List iptables
+iptables -L
 
+# List all iptabels rules
+iptables -L -v --line-numbers
+
+# Flush iptables
+iptables -F
+
+# Drop all incoming
+iptables -P INPUT DROP
+
+# Allow SSH on port 22 outbound
+iptables -A OUTPUT -o eth0 -p tcp --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A INPUT -i eth0 -p tcp --sport 22 -m state --state ESTABLISHED -j ACCEPT
+
+# Port forward
+echo "1">/proc/sys/net/ipv4/ip_forward
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 3389 -j DNAT --to 192.168.1.99:3389
