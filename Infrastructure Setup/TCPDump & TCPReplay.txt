@@ -1,1 +1,29 @@
+# Capture packets (headers and data) on eth0 in ASCII and hex and write to a file
+tcpdump -i eth0 -XX -w output_file.pcap
 
+# Capture all port 80 (HTTP) traffic with destination set to 2.2.2.2
+tcpdump tcp port 80 and dst 2.2.2.2
+
+# Show traffic from interface eth0 destined for 4192.168.1.22 that isn't port 22 (SSH) traffic
+tcpdump -i eth0 -tttt dst 192.168.1.22 and not dst port 22
+
+# Show traffic from interface ethO that is an ICMP (Ping) reply
+tcpdump -i ethO “icmp[0] == 8” 
+
+# Show the first 50 packets from interface ethO that are UDP and port 53 (DNS). Print with date/time stamps.
+tcpdump —i ethO —c 50 -tttt udp port 53
+
+# Show traffic from all interfaces that have port 443. Don’t convert host IPs or port number names (-nn), use absolute TCP sequence numbers, and print packet data
+tcpdump -nSX port 443
+
+# Show traffic from all interfaces
+tcpdump -i ethO
+
+
+
+
+$ sudo -s
+# tcpdump -i any
+# tcpdump -i any port 22
+# tcpdump -i any port 80 and dst 172.100.1.10
+# tcpdump -i any port 80 and dst 172.100.1.10 -w mypcap.pcap
