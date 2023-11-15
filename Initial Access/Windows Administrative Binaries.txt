@@ -1,0 +1,15 @@
+
+# WINDOWS ADMINISTRATIVE BINARIES
+
+lusrmgr.msc		  Local user and group manager
+services.msc	  Services control panel
+taskmgr.exe		  Task manager
+secpol.msc		  Local security policy editor
+eventvwr.msc	  Event viewer
+regedit.exe		  Registry editor
+gpedit.msc		  Group policy editor
+control.exe		  Control panel
+ncpa.cpl		    Network connections manager
+devmgmt.msc		  Device manager editor
+diskmgmt.msc	  Disk manager editor
+
