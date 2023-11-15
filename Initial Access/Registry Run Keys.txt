@@ -1,0 +1,27 @@
+C:\Windows\System32>sc.exe query
+
+C:\Windows\System32>reg query HKLM\SYSTEM\CurrentControlSet\Services
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\.NET CLR Data
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\.NET CLR Networking
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\.NET CLR Networking 4.0.0.0
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\.NET Data Provider for Oracle
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\.NET Data Provider for SqlServer
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\.NET Memory Cache 4.0
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\.NETFramework
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\1394ohci
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\3ware
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AarSvc
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AarSvc_19e2bf
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ACPI
+
+C:\Windows\System32>reg query HKLM\SYSTEM\CurrentControlSet\Services\wscsvc
+
+C:\Windows\System32>reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Run
+
+
+# REGISTRY RUN KEYS #
+
+(WinXP)
+HKLM\Software\Microsoft\Windows\CurrentVersion\RunOnceE
+
