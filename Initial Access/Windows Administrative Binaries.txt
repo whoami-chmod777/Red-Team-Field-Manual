@@ -1,6 +1,4 @@
 
-# WINDOWS ADMINISTRATIVE BINARIES
-
 lusrmgr.msc		  Local user and group manager
 services.msc	  Services control panel
 taskmgr.exe		  Task manager
