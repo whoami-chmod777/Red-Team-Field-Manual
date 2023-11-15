@@ -1,0 +1,17 @@
+C:\Windows\System32>dir %SYSTEMROOT%\System32\drivers\etc\hosts
+C:\Windows\System32>type %SYSTEMROOT%\System32\drivers\etc\hosts
+
+C:\Windows\System32>cmd.exe /c dir "%USERPROFILE%\Appdata\Roaming\Microsoft\Windows\Start Menu\Programs\Startup"
+C:\Windows\System32>cmd.exe /c type "%USERPROFILE%\Appdata\Roaming\Microsoft\Windows\Start Menu\Programs\Startup"
+
+
+%SYSTEMROOT%\System32\drivers\etc\hosts          DNS entries
+%SYSTEMROOT%\System32\drivers\etc\networks
+%SYSTEMROOT%\System32\config\SAM
+%SYSTEMROOT%\repair\SAM
+%SYSTEMROOT%\System32\config\RegBack\SAM
+%WINDIR%\System32\config\AppEvent.Evt
+%WINDIR%\System32\config\SecEvent.Evt
+%WINDIR%\System32\config\SECURITY
+%WINDIR%\System32\config\APPLICATION
+....
