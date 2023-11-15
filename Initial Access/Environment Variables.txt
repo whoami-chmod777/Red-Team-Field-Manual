@@ -1,0 +1,35 @@
+
+C:\Windows\System32>echo %SYSTEMROOT%
+C:\Windows\System32>echo %PATH%
+
+C:\Windows\System32>dir /a c:\Users
+C:\Windows\System32>dir /a c:\Users\mirko
+
+C:\Windows\System32>dir %appdata%\microsoft\windows\recent
+ Volume in drive C is OS
+ Volume Serial Number is 44D2-A202
+
+Directory of C:\Users\mirko\AppData\Roaming\microsoft\windows\recent
+15.11.2023  20:42    <DIR>          .
+04.03.2023  07:30    <DIR>          ..
+15.11.2023  07:39             1.142 0. Welcome.lnk
+09.11.2023  22:27               402 0.1.png.lnk
+09.11.2023  22:27               448 0.png.lnk
+17.08.2023  17:50             1.280 1. Welcome to the exciting world of cybersecurity (2).lnk
+17.08.2023  17:50             1.280 1. Welcome to the exciting world of cybersecurity (4).lnk
+17.08.2023  17:50             1.280 1. Welcome to the exciting world of cybersecurity.lnk
+
+
+%SYSTEMROOT%
+%APPDATA%
+%COMPUTERNAME%
+%HOMEDRIVE%
+%HOMEPATH%
+%PATH%
+%PATHEXT%
+%SYSTEMDRIVE%
+%TMP%&&%TEMP%
+%USERPROFILE%
+%WINDIR%
+%ALLUSERSPROFILE%
+....
