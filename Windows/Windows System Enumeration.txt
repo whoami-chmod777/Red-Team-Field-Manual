@@ -1,0 +1,38 @@
+-- Operating System Information --
+
+ver											                Enumerate Windows version information	
+wmic qfe list								            Display hotfixes and service packs	
+wmic cpu get datawidth /format:list			Display whether 32 or 64 bit system
+dir /a c:\									            Enumerate OS architecture - The existence of Program Files (x86) means machine is 64bit
+systeminfo									            Display OS configuration, including service pack levels
+fsutil fsinfo drives						        Display drives
+
+wmic logicaldisk get description,name		Display logical drives
+
+set											                Display environment variables
+dir /a c:\pagefile.sys						      Date of last reboot - Created date of pagefile.sys is last startup
+net share									              Display shares
+net session									            Display local sessions
+
+reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\MountPoints2\    List user mounted shares – MUST BE RUN IN THE CONTEXT OF THE USER
+
+
+-- Process & Service Enumeration --
+
+tasklist /svc		Display services hosted in each process
+
+
+-- Windows Account Enumeration --
+
+echo %USERNAME%    Display current user
+
+wmic netlogin where (name like "%<USERNAME>%") get Name,numberoflogons"    List number of times user has logged 
+
+wmic netlogin get Name,NumberOfLogons    List number of times user has logged 
+net localgroup "Administrator"    Display local Administrators
+
+
+--  Network Info & Configuration --
+
+
+
