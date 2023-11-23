@@ -1,1 +1,14 @@
+Microsoft Windows Active Directory is a service that combines large groups of computing resources into one centralized hierarchical system. This system is comprised of user accounts, computers, objects, active directory forests, and more. Centralized authentication makes administration and expansion of computing resources much easier.
 
+Active Directory Forest (AD Forest)
+
+An Active Directory forest is a collection of parent/child domains and is used to share authentication between domains, while keeping those domain objects (computers, users, etc.) isolated.
+
+If an organization called Corp has a Chicago and San Diego office, they may choose to create a forest made up of a parent domain, and two child domains
+
+Active Directory Exploitation Checklist
+
+- Windows hashes are NOT salted. Password re-use is very common for users that have multiple user accounts in different domains.
+- Domain Service account passwords may not be changed often.
+- Certain “Enterprise Admin” accounts may be used to traverse forest domains.
+- Domains should utilize separation of privilege. Workstation Admins administer workstations, SQL Admins administer SQL Servers, etc.
