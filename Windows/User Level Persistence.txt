@@ -1,1 +1,17 @@
 
+-- Scheduled Task User Persistence --
+
+
+
+-- Run Key User Persistence --
+
+
+
+-- Startup Directories --
+
+
+
+-- Poisoning Existing Scripts --
+
+
+
