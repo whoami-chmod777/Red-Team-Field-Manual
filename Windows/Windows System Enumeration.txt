@@ -1,25 +1,46 @@
 -- Operating System Information --
 
-ver											                Enumerate Windows version information	https://github.com/whoami-chmod777/Red-Team-Field-Manual/tree/main/Windows
-wmic qfe list								            Display hotfixes and service packs	
-wmic cpu get datawidth /format:list			Display whether 32 or 64 bit system
-dir /a c:\									            Enumerate OS architecture - The existence of Program Files (x86) means machine is 64bit
-systeminfo									            Display OS configuration, including service pack levels
-fsutil fsinfo drives						        Display drives
+#Enumerate Windows version information	
+ver											                
 
-wmic logicaldisk get description,name		Display logical drives
+# Display hotfixes and service packs	
+wmic qfe list					
 
-set											                Display environment variables
-dir /a c:\pagefile.sys						      Date of last reboot - Created date of pagefile.sys is last startup
-net share									              Display shares
-net session									            Display local sessions
+# Display whether 32 or 64 bit system
+wmic cpu get datawidth /format:list	
 
-reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\MountPoints2\    List user mounted shares – MUST BE RUN IN THE CONTEXT OF THE USER
+# Enumerate OS architecture - The existence of Program Files (x86) means machine is 64bit
+dir /a c:\		
+
+# Display OS configuration, including service pack levels
+systeminfo
+
+# Display drives
+fsutil fsinfo drives						        
+
+# Display logical drives
+wmic logicaldisk get description,name		
+
+# Display environment variables
+set											       
+
+# Date of last reboot - Created date of pagefile.sys is last startup
+dir /a c:\pagefile.sys						      
+
+# Display shares
+net share				
+
+# Display local sessions
+net session									            
+
+# List user mounted shares – MUST BE RUN IN THE CONTEXT OF THE USER
+reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\MountPoints2\    
 
 
 -- Process & Service Enumeration --
 
-tasklist /svc		Display services hosted in each process
+# Display services hosted in each process
+tasklist /svc		
 
 ....
 ....
@@ -30,12 +51,17 @@ tasklist /svc		Display services hosted in each process
 
 -- Windows Account Enumeration --
 
-echo %USERNAME%    Display current user
+# Display current user
+echo %USERNAME%    
 
-wmic netlogin where (name like "%<USERNAME>%") get Name,numberoflogons"    List number of times user has logged 
+#List number of times user has logged
+wmic netlogin where (name like "%<USERNAME>%") get Name,numberoflogons"     
 
-wmic netlogin get Name,NumberOfLogons     List number of times user has logged 
-net localgroup "Administrator"            Display local Administrators
+# List number of times user has logged
+wmic netlogin get Name,NumberOfLogons  
+
+# Display local Administrators
+net localgroup "Administrator"            
 
 ....
 ....
@@ -47,9 +73,14 @@ net localgroup "Administrator"            Display local Administrators
 
 --  Network Info & Configuration --
 
-ipconfig /all		        Network interface information
-ipconfig /displaydns  	Display local DNS cache
-netstat -ano		        Display all connections and ports with associated process ID
+# Network interface information
+ipconfig /all		        
+
+# Display local DNS cache
+ipconfig /displaydns 
+
+# Display all connections and ports with associated process ID
+netstat -ano		        
 
 ....
 ....
@@ -61,11 +92,14 @@ netstat -ano		        Display all connections and ports with associated process 
 
 -- Registry Commands & Important Keys  --
 
-reg query HKLM /f password /t REG_SZ /s		  Search registry for	password
-reg save HKLM\Security security			        .hive (Requires SYSTEM privileges) / Save security hive to file
+# Search registry for	password
+reg query HKLM /f password /t REG_SZ /s		
 
+# .hive (Requires SYSTEM privileges) / Save security hive to file
+reg save HKLM\Security security			        
 
-HKLM\Software\Microsoft\Windows NT\CurrentVersion	OS information
+# OS information
+HKLM\Software\Microsoft\Windows NT\CurrentVersion	
 
 /v ProductName
 /v InstallDate
