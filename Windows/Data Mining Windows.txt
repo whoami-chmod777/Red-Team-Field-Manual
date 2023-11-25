@@ -1,1 +1,22 @@
 
+-- File Info & Searching --
+
+# Search for all PDFs
+dir /a /s /b C:\*pdf*								
+dir /a /s /b C:\users\phillis.snyder\*pdf*
+
+# Search current and subdirectories for .txt files for case insensitive string "password"
+findstr /SI password *.txt
+
+
+
+
+-- Tree Filesystem to Searchable File --
+
+
+
+-- Using Volume Shadow Service (VSS) --
+
+
+
+
