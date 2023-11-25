@@ -29,6 +29,27 @@ expand c:\users\administrator\desktop\silverlight_compressed.zip c:\users\admini
 
 -- Using Volume Shadow Service (VSS) --
 
+# Enumerate saved volume shadow files
+vssadmin list shadows
 
+*** If any copies already exist then skip creation command
+
+# Create Shadow file of c:\ (Replace with desired drive letter)
+wmic shadowcopy call create Volume=c:\
+
+# Enumerated saved volume shadow files (should see newly created shadow). Note the \\?\GLOBALROOT location
+vssadmin list shadows
+
+# Create an OS link to created shadow file (Note the trailing backslash at the end of the path).
+# The target link name (restore in this case) must not exist
+mklink /D C:\restore  \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy6\
+
+
+*** Copy, exfil, interact with shadow
+
+# Remove link
+rmdir c:\restore
+
+!!! Windows "del" will remove actual files! !!!
 
 
