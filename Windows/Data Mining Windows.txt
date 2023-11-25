@@ -50,6 +50,6 @@ mklink /D C:\restore  \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy6\
 # Remove link
 rmdir c:\restore
 
-!!! Windows "del" will remove actual files! !!!
+** Windows "del" will remove actual files! **
 
 
