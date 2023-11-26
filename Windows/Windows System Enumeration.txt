@@ -126,7 +126,7 @@ HKLM\Software\Microsoft\Windows NT\CurrentVersion
 -- Remote System Enumeration --
 
 # Display sessions for remote system
-net session \\<IP_ADDRESS
+net session \\<IP_ADDRESS>
 
 # Display logged in user on remote machine
 wmic /node:<IP_ADDRESS> computersystem get username
