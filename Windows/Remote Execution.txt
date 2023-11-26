@@ -11,6 +11,8 @@ great for this technique, but other services can work if they meet the requireme
 
 -- sc.exe Remote Execution --
 
+Upload binary to remote machine, modify existing service to point at that binary, start the service, and re-configure the service binpath back to its original value. VSS is a service that works great for this technique, but other services can work if they meet the requirements listed in the right column below.
+
 # Ensure service runs as LocalSystem and log original binary path
 sc \\<IP_ADDRESS> qc vss
 
