@@ -9,6 +9,7 @@
 ·Remote System Enumeration
 
 
+
 -- Operating System Information --
 
 #Enumerate Windows version information	
@@ -81,7 +82,6 @@ net localgroup "Administrator"
 ....
 
 
-
 --  Network Info & Configuration --
 
 # Network interface information
@@ -98,7 +98,6 @@ netstat -ano
 ....
 ....
 ....
-
 
 
 -- Registry Commands & Important Keys  --
