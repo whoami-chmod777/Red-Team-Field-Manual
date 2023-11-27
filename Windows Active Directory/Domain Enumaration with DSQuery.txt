@@ -1,1 +1,15 @@
 
+All DSQuery commands must be run from a machine that has dsquery.exe on disk (commonly Windows Server) and most of the commands DO NOT require administrative privileges
+
+
+# Display administrative users
+dsquery * -filter "(&(objectclass=user)(admincount=1))" -attr samaccountname name
+
+...
+...
+...
+...
+
+
+# Convert NT epoch time (lastLogon Timestamp time format) to readable
+w32tm /ntte <EPOCH_TIME>
