@@ -1,0 +1,38 @@
+Net.exe will NOT list groups in groups. Refer to DSQuery section to enumerate groups in groups.
+
+
+# List accounts with administrative access to the current machine
+net localgroup administrators
+
+# List accounts and groups with administrative access to the domain controller
+net localgroup administrators /domain
+
+# Display hosts currently visible on the network
+net view /domain
+
+# Display all users in current domain
+net user /domain
+
+# Display user information for domain user account (status, policy, groups, etc.)
+net user <USERNAME> /domain
+
+# Display domain account policies
+net accounts /domain
+
+# Display domain groups
+net group /domain
+
+# Display users in a domain group
+net group "<GROUPNAME>" /domain
+
+# Display domain controllers in the current domain
+net group "Domain Controllers" /domain
+
+# Display all computer hostnames for current domain
+net group "Domain Computers" /domain
+
+# Unlock domain user account
+net user <USERNAME> /ACTIVE:YES /domain
+
+# Change domain user password
+net user <USERNAME> "<PASSWORD>" /domain
