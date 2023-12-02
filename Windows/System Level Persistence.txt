@@ -1,1 +1,17 @@
 
+-- schtasks on boot --
+
+
+
+
+
+-- Service Creation --
+
+
+
+
+
+
+-- Windows 10 .DLL Hijack (WPTSextension) --
+
+
