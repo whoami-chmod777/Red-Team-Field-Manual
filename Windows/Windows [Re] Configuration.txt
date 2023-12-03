@@ -2,8 +2,8 @@
 This section covers re-configuration of Windows which can be used to further a potential red team assessment. A few examples include enabling remote desktop protocol, adding firewall rules, or creating accounts
 
 
--- Remote Desktop Protokol (RDP) Configuration --
+-- Remote Desktop Protocol (RDP) Configuration --
 
 
 
--- 
+-- Misc [Re]Configuration --
