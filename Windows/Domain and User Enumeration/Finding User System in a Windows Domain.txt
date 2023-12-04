@@ -1,2 +1,13 @@
 
-x
+# Query EventLogs for user logins looking for system that was logged into. May need to be run from all DCs in domain to locate proper event log. Is case sensitive. Can be run remotely with credentials with the following argument: /r:<IP_ADDRESS>>
+wevtutil qe security /rd:true /f:text /q:"*[System/EventID=4624] and *[EventData/Data[@Name='TargetUserName']='<USERNAME>']" /c:20
+
+
+# Utilize dsquery to search for user's last name in description (searches all AD objects). Occasionally user workstation information could be stored in Active Directory objects or description
+dsquery * -filter "(description=*<USER_LAST_NAME>*)" -attr name samaccountname description
+dsquery * -filter "(description=*<USER_FIRST_NAME>*)" -attr name samaccountname description
+dsquery * -filter "(samaccountname=<USER_ACCOUNT_NAME>)" -attr *
+
+
+# Connect to any server (likely a file server) that could have active user home directories mapped
+net session
