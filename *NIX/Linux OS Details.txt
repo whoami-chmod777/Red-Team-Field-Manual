@@ -53,6 +53,21 @@ Overview
 /etc/fstab		  Contains local and network configured mounts and shares
 
 
+# /etc/shadow File Format
+
+
+
+
+# /etc/shadow Hash Types
+
+
+
+
+# /etc/passwd File Format
+
+
+
+
 
 
 
