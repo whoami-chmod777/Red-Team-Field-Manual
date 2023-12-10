@@ -1,1 +1,67 @@
+Overview
+·File System Structure
+·Important File/Directory Descriptions
+·/etc/shadow File Format
+·/etc/shadow Hash Types
+·/etc/passwd File Format
+
+
+# File System Structure
+
+/		   Anchor and root of the filesystem
+/bin	 User binaries
+/boot	 Boot-up related files
+/dev	 Interface for system devices
+/etc	 System configuration files
+/home	 Base directory for user files
+/lib	 Critical software libraries
+/opt	 Third party software
+/proc	 System and running programs
+/root	 Home directory of root user
+/sbin	 System administrator binaries
+/tmp	 Temporary files
+/usr	 Contains all the system files. Less critical files	
+/var	 Variable system files
+
+
+# Important File/Directory Descriptions
+
+/etc/shadow			User account information and password hashes 
+/etc/passwd			User account information 
+/etc/group			Group names 
+/etc/rc.d			  Startup services (rc0.d-rc6.d) 
+/etc/init.d			Contains startup/stop scripts 
+/etc/hosts			Hardcoded hostname and IP combinations 
+/etc/hostname		Full hostname with domain 
+
+/etc/network/interfaces or /etc/netplan		Network configuration
+
+/etc/profile      			System environment variables 
+/etc/apt/sources.list		Debian package source
+/etc/resolv.conf	    	DNS configuration 
+
+/home/<USER>/.bash_history	User Bash history
+/usr/share/wireshark/manuf	Vendor-MAC lookup (KaliLinux)
+
+~/.ssh/				  SSH keystore 
+/var/log			  System log files (most Linux) 
+/var/adm			  System log files (Unix) 
+
+/var/spool/cron			List cron files
+/var/log/apache2/access.log	Apache connection log 
+
+/etc/fstab		  Contains local and network configured mounts and shares
+
+
+
+
+
+
+
+
+
+
+
+
+
 
