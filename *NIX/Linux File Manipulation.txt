@@ -1,11 +1,33 @@
 
+-- Linux File Manipulation --
+
 diff <FILE_PATH_A><FILE_PATH_B>     Compare files
 rm –rf <FILE_PATH>                  Force recursive deletion of directory
 shred –f –u <FILE_PATH>             Secure file deletion
 
-
-
-
-
-
 touch –r <ORIGINAL_FILE_PATH> <MOD_FILE_PATH>
+
+
+
+
+-- File Compression & Chunking --
+
+# Pack/unpack (archive) files using tar
+Compress: tar -cf <OUTPUT_FILE> .tar <INPUT_PATH> 
+Extract:  tar -xf <FILE_PATH>.tar
+
+# Compress and extract a .gz file using tar
+Compress: tar -czf <OUTPUT_FILE>.tar.gz <INPUT_PATH>
+Extract:  tar -xzf <FILE_PATH>.tar.gz
+
+# Compress and extract a .bz2 file using tar
+
+
+
+
+
+-- File Hashing --
+
+md5sum <FILE_PATH>            Generate MD5 hash of a file
+echo "<STRING>" | md5sum      Generate MD5 hash of a string
+sha1sum <FILE_PATH>           Generate SHA1 hash of a file
