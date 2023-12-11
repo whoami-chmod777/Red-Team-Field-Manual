@@ -1,1 +1,3 @@
 
+getent passwd            Display user and service accounts
+useradd –m <USERNAME> 
