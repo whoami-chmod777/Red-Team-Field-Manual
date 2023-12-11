@@ -8,7 +8,7 @@ Overview
 
 # File System Structure
 
-/		   Anchor and root of the filesystem
+/		  Anchor and root of the filesystem
 /bin	 User binaries
 /boot	 Boot-up related files
 /dev	 Interface for system devices
