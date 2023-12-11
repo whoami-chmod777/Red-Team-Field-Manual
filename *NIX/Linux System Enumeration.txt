@@ -1,3 +1,13 @@
 
+-- User Account Enumeration & Configuration --
+
 getent passwd            Display user and service accounts
 useradd –m <USERNAME> 
+
+
+
+-- Network Configuration --
+
+watch --interval 3 ss -t --all        List all listening, established and connected TCP sockets every 3 seconds
+netstat -tulpn
+
