@@ -44,4 +44,18 @@ crontab -e
 #Add the following line at the end:
 crontab -e 0 0 * * * <FULLPATH>
 
+
 https://crontab.guru/
+
+
+-- Poisoning Existing Scripts --
+
+Enumerate all persistence methods discussed in this section looking for existing persistence that has been created via script files such as .sh, .py, etc. If those are modifiable, modify them to launch a malicious uploaded payload.
+
+
+
+
+
+
+
+
