@@ -1,1 +1,11 @@
 
+diff <FILE_PATH_A><FILE_PATH_B>     Compare files
+rm –rf <FILE_PATH>                  Force recursive deletion of directory
+shred –f –u <FILE_PATH>             Secure file deletion
+
+
+
+
+
+
+touch –r <ORIGINAL_FILE_PATH> <MOD_FILE_PATH>
