@@ -1,1 +1,27 @@
 
+# Network Resources
+
+dnsstuff.com/tools 			DNSstuff Toolbox 
+network-tools.com 			Network-Tools 
+centralops.net 			  	CentralOps 
+lg.he.net 					    Hurricane Electric 
+shodan.io 					    Shodan 
+viz.greynoise.io			  GreyNoise
+iana.org/numbers			  IANA IP and	ASN Lookup
+
+bgp4.as/looking-glasses 	BGP 
+mxtoolbox.com/NetworkTools.aspx		MxToolBox
+
+
+
+# Whois Resources 
+
+icann.org		    ICANN
+iana.com		    IANA
+nro.net			    NRO
+afrinic.net		  AFRINIC
+apnic.net		    APNIC
+ws.arin.net		  ARIN
+lacnic.net		  LACNIC
+ripe.net		    RIPE
+internic.net	  InterNIC
