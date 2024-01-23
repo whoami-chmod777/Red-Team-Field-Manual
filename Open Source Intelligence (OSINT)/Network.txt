@@ -1,13 +1,13 @@
 
 # Network Resources
 
-dnsstuff.com/tools: DNSstuff Toolbox 
-network-tools.com: Network-Tools 
-centralops.net: CentralOps 
-lg.he.net: Hurricane Electric 
-shodan.io: Shodan 
-viz.greynoise.io: GreyNoise
-iana.org/numbers: IANA IP and	ASN Lookup
+dnsstuff.com/tools    DNSstuff Toolbox 
+network-tools.com     Network-Tools 
+centralops.net        CentralOps 
+lg.he.net             Hurricane Electric 
+shodan.io             Shodan 
+viz.greynoise.io      GreyNoise
+iana.org/numbers      IANA IP and	ASN Lookup
 
 bgp4.as/looking-glasses 	BGP 
 mxtoolbox.com/NetworkTools.aspx		MxToolBox
