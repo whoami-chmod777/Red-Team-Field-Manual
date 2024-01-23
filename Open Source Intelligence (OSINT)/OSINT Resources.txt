@@ -1,4 +1,70 @@
 
 -- RELATIONSHIP AND RECON TOOLS --
 
-Open Source Intelligence (OSINT)
+github.com/ElevenPaths/FOCA				  FOCA
+github.com/laramies/theHarvester 		theHarvester 
+
+maltego.com    Maltego 
+
+https://github.com/lanmaster53/recon-ng		Recon-ng Framework
+
+
+-- GOOGLE SEARCHES --
+
+site:<URL>    Search only one
+
+numrange:<START_NUMBER>...<ENDNUMBER>	Search within a	number range 
+
+date:<INTEGER>		Search within past [#] months 
+link:<URL>        Find pages that link to given URL
+related:<URL>		  Find pages related to given URL
+
+intitle:<STRING>    Find pages with <STRING> in title 
+inurl:<STRING>      Find pages with <STRING> in URL
+
+filetype:<EXTENSION>  Search for files by file type
+phonebook:<STRING>		Find phone book listings of <STRING>
+
+More info at: exploit-db.com/google-hacking-database
+
+
+-- PEOPLE SEARCH --
+
+peekyou.com		PeekYou 
+spokeo.com		Spokeo 
+pipl.com		  Pipl 
+
+intelius.com    Intelius 
+
+publicrecords.searchsystems.net		Search Systems 
+
+
+
+-- OSINT WEBSITES --
+
+vulnerabilityassessment.co.uk/Penetration%20Test.html
+securitysift.com/passive-reconnaissance/
+pentest-standard.org/index.php/Intelligence_Gathering
+onstrat.com/osint/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
