@@ -4,6 +4,15 @@ This section covers re-configuration of Windows which can be used to further a p
 
 -- Remote Desktop Protocol (RDP) Configuration --
 
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TerminalServer\WinStations\RDP-Tcp" /v SecurityLayer /t REG_DWORD /d 0 /f
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TerminalServer\WinStations\RDP-Tcp" /v UserAuthentication /t REG_DWORD /d 0 /f
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TerminalServer" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+netsh advfirewall firewall set rule group="remote desktop" new enable=yes
+sc start TermService
+
+
+
+
 
 
 -- Misc [Re]Configuration --
