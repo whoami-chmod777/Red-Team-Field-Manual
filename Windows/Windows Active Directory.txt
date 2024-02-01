@@ -1,1 +1,139 @@
 
+Microsoft Windows Active Directory is a service that combines large groups of computing resources into one centralized hierarchical system. This system is comprised of user accounts, computers, objects, active directory forests, and more. Centralized authentication makes administration and expansion of computing resources much easier
+
+
+--- Active Directory Forest (AD Forest) ---
+
+An Active Directory forest is a collection of parent/child domains and is used to share authentication between domains, while keeping those domain objects (computers, users, etc.) isolated.
+If an organization called Corp has a Chicago and San Diego office, they may choose to create a forest made up of a parent domain, and two child domains
+
+
+--- Common Active Directory Object Types ---
+
+Computer: Represents a workstation or server in a domain.
+User: Represent users or individuals in a domain.
+Organizational Unit (OU): This type of object is a “container” that can include other objects. This can be useful if a company wants to further containerize objects such as putting all accounting users and computers into an OU called “accounting”.
+
+
+--- Active Directory Exploitation Checklist ---
+
+· Windows hashes are NOT salted. Password re-use is very common for users that have multiple user accounts in different domains.
+· Domain Service account passwords may not be changed often.
+· Certain “Enterprise Admin” accounts may be used to traverse forest domains.
+· Domains should utilize separation of privilege. Workstation Admins administer workstations, SQL Admins administer SQL Servers, etc.
+
+
+--- Domain and User Enumeration ---
+
+This section details important and useful domain enumeration commands. These commands can display computers, users, groups, etc.
+
+
+-- Domain Enumeration with net.exe --
+
+Net.exe will NOT list groups in groups. Refer to DSQuery section to enumerate groups in groups
+
+# List accounts with administrative access to the current machine
+net localgroup administrators
+
+# List accounts and groups with administrative access to the domain controller
+net localgroup administrators /domain
+
+# Display hosts currently visible on the network
+net view /domain
+
+# Display all users in current domain
+net user /domain
+
+# Display user information for domain user account (status, policy , groups, etc.)
+net user <USERNAME> /domain
+
+# Display domain account policies
+net accounts /domain
+
+# Display domain groups
+net group /domain
+
+# Display users in a domain group
+net group "<GROUPNAME>" /domain
+
+# Display domain controllers in the current domain
+net group "Domain Controllers" /domain
+
+# Display all computer hostnames for current domain
+net group "Domain Computers" /domain
+
+# Unlock domain user account
+net user <USERNAME> /ACTIVE:YES /domain
+
+# Change domain user password
+net user <USERNAME> "<PASSWORD>" /domain
+
+
+-- Domain Enumeration With DSQuery --
+
+All DSQuery commands must be run from a machine that has dsquery.exe on disk (commonly Windows Server) and most of the commands DO NOT require administrative privileges.
+
+# Display administrative users
+dsquery * -filter "(&(objectclass=user)(admincount=1))" -attr samaccountname name
+
+# Output dsquery results to disk
+dsquery * -filter "((objectclass=user))" -attr namesamaccountname ><OUTPUT_PATH>
+
+# Compress dsquery results
+makecab <INPUT_PATH><OUTPUT_PATH>
+
+# Extract dsquery results
+expand <INPUT_PATH><OUTPUT_PATH>
+
+# Display Active Directory OUs
+dsquery * -filter "(objectclass=organizationalUnit)" -attr name distinguishedNamedescription -limit 0
+
+# Display computers filtering on operating system
+dsquery * -filter "(operatingsystem=*10*)" -attr nameoperatingsystem dnshostname -limit 0
+
+# Display all computers with a pattern in the hostname (*DC*)
+dsquery * -filter "(name=*DC*)" -attrname operatingsystem dnshostname -limit 0
+
+# Display all Active Directory objects with a pattern SMITH in the hostname. Great for finding user objects!
+dsquery * -filter "(name=*smith*)" -attr name samaccountname description -limit 0
+
+
+-- Domain Enumeration With DSQuery CONT --
+
+# Filter on EPOCH time (password last changed, last login, etc.)
+1 with 12 0's is a day in epoch (1000000000000). Add or subtract to adjust dsquery filter
+
+dsquery * -filter "(&(objectclass=user)(lastlogon><EPOCH_TIME>))" -attr samaccountname name
+
+# Display trusts associated with current domain
+dsquery * -filter "(objectclass=trusteddomain)" -attr flatname trustdirection
+
+# Display active directory objects in a remote domain (useful if trust exists)
+dsquery * -filter "(operatingsystem=*server*)" -attr name operatingsystem description dnshostname -d <DOMAIN_FQDN>
+
+# Display computers with helpful attributes
+dsquery * -filter "(objectclass=computer)" -attr name dnshostname operatingsystem description -limit 0
+
+# Display users with helpful attributes
+dsquery * -filter "(objectclass=user)" -attr name samaccountname lastlogon memberof description -limit 0
+
+# Display groups with helpful attributes
+dsquery * -filter "(objectclass=group)" -attr name samaccountname member description -limit 0
+
+# Display every Active Directory object with admin in the name Convert NT epoch time (lastLogonT imestamp time format) to readable
+dsquery * -filter "(name=*admin*)" -attr name samaccountname description objectclass -limit 0 w32tm /ntte <EPOCH_TIME>
+
+
+-- Finding User System in a Windows Domain --
+
+# Query EventLogs for user logins looking for system that was logged into. 
+May need to be run from all DCs in domain to locate proper event log. 
+Is case sensitive. Can be run remotely with credentials with the following argument: /r: <IP_ADDRESS>>
+
+wevtutil qe security /rd:true /f:text /q:"*[System/EventID=4624] and * [EventData/Data[@Name='TargetUserName']='<USERNAME>']" /c:20
+
+# Utilize dsquery to search for user's last name in description (searches all AD objects). Occasionally user workstation information could be stored in Active Directory objects or description
+dsquery * -filter "(description=*<USER_LAST_NAME>*)" -attr name samaccountname description
+
+# Connect to any server (likely a file server) that could have active user home directories mapped
+net session
