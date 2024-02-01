@@ -6,7 +6,6 @@
 ·Using Volume Shadow Service (VSS)
 
 
-
 -- File Info & Searching --
 
 # Search for all PDFs
@@ -15,6 +14,24 @@ dir /a /s /b C:\users\phillis.snyder\*pdf*
 
 # Search current and subdirectories for .txt files for case insensitive string "password"
 findstr /SI password *.txt
+
+# Display file contents
+type <FILE_PATH>
+
+# Display all lines in a file that match case insensitive <STRING>
+find /I "<STRING_TO_SEARCH>" <FILE_PATH>
+
+# Display line count for a file
+type <FILE_PATH> | find /c /v ""
+
+
+# Enumerate recently opened files
+dir C:\Users\<USERNAME>\AppData\Roaming\Microsoft\Windows\Recent
+
+- Then run the following command on the .lnk:
+type <FILE_PATH>
+
+- Look for full file path in output)
 
 
 -- Tree Filesystem to Searchable File --
@@ -33,6 +50,13 @@ makecab c:\windows\temp\silverlight1.log c:\windows\temp\silverlight_compressed.
 
 # Extract results
 expand c:\users\administrator\desktop\silverlight_compressed.zip c:\users\administrator\desktop\extractedFile.txt
+
+
+
+
+
+
+
 
 
 -- Using Volume Shadow Service (VSS) --
